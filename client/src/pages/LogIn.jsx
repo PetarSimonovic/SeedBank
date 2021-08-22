@@ -58,14 +58,12 @@ class LogIn extends Component {
     }
 
     handleGetUser = async () => {
-        const { name, password } = this.state
-        const payload = { name, password }
+        const { name } = this.state.name
 
-        await api.addUser(payload).then(res => {
-            window.alert(`User added`)
+        await api.getUser(name).then(res => {
+            window.alert(`Logging in`)
             this.setState({
                 name: '',
-                email: '',
                 password: '',
             })
         })
