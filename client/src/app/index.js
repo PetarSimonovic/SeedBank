@@ -6,7 +6,9 @@ import { SignUp, LogIn } from '../pages'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-function App() {
+class App extends React.Component {
+
+    render() {
     return (
         <Router>
             <NavBar />
@@ -14,8 +16,9 @@ function App() {
                 <Route path="/users/signup" exact component={ SignUp } />
                 <Route path="/users/login" exact component={ LogIn } />
             </Switch>
-        </Router>
+          </Router>
     )
+  }
 }
 
 export default App
