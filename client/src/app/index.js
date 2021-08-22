@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import { NavBar } from '../components'
-import { SignUp } from '../pages'
+import { SignUp, LogIn } from '../pages'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -11,7 +11,8 @@ function App() {
         <Router>
             <NavBar />
             <Switch>
-                <Route path="/users/create" exact component={ SignUp } />
+                <Route path="/users/signup" exact component={ SignUp } />
+                <Route path="/users/login" exact component={ LogIn } />
             </Switch>
         </Router>
     )
