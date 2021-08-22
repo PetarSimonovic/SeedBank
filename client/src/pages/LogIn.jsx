@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import api from '../api';
 
 import styled from 'styled-components';
@@ -63,6 +64,7 @@ class LogIn extends Component {
             console.log("Name is " + res.data.data.name)
             if (this.state.password === res.data.data.password) {
               window.alert(`Logged in`)
+              this.props.setUser(res.data.data.name)
             } else {
               window.alert(`Incorrect password`)
             }
@@ -90,7 +92,6 @@ class LogIn extends Component {
                 />
 
                 <Button onClick={this.handleGetUser}>Log In</Button>
-
             </Wrapper>
         )
     }
