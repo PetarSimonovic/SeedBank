@@ -7,6 +7,6 @@ const UserCtrl = require('../controllers/user-ctrl')
 const router = express.Router()
 
 router.post('/user', UserCtrl.createUser)
-router.get('/user/:id', UserCtrl.getUser)
+router.get('/user/:name', UserCtrl.getUser)
 
 module.exports = router

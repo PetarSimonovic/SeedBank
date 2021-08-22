@@ -58,9 +58,8 @@ class LogIn extends Component {
     }
 
     handleGetUser = async () => {
-        const { name } = this.state.name
 
-        await api.getUser(name).then(res => {
+        await api.getUser(this.state.name).then(res => {
             window.alert(`Logging in`)
             this.setState({
                 name: '',
