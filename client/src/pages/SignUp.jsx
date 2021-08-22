@@ -102,7 +102,7 @@ class SignUp extends Component {
                     onChange={this.handleChangeInputPassword}
                 />
 
-                <Button onClick={this.handleAddUser}>Add User</Button>
+                <Button onClick={this.handleAddUser}>Sign Up</Button>
                 <CancelButton href={'/movies/list'}>Cancel</CancelButton>
             </Wrapper>
         )
