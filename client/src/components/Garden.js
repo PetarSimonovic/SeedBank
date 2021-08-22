@@ -1,0 +1,135 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import seedBankSoil from './seedBankSoil.png';
+import GardenPlot from './GardenPlot.js';
+import Plant from './Plant.js'
+import styled from 'styled-components';
+
+
+const Wrapper = styled.table.attrs({
+})`
+    margin: 0 30px;
+`
+
+
+class Garden extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      seed: "",
+      garden: [],
+      infoPane: "Choose seed"
+    };
+    this.generateGarden = this.generateGarden.bind(this)
+    this.selectSeed = this.selectSeed.bind(this)
+    this.addPlot = this.addPlot.bind(this)
+    this.resetSeed = this.resetSeed.bind(this)
+    this.updateGarden = this.updateGarden.bind(this)
+    this.plantSeed = this.plantSeed.bind(this)
+    this.getPlant = this.getPlant.bind(this)
+
+  }
+
+
+
+
+  updatePlantInfo() {
+    //this.setState({ plantName: plant.name });
+    console.log("Button was Clicked")
+  }
+
+  generateGarden () {
+    console.log("Generating Garden, size:" + this.props.size + this.state.seed)
+    let newRows = []
+    for (var i = 0; i < this.props.size; i++) {
+    //  console.log("adding row" + i)
+      let uniqueKey = "gardenRow_" + i
+      newRows.push(<tr id={uniqueKey} key={uniqueKey.toString()}>{this.addPlot(i)}</tr>);
+    }
+    console.log(this.state.garden)
+    return newRows
+  }
+
+  addPlot(id) {
+    var plots = []
+    for (var i = 0; i < this.props.size; i++) {
+    let uniqueKey = "plot_" + id + "_" + i
+    let plantID = id + "_" + i
+    let plant = this.getPlant(plantID)
+    plots.push(
+      <GardenPlot
+      key={uniqueKey.toString()}
+      id={id + "_" + i}
+      plantSeed={this.plantSeed}
+      plant={plant}
+      seed={this.state.seed} />)
+    }
+    return plots
+  }
+
+  selectSeed() {
+    this.setState({
+      seed: "Generic Plant",
+      infoPane: "Choose a plot for Generic Plant"
+    });
+    console.log("Seed selected?" + this.state.seed)
+ }
+
+  resetSeed() {
+      this.setState({
+        seed: "",
+        infoPane: "Choose seed"
+      });
+      console.log("Seed selected?" + this.state.seed)
+   }
+
+   plantSeed(id) {
+     console.log("SEARCHING FOR" + id)
+     let plant = this.state.garden.find(x => x.id === id);
+     console.log("Plant is " + " " + plant.id + " " + plant.growth)
+     plant.growth += 1
+     plant.updateImage()
+     console.log("Plant is " + " " + plant.id + " " + plant.growth)
+     let newGarden = this.state.garden.filter(function(plant) { return plant.id != id; });
+     newGarden.push(plant)
+     this.setState({ garden: newGarden })
+     console.log("PLANT UPDATED")
+     this.resetSeed()
+   }
+
+   updateGarden(plant) {
+     var newGarden = this.state.garden
+     newGarden.push(plant)
+     this.setState({ garden: newGarden })
+     console.log(this.state.garden)
+   }
+
+   getPlant(plantID) {
+    if (!this.state.garden.some(plant => plant.id === plantID)) {
+      let newPlant = new Plant(plantID)
+      this.updateGarden(newPlant)
+    }
+    return this.state.garden.find(plant => plant.id === plantID);
+
+   }
+
+
+
+  render() {
+    return (
+    <Wrapper>
+      <p>{this.state.infoPane}</p>
+      <table className="garden" key="gardenTable" id="gardenTable">
+        <tbody>
+        {this.generateGarden()}
+        </tbody>
+      </table>
+      <button id="sowSeed" onClick={this.selectSeed}>Generic Plant</button>
+    </Wrapper>
+    )
+ }
+
+}
+
+export default Garden;

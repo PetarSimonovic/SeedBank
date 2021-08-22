@@ -20,7 +20,7 @@ class NavBar extends Component {
             <Container>
                 <Nav>
                     <Logo />
-                    <Links />
+                    <Links user={this.props.user} setUser={this.props.setUser} />
                 </Nav>
             </Container>
         )

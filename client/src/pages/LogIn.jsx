@@ -64,7 +64,10 @@ class LogIn extends Component {
             console.log("Name is " + res.data.data.name)
             if (this.state.password === res.data.data.password) {
               window.alert(`Logged in`)
-              this.props.setUser(res.data.data.name)
+              const name = res.data.data.name
+              const id = res.data.data._id
+              const garden = res.data.data.garden
+              this.props.setUser(name, id, garden)
             } else {
               window.alert(`Incorrect password`)
             }
