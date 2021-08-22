@@ -6,6 +6,8 @@ const api = axios.create({
 
 export const addUser = payload => api.post(`/user`, payload)
 export const getUser = name => api.get(`/user/${name}`)
+export const updateGardenById = (id, garden) => api.put(`/movie/${id}`, garden)
+
 
 const apis = {
     addUser,
