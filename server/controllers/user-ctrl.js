@@ -2,6 +2,7 @@
 const User = require('../models/user-model')
 
 createUser = (req, res) => {
+  console.log("Creating USER!")
     const body = req.body
 
     if (!body) {
@@ -38,6 +39,7 @@ getUser = async (req, res) => {
   console.log("In getUser")
 
     await User.findOne({ name: req.params.name }, (err, user) => {
+      console.log("Found user")
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -50,6 +52,7 @@ getUser = async (req, res) => {
         return res.status(200).json({ success: true, data: user })
     }).catch(err => console.log(err))
 }
+
 
 updateGarden = async (req, res) => {
     console.log("In Update Garden")

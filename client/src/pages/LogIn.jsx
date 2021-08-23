@@ -61,6 +61,7 @@ class LogIn extends Component {
     handleGetUser = async () => {
 
         await api.getUser(this.state.name).then(res => {
+          console.log(res)
             console.log("Name is " + res.data.data.name)
             if (this.state.password === res.data.data.password) {
               window.alert(`Logged in`)
