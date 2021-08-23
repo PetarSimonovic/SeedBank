@@ -4,6 +4,7 @@ import seedBankSoil from './seedBankSoil.png';
 import GardenPlot from './GardenPlot.js';
 import Plant from './Plant.js'
 import styled from 'styled-components';
+import api from '../api';
 
 
 const Wrapper = styled.table.attrs({
@@ -18,7 +19,7 @@ class Garden extends React.Component {
     super(props);
     this.state = {
       seed: "",
-      garden: [],
+      garden: this.props.garden,
       infoPane: "Choose seed"
     };
     this.generateGarden = this.generateGarden.bind(this)
@@ -114,7 +115,16 @@ class Garden extends React.Component {
 
    }
 
+   componentDidUpdate() {
+     this.saveGarden()
+   }
 
+   saveGarden = async () => {
+     console.log("Attempting to save garden")
+      await api.updateGarden(this.props.id, this.state.garden).then(res => {
+            window.alert(`Garden updated successfully`)
+        })
+   }
 
   render() {
     return (

@@ -34,7 +34,7 @@ class App extends React.Component {
     return (
         <Router>
             <NavBar user={this.state.userName} setUser={this.setUser} />
-            {this.state.userName ? <Garden size={5} garden={this.state.garden} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div>}
+            {this.state.userName ? <Garden size={5} garden={this.state.garden} userName={this.state.userName} id={this.state.id} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div>}
           </Router>
     )
   }
