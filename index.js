@@ -25,14 +25,6 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 //Static file declaration
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-//production mode
-// if (process.env.NODE_ENV === 'production') {  app.use(express.static(path.join(__dirname, 'client/build')));
-//  app.get('*', (req, res) => {    res.sendfile(path.join(__dirname = '/client/build/index.html'));  })}
-
- //build mode
- // app.get('*', (req, res) => {  res.sendFile(path.join(__dirname+'/client/public/index.html'));})
-
-
 
 
 
@@ -41,8 +33,13 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/api', userRouter)
 
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
+//production mode
+if (process.env.NODE_ENV === 'production') {  app.use(express.static(path.join(__dirname, 'client/build')));
+ app.get('*', (req, res) => {    res.sendfile(path.join(__dirname = '/client/build/index.html'));  })}
+
+//build mode
+ app.get('*', (req, res) => {  res.sendFile(path.join(__dirname+'/client/public/index.html'));})
+
+
 
 app.listen(process.env.PORT || apiPort, () => console.log(`Server running on port ${apiPort}`))
