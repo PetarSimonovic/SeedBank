@@ -6,12 +6,12 @@ import seedBankFlower from './seedBankFlower.png'
 export default class Plant {
 
 
-    constructor(id, date = this.setDate(), growth = 0) {
+    constructor(id, date) {
       this.name = "Generic Plant"
       this.price = 1
       this.id = id
       this.date = date
-      this.growth = growth
+      this.growth = 0
       this.image = seedBankSoil
     }
 
@@ -24,6 +24,11 @@ export default class Plant {
       return Number(`${year}${month}${day}`)
 
 
+    }
+
+    grow() {
+      this.growth += 1
+      this.updateImage()
     }
 
     updateImage() {

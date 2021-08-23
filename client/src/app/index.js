@@ -16,7 +16,8 @@ class App extends React.Component {
       this.state = {
         userName: "",
         userID: 0,
-        garden: []
+        garden: [],
+        date: this.setDate()
       }
       this.setUser = this.setUser.bind(this)
     }
@@ -31,11 +32,26 @@ class App extends React.Component {
       console.log("User is " + this.state.id + " " + this.state.userName)
     }
 
+    setDate() {
+      const date = new Date()
+      const day = date.getDate()
+      const month = date.getMonth()
+      const year = date.getFullYear()
+      return Number(`${year}${month}${day}`)
+    }
+
+
     parseGarden(garden) {
       console.log("Garden loaded")
       let parsedGarden = []
       for (let plant = 0; plant < garden.length; plant ++ ) {
-        parsedGarden.push(Object.assign(new Plant, garden[plant]))
+        let parsedPlant = Object.assign(new Plant, garden[plant])
+        if (this.state.date > parsedPlant.date) {
+          parsedPlant.grow()
+        }
+        parsedGarden.push(parsedPlant)
+
+
       }
       return parsedGarden
     }
@@ -44,7 +60,7 @@ class App extends React.Component {
     return (
         <Router>
             <NavBar user={this.state.userName} setUser={this.setUser} />
-            {this.state.userName ? <Garden size={5} garden={this.state.garden} userName={this.state.userName} id={this.state.id} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div>}
+            {this.state.userName ? <Garden size={5} date={this.state.date} garden={this.state.garden} userName={this.state.userName} id={this.state.id} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div>}
           </Router>
     )
   }

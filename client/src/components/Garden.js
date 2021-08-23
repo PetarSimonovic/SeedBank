@@ -88,8 +88,7 @@ class Garden extends React.Component {
      console.log("SEARCHING FOR" + id)
      let plant = this.state.garden.find(x => x.id === id);
      console.log("Plant is " + " " + plant.id + " " + plant.growth)
-     plant.growth += 1
-     plant.updateImage()
+     plant.grow()
      console.log("Plant is " + " " + plant.id + " " + plant.growth)
      let newGarden = this.state.garden.filter(function(plant) { return plant.id != id; });
      newGarden.push(plant)
@@ -106,7 +105,7 @@ class Garden extends React.Component {
 
    getPlant(plantID) {
     if (!this.state.garden.some(plant => plant.id === plantID)) {
-      let newPlant = new Plant(plantID)
+      let newPlant = new Plant(plantID, this.props.date)
       this.updateGarden(newPlant)
     }
     return this.state.garden.find(plant => plant.id === plantID);
@@ -122,6 +121,7 @@ class Garden extends React.Component {
      const garden = {"garden" : this.state.garden }
       await api.updateGarden(this.props.id, garden).then(res => {
             console.log('Garden updated successfully')
+            console.log(this.state.garden.length)
         })
    }
 
