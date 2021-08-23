@@ -40,4 +40,8 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/api', userRouter)
 
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
