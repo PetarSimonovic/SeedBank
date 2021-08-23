@@ -20,7 +20,17 @@ class App extends React.Component {
         date: this.setDate()
       }
       this.setUser = this.setUser.bind(this)
+      this.connecToServer = this.connecToServer.bind(this)
     }
+
+    componentDidMount() {
+       this.connecToServer();
+      }
+
+    connecToServer() {
+       fetch('/');
+     }
+
 
     setUser(userName, id, garden) {
       console.log("SETTING USER")
