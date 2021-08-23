@@ -121,7 +121,7 @@ class Garden extends React.Component {
      console.log("Attempting to save garden")
      const garden = {"garden" : this.state.garden }
       await api.updateGarden(this.props.id, garden).then(res => {
-            window.alert(`Garden updated successfully`)
+            console.log('Garden updated successfully')
         })
    }
 
