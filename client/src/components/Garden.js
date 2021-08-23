@@ -48,7 +48,6 @@ class Garden extends React.Component {
       let uniqueKey = "gardenRow_" + i
       newRows.push(<tr id={uniqueKey} key={uniqueKey.toString()}>{this.addPlot(i)}</tr>);
     }
-    console.log(this.state.garden)
     return newRows
   }
 
@@ -90,7 +89,7 @@ class Garden extends React.Component {
      let plant = this.state.garden.find(x => x.id === id);
      console.log("Plant is " + " " + plant.id + " " + plant.growth)
      plant.growth += 1
-     //plant.updateImage()
+     plant.updateImage()
      console.log("Plant is " + " " + plant.id + " " + plant.growth)
      let newGarden = this.state.garden.filter(function(plant) { return plant.id != id; });
      newGarden.push(plant)
@@ -103,7 +102,6 @@ class Garden extends React.Component {
      var newGarden = this.state.garden
      newGarden.push(plant)
      this.setState({ garden: newGarden })
-     console.log(this.state.garden)
    }
 
    getPlant(plantID) {

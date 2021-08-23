@@ -1,9 +1,10 @@
 import React from 'react'
 import './App.css';
 
+
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import { NavBar, SignUpButton, Garden } from '../components'
+import { NavBar, SignUpButton, Garden, Plant } from '../components'
 import { SignUp, LogIn } from '../pages'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -25,9 +26,18 @@ class App extends React.Component {
       this.setState({
         userName: userName,
         id: id,
-        garden: garden
+        garden: this.parseGarden(garden)
       })
       console.log("User is " + this.state.id + " " + this.state.userName)
+    }
+
+    parseGarden(garden) {
+      console.log("Garden loaded")
+      let parsedGarden = []
+      for (let plant = 0; plant < garden.length; plant ++ ) {
+        parsedGarden.push(Object.assign(new Plant, garden[plant]))
+      }
+      return parsedGarden
     }
 
     render() {
