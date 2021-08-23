@@ -90,7 +90,7 @@ class Garden extends React.Component {
      let plant = this.state.garden.find(x => x.id === id);
      console.log("Plant is " + " " + plant.id + " " + plant.growth)
      plant.growth += 1
-     plant.updateImage()
+     //plant.updateImage()
      console.log("Plant is " + " " + plant.id + " " + plant.growth)
      let newGarden = this.state.garden.filter(function(plant) { return plant.id != id; });
      newGarden.push(plant)
@@ -121,7 +121,8 @@ class Garden extends React.Component {
 
    saveGarden = async () => {
      console.log("Attempting to save garden")
-      await api.updateGarden(this.props.id, this.state.garden).then(res => {
+     const garden = {"garden" : this.state.garden }
+      await api.updateGarden(this.props.id, garden).then(res => {
             window.alert(`Garden updated successfully`)
         })
    }
