@@ -3,8 +3,8 @@ import './App.css';
 
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { NavBar, SignUpButton, Garden, Plant } from '../components'
-import { setDate } from '../functions'
+import { NavBar, SignUpButton, Garden } from '../components'
+import { setDate, parseGarden } from '../functions'
 import { SignUp, LogIn } from '../pages'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -38,28 +38,11 @@ class App extends React.Component {
       this.setState({
         userName: userName,
         id: id,
-        garden: this.parseGarden(garden)
+        garden: parseGarden(garden, this.state.date)
       })
       console.log("User is " + this.state.id + " " + this.state.userName)
     }
 
-
-    parseGarden(garden) {
-      console.log("Garden loaded")
-      let parsedGarden = []
-      for (let plant = 0; plant < garden.length; plant ++ ) {
-        let parsedPlant = Object.assign(new Plant, garden[plant])
-        if (this.state.date > parsedPlant.date && parsedPlant.growth > 0) {
-          let newGrowth = this.state.date - parsedPlant.date
-          console.log("newgrowth is " + newGrowth)
-          parsedPlant.grow(newGrowth)
-        }
-        parsedGarden.push(parsedPlant)
-
-
-      }
-      return parsedGarden
-    }
 
     render() {
     return (

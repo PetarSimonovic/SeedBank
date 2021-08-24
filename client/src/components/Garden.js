@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import seedBankSoil from './seedBankSoil.png';
+import seedBankSoil from '../seedBankSoil.png';
 import GardenPlot from './GardenPlot.js';
-import Plant from './Plant.js'
+import { Plant } from '../functions'
 import styled from 'styled-components';
 import api from '../api';
 
@@ -88,7 +88,7 @@ class Garden extends React.Component {
      console.log("SEARCHING FOR" + id)
      let plant = this.state.garden.find(x => x.id === id);
      console.log("Plant is " + " " + plant.id + " " + plant.growth)
-     plant.grow()
+     plant.grow(1)
      console.log("Plant is " + " " + plant.id + " " + plant.growth)
      let newGarden = this.state.garden.filter(function(plant) { return plant.id != id; });
      newGarden.push(plant)

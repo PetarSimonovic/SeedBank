@@ -1,7 +1,8 @@
-import seedBankSoil from './seedBankSoil.png';
-import seedBankSprout1 from './seedBankSprout1.png'
-import seedBankSprout2 from './seedBankSprout2.png'
-import seedBankFlower from './seedBankFlower.png'
+import seedBankSoil from '../seedBankSoil.png';
+import seedBankSprout1 from '../seedBankSprout1.png';
+import seedBankSprout2 from '../seedBankSprout2.png';
+import seedBankFlower from '../seedBankFlower.png';
+
 
 export default class Plant {
 
@@ -27,7 +28,7 @@ export default class Plant {
     }
 
     grow(newGrowth) {
-      this.growth += newGrowth
+      this.growth = newGrowth
       this.updateImage()
     }
 
