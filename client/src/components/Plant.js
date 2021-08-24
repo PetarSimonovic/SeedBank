@@ -26,8 +26,8 @@ export default class Plant {
 
     }
 
-    grow() {
-      this.growth += 1
+    grow(newGrowth) {
+      this.growth += newGrowth
       this.updateImage()
     }
 

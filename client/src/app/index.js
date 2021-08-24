@@ -49,8 +49,10 @@ class App extends React.Component {
       let parsedGarden = []
       for (let plant = 0; plant < garden.length; plant ++ ) {
         let parsedPlant = Object.assign(new Plant, garden[plant])
-        if (this.state.date > parsedPlant.date) {
-          parsedPlant.grow()
+        if (this.state.date > parsedPlant.date && parsedPlant.growth > 0) {
+          let newGrowth = this.state.date - parsedPlant.date
+          console.log("newgrowth is " + newGrowth)
+          parsedPlant.grow(newGrowth)
         }
         parsedGarden.push(parsedPlant)
 
