@@ -3,8 +3,8 @@ import './App.css';
 
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-
 import { NavBar, SignUpButton, Garden, Plant } from '../components'
+import { setDate } from '../functions'
 import { SignUp, LogIn } from '../pages'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -17,14 +17,15 @@ class App extends React.Component {
         userName: "",
         userID: 0,
         garden: [],
-        date: this.setDate()
+        date: setDate()
       }
       this.setUser = this.setUser.bind(this)
       this.connecToServer = this.connecToServer.bind(this)
     }
 
     componentDidMount() {
-       this.connecToServer();
+      console.log("DATE is " + this.state.date)
+      this.connecToServer();
       }
 
     connecToServer() {
@@ -40,14 +41,6 @@ class App extends React.Component {
         garden: this.parseGarden(garden)
       })
       console.log("User is " + this.state.id + " " + this.state.userName)
-    }
-
-    setDate() {
-      const date = new Date()
-      const day = date.getDate()
-      const month = date.getMonth()
-      const year = date.getFullYear()
-      return Number(`${year}${month}${day}`)
     }
 
 
