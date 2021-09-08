@@ -3,7 +3,7 @@ import './App.css';
 
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { NavBar, SignUpButton, Garden } from '../components'
+import { NavBar, SignUpButton, SeedBank } from '../components'
 import { setDate, parseGarden } from '../functions'
 import { SignUp, LogIn } from '../pages'
 
@@ -48,10 +48,12 @@ class App extends React.Component {
     return (
         <Router>
             <NavBar user={this.state.userName} setUser={this.setUser} />
-            {this.state.userName ? <Garden size={5} date={this.state.date} garden={this.state.garden} userName={this.state.userName} id={this.state.id} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div>}
+            <SeedBank />
           </Router>
     )
   }
 }
 
 export default App
+
+//  {this.state.userName ? <Garden size={5} date={this.state.date} garden={this.state.garden} userName={this.state.userName} id={this.state.id} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div>}
