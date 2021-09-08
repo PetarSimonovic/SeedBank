@@ -88,7 +88,8 @@ class Garden extends React.Component {
      console.log("SEARCHING FOR" + id)
      let plant = this.state.garden.find(x => x.id === id);
      console.log("Plant is " + " " + plant.id + " " + plant.growth)
-     plant.grow(1)
+     plant.planted = true
+     plant.grow(0)
      console.log("Plant is " + " " + plant.id + " " + plant.growth)
      let newGarden = this.state.garden.filter(function(plant) { return plant.id != id; });
      newGarden.push(plant)

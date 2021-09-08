@@ -14,6 +14,7 @@ export default class Plant {
       this.date = date
       this.growth = 0
       this.image = seedBankSoil
+      this.planted = false
     }
 
     setDate() {
@@ -34,7 +35,7 @@ export default class Plant {
 
     updateImage() {
      console.log("Updating image")
-     const imageBank = [seedBankSoil, seedBankSprout1, seedBankSprout2, seedBankFlower]
+     const imageBank = [seedBankSprout1, seedBankSprout2, seedBankFlower]
      if (this.growth < imageBank.length) {
         this.image = imageBank[this.growth]
      }
