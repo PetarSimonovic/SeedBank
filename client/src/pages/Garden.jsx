@@ -14,12 +14,9 @@ function Garden(props) {
   const [plants, setPlants] = useState([])
 
   function sowPlant( event ) {
-    const x = event.point.x
-    const y = event.point.y
-    const z = event.point.z
-
+    const position = [event.point.x, event.point.y, event.point.z]
     setPlants( (prev) => {
-      return [<Plant key={plants.length} date={setDate()} position={[x, y , z]} />, ...prev]
+      return [<Plant key={plants.length} date={setDate()} position={position} />, ...prev]
     })
     props.updateGarden(plants)
     }

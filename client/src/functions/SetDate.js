@@ -5,7 +5,7 @@ function setDate() {
   const day = date.getDate()
   const month = date.getMonth()
   const year = date.getFullYear()
-  return Number(`${year}${month}${day}`)
+  return {month: month, day: day, year: year}
 }
 
 module.exports = setDate;

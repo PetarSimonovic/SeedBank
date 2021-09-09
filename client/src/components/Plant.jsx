@@ -13,7 +13,9 @@ function Plant(props) {
   const [active, setActive] = useState(false)
   const [growth, setGrowth] = useState(0)
 
-  const handleClick = () => {
+  const handleClick = (event) => {
+    event.stopPropagation()
+    console.log("This plant is:")
     console.log(props)
   }
   // Set up state for the hovered and active state
@@ -25,7 +27,7 @@ function Plant(props) {
     <mesh
       {...props}
       ref={mesh}
-      onClick={handleClick}
+      onClick={(event) => handleClick(event)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)} >
       <dodecahedronGeometry args={[0.12, 2]} />

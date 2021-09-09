@@ -79,7 +79,7 @@ class LogIn extends Component {
         const { name, email, password } = this.state
         return (
             <Wrapper>
-                <Title>Log In - test</Title>
+                <Title>Log In</Title>
 
                 <Label>Name: </Label>
                 <InputText
