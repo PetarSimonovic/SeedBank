@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { parseGarden } from '../functions'
 import api from '../api';
 
 import styled from 'styled-components';
@@ -67,7 +67,7 @@ class LogIn extends Component {
               window.alert(`Logged in`)
               const name = res.data.data.name
               const id = res.data.data._id
-              const garden = res.data.data.garden
+              const garden = parseGarden(res.data.data.garden)
               this.props.setUser(name, id, garden)
             } else {
               window.alert(`Incorrect password`)
