@@ -5,10 +5,17 @@ import * as THREE from "three";
 
 function Plant(props) {
   const x = props.x
-  console.log("Plant added")
+
+
   // This reference will give us direct access to the mesh
-  const [growth, setGrowth] = useState(0)
   const mesh = useRef()
+  const [hovered, setHover] = useState(false)
+  const [active, setActive] = useState(false)
+  const [growth, setGrowth] = useState(0)
+
+  const handleClick = () => {
+    console.log(props)
+  }
   // Set up state for the hovered and active state
   // Rotate mesh every frame, this is outside of React without overhead
   //useFrame(() => (mesh.current.rotation.y += 0.002))
@@ -17,7 +24,10 @@ function Plant(props) {
     <group>
     <mesh
       {...props}
-      ref={mesh} >
+      ref={mesh}
+      onClick={handleClick}
+      onPointerOver={(event) => setHover(true)}
+      onPointerOut={(event) => setHover(false)} >
       <dodecahedronGeometry args={[0.12, 2]} />
       <meshToonMaterial color={'#947352'} />
     </mesh>
