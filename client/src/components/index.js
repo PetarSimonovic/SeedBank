@@ -1,9 +1,8 @@
-import SeedBank from './SeedBank'
-import Garden from './Garden'
+import Grass from './Grass'
 import Plant from './Plant'
 import Camera from './Camera'
 import NavBar from './NavBar'
 
 
 
-export {Garden, Plant, Camera, SeedBank, NavBar}
+export {Grass, Plant, Camera, NavBar}

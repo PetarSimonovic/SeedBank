@@ -1,11 +1,13 @@
 import React from 'react'
+import api from '../api';
+
 import './App.css';
 
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { NavBar, SignUpButton, SeedBank } from '../components'
-import { setDate, parseGarden } from '../functions'
-import { SignUp, LogIn } from '../pages'
+import { setDate, parseGarden, saveGarden } from '../functions'
+import { SignUp, LogIn, Garden } from '../pages'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -15,12 +17,13 @@ class App extends React.Component {
       super(props)
       this.state = {
         userName: "",
-        userID: 0,
+        id: 0,
         garden: [],
         date: setDate()
       }
       this.setUser = this.setUser.bind(this)
       this.connecToServer = this.connecToServer.bind(this)
+      this.updateGarden = this.updateGarden.bind(this)
     }
 
     componentDidMount() {
@@ -43,17 +46,24 @@ class App extends React.Component {
       console.log("User is " + this.state.id + " " + this.state.userName)
     }
 
+     updateGarden(plants) {
+      console.log("Updating garden state")
+      this.setState({
+        garden: plants
+      })
+      console.log(this.state.garden)
+      saveGarden(this.state.id, this.state.garden)
+    }
+
 
     render() {
     return (
         <Router>
             <NavBar user={this.state.userName} setUser={this.setUser} />
-            <SeedBank />
+           {this.state.userName ?  <Garden updateGarden={this.updateGarden} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div> }
           </Router>
     )
   }
 }
 
 export default App
-
-//  {this.state.userName ? <Garden size={5} date={this.state.date} garden={this.state.garden} userName={this.state.userName} id={this.state.id} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div>}
