@@ -4,7 +4,7 @@ import React, { useRef, useState, useMemo, useEffect, Suspense } from "react";
 import { Canvas, useFrame, extend } from "@react-three/fiber";
 import * as THREE from "three";
 import { Grass, Plant, Camera, Plants } from '../components';
-import { setDate, parseGarden, saveGarden } from '../functions'
+import { setDate, parseGarden, saveGarden, createId } from '../functions'
 
 
 
@@ -15,8 +15,11 @@ function Garden(props) {
 
   function sowPlant( event ) {
     const position = [event.point.x, event.point.y, event.point.z]
+    const key = createId()
+    console.log("Key is")
+    console.log(key)
     setPlants( (prev) => {
-      return [<Plant key={plants.length} date={setDate()} position={position} />, ...prev]
+      return [<Plant key={key} date={setDate()} position={position} />, ...prev]
     })
     updateGarden(plants)
     }

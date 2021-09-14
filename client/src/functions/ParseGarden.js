@@ -7,7 +7,7 @@ export default function parseGarden(garden) {
     console.log()
     let parsedPlant = garden[plant]
     console.log(parsedPlant)
-    parsedGarden.push(<Plant key={parsedPlant.key} date={parsedPlant.props.date} position={parsedPlant.props.position} />)
+    parsedGarden.push(<Plant key={parsedPlant.key} date={parsedPlant.date} position={parsedPlant.position} />)
   }
   console.log(parsedGarden)
   return parsedGarden
