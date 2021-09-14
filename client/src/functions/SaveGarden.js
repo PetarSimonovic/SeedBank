@@ -16,8 +16,9 @@ export default async function saveGarden(id, plants){
 function extractPlants(plants) {
   let extractedPlants = []
   for (let plant = 0; plant < plants.length; plant ++) {
+    const key = plants[plant].key
     const parsedPlant = plants[plant].props
-    const savedPlant = {date: parsedPlant.date, position: parsedPlant.position}
+    const savedPlant = {key: key, date: parsedPlant.date, position: parsedPlant.position}
     extractedPlants.push(savedPlant)
   }
   console.log("ExtractedPlants")
