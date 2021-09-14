@@ -31,24 +31,21 @@ function Plant(props) {
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)} >
       <Base />
+      <Stem />
     </mesh>
-    <mesh
-      {...props}
-      ref={mesh} >
-      <cylinderGeometry args={[0.02, 0.02, 0.4, 7]} />
-      <meshToonMaterial color={'#499B4A'} />
-      </mesh>
     </group>
 
   )
 }
 
 function Base(props) {
+
   const mesh = useRef()
 
   return (
   <mesh
     {...props}
+    ref={mesh}
      >
     <dodecahedronGeometry args={[0.12, 2]} />
     <meshToonMaterial color={'#947352'} />
@@ -56,6 +53,20 @@ function Base(props) {
 )
 
 
+}
+
+function Stem(props) {
+  const mesh = useRef()
+
+  return (
+  <mesh
+    {...props}
+    ref={mesh}
+    >
+    <cylinderGeometry args={[0.02, 0.02, 0.4, 7]} />
+    <meshToonMaterial color={'#499B4A'} />
+    </mesh>
+  )
 }
 
 

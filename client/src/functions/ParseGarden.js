@@ -21,7 +21,7 @@ function calculateGrowth(plant, today) {
   console.log(today)
   const days = calculateDays(plant.date.stamp, today)
   console.log(`${days} days have passed`)
-  return growth
+  return days
 }
 
 
