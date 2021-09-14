@@ -14,6 +14,8 @@ export default async function saveGarden(id, plants){
 }
 
 function extractPlants(plants) {
+  console.log("Garden has")
+  console.log(plants.length)
   let extractedPlants = []
   for (let plant = 0; plant < plants.length; plant ++) {
     const key = plants[plant].key

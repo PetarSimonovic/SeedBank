@@ -16,19 +16,18 @@ function Garden(props) {
   function sowPlant( event ) {
     const position = [event.point.x, event.point.y, event.point.z]
     const key = createId()
-    console.log("Key is")
-    console.log(key)
+    const newPlant = <Plant key={key} date={setDate()} position={position} />
     setPlants( (prev) => {
-      return [<Plant key={key} date={setDate()} position={position} />, ...prev]
+      return [newPlant, ...prev]
     })
-    updateGarden(plants)
+    console.log(`New garden length: ${plants.length}`)
     }
 
-    function updateGarden(plants) {
-     console.log("Updating garden state")
-     console.log(props.id)
-     saveGarden(props.id, plants)
-   }
+    useEffect(() => {
+    // Update the document title using the browser API
+    console.log("Calling saveGarden")
+    saveGarden(props.id, plants)
+  });
 
 
   return (
