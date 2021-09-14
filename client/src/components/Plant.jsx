@@ -33,28 +33,34 @@ function Plant(props) {
       onClick={(event) => handleClick(event)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)} >
-      {buildPlant(props.growth)}
+      {buildPlant(props)}
     </mesh>
     </group>
 
   )
 }
 
-function buildPlant(growth) {
+function buildPlant(props) {
 
-  const stemLength = growth/5
+  const stemLength = props.growth/6
 
   let plant = [
     <Base />,
     <Stem stemLength={stemLength}/>,
   ]
 
-  for (let leaves = 0; leaves <= growth; leaves++) {
+  for (let leaves = 0; leaves <= props.growth; leaves++) {
     plant.push(
-    <Leaf color="#377F34" position={[0.02, 0.2 + (stemLength/2), 0.05]}/>,
-    <Leaf color="#377F34" position={[-0.02, 0.2 + (stemLength/2), -0.05]}/>
+    <Leaf color="#377F34" position={[0.02, 0.15 + (leaves/12), 0.05]}/>,
+    <Leaf color="#377F34" position={[-0.02, 0.15 + (leaves/12), -0.05]}/>,
   )
   }
+
+  if (props.growth == props.bloom) {
+  plant.push(
+    <Flower color="#832134" position={[0, 0.15 + (props.growth/8), 0]} />
+  )
+}
 
   return plant
 
@@ -99,8 +105,23 @@ function Leaf(props) {
     <mesh
       {...props}
       ref={mesh} >
-      <cylinderGeometry
-      args={[0.02, 0.08, 0.02, 6]} />
+      <cylinderGeometry args={[0.02, 0.06, 0.02, 6]} />
+      <meshToonMaterial color={props.color} />
+    </mesh>
+
+  )
+
+}
+
+function Flower(props) {
+
+  const mesh = useRef()
+
+  return (
+    <mesh
+      {...props}
+      ref={mesh} >
+      <dodecahedronGeometry args={[0.06]} />
       <meshToonMaterial color={props.color} />
     </mesh>
 
