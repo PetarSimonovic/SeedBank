@@ -1,15 +1,30 @@
 import { Plant } from '../components'
-import { setDate } from '../functions'
+import { setDate, calculateDays } from '../functions'
 
 
 export default function parseGarden(garden) {
   let parsedGarden = []
+  const today = setDate(Date()).stamp
   for (let plant = 0; plant < garden.length; plant ++ ) {
-    let parsedPlant = garden[plant]
+    const parsedPlant = garden[plant]
+    const growth = calculateGrowth(parsedPlant, today)
     parsedGarden.push(<Plant key={parsedPlant.key} growth={parsedPlant.growth} date={parsedPlant.date} position={parsedPlant.position} />)
   }
   console.log(parsedGarden)
   return parsedGarden
 }
+
+function calculateGrowth(plant, today) {
+  console.log("Plant date is")
+  console.log(plant.date.stamp)
+  console.log("Today is")
+  console.log(today)
+  const days = calculateDays(plant.date.stamp, today)
+  console.log(`${days} days have passed`)
+  return growth
+}
+
+
+
 
 //module.exports = parseGarden;
