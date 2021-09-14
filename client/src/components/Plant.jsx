@@ -5,6 +5,8 @@ import * as THREE from "three";
 
 function Plant(props) {
   const x = props.x
+  const y = props.y
+  const z = props.z
 
 
   // This reference will give us direct access to the mesh
@@ -12,6 +14,7 @@ function Plant(props) {
   const [hovered, setHover] = useState(false)
   const [active, setActive] = useState(false)
   const [growth, setGrowth] = useState(0)
+
 
   const handleClick = (event) => {
     event.stopPropagation()
@@ -30,12 +33,31 @@ function Plant(props) {
       onClick={(event) => handleClick(event)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)} >
-      <Base />
-      <Stem />
+      {buildPlant(props.growth)}
     </mesh>
     </group>
 
   )
+}
+
+function buildPlant(growth) {
+
+  const stemLength = growth/5
+
+  let plant = [
+    <Base />,
+    <Stem stemLength={stemLength}/>,
+  ]
+
+  for (let leaves = 0; leaves <= growth; leaves++) {
+    plant.push(
+    <Leaf color="#377F34" position={[0.02, 0.2 + (stemLength/2), 0.05]}/>,
+    <Leaf color="#377F34" position={[-0.02, 0.2 + (stemLength/2), -0.05]}/>
+  )
+  }
+
+  return plant
+
 }
 
 function Base(props) {
@@ -47,7 +69,7 @@ function Base(props) {
     {...props}
     ref={mesh}
      >
-    <dodecahedronGeometry args={[0.12, 2]} />
+    <dodecahedronGeometry args={[0.08, 2]} />
     <meshToonMaterial color={'#947352'} />
   </mesh>
 )
@@ -63,7 +85,7 @@ function Stem(props) {
     {...props}
     ref={mesh}
     >
-    <cylinderGeometry args={[0.02, 0.02, 0.4, 7]} />
+    <cylinderGeometry args={[0.02, 0.02, 0.4 + props.stemLength, 7]} />
     <meshToonMaterial color={'#499B4A'} />
     </mesh>
   )
@@ -74,14 +96,13 @@ function Leaf(props) {
   const mesh = useRef()
 
   return (
-    <group>
     <mesh
       {...props}
       ref={mesh} >
-      <circleGeometry args={[0.8, 7]} />
-      <meshToonMaterial color={'#358856'} />
+      <cylinderGeometry
+      args={[0.02, 0.08, 0.02, 6]} />
+      <meshToonMaterial color={props.color} />
     </mesh>
-    </group>
 
   )
 
