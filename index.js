@@ -12,31 +12,24 @@ const movieRouter = require('./routes/movie-router')
 
 
 const app = express()
-const apiPort = 3000
+const apiPort = 5000
 
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 app.use(bodyParser.json())
-app.use(express.static(path.join(__dirname, 'build')));
 
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 //Static file declaration
 
-
-
-
+app.use(express.static(path.join(__dirname, 'client/public')));
 
 
 
 app.use('/api', userRouter)
 
-if (process.env.NODE_ENV === 'development') {
-  console.log("In development")
-  app.get('*', (req, res) => {  res.sendFile(path.join(__dirname+'/client/public/index.html'));})
-}
 
 //production mode
 if (process.env.NODE_ENV === 'production') {
@@ -46,6 +39,7 @@ if (process.env.NODE_ENV === 'production') {
 })}
 
 //build mode
+app.get('*', (req, res) => {    res.sendfile(path.join(__dirname = '/client/public/index.html'))});
 
 
 

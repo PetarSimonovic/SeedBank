@@ -30,8 +30,7 @@ function Plant(props) {
       onClick={(event) => handleClick(event)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)} >
-      <dodecahedronGeometry args={[0.12, 2]} />
-      <meshToonMaterial color={'#947352'} />
+      <Base />
     </mesh>
     <mesh
       {...props}
@@ -42,6 +41,21 @@ function Plant(props) {
     </group>
 
   )
+}
+
+function Base(props) {
+  const mesh = useRef()
+
+  return (
+  <mesh
+    {...props}
+     >
+    <dodecahedronGeometry args={[0.12, 2]} />
+    <meshToonMaterial color={'#947352'} />
+  </mesh>
+)
+
+
 }
 
 

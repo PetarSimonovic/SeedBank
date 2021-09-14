@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import logo from '../seedbankProto.png';
+import logo from '../images/seedbankProto.png';
 
 const Wrapper = styled.a.attrs({
     className: 'navbar-brand',
