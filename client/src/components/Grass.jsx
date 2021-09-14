@@ -17,11 +17,11 @@ function Grass(props) {
     <mesh
       {...props}
       ref={mesh}
-      scale={active ? 1.5 : 1}
+      scale={1}
       onClick={(event) => props.sowPlant(event)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)}>
-      <cylinderGeometry args={props.args} />
+      <cylinderGeometry args={[1.5, 1.5, 0.3, 7]}  />
       <meshToonMaterial color={'#5AAB61'} />
     </mesh>
   )

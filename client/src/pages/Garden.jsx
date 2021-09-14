@@ -36,7 +36,7 @@ function Garden(props) {
       <Sun />
      //<pointLight position={[-10, -10, -10]} />
      <Suspense fallback={console.log("loading")}>
-      <Grass sowPlant={sowPlant} position={[0, 0, 0]} args={[1.5, 1.5, 0.3, 7]} />
+      <Grass sowPlant={sowPlant} position={[0, 0, 0]} />
       {plants}
       </Suspense>
     </Canvas>

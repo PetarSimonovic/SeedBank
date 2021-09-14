@@ -18,7 +18,7 @@ const Camera = () => {
           ref={controls}
           args={[camera, domElement]}
           autoRotate={true}
-          autoRotateSpeed={1.2}
+          autoRotateSpeed={1}
           enabled={false}
           />;
 };

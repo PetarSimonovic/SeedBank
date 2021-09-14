@@ -33,7 +33,7 @@ function Plant(props) {
       onClick={(event) => handleClick(event)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)} >
-      {buildPlant({growth: 2, bloom: 2, date: Object, position: [-0.4857805246115523, 0.15000000596046448, -0.83316294107687]})}
+      {buildPlant(props)}
     </mesh>
     </group>
 
@@ -99,7 +99,7 @@ function Stem(props) {
     {...props}
     ref={mesh}
     >
-    <cylinderGeometry args={[0.02, 0.02, 0.4 + props.stemLength, 7]} />
+    <cylinderGeometry args={[0.02, 0.02, 0.3 + props.stemLength, 7]} />
     <meshToonMaterial color={'#499B4A'} />
     </mesh>
   )
@@ -113,7 +113,7 @@ function Leaf(props) {
     <mesh
       {...props}
       ref={mesh} >
-      <cylinderGeometry args={[0.02, 0.06, 0.02, 6]} />
+      <cylinderGeometry args={[0.02, 0.05, 0.02, 6]} />
       <meshToonMaterial color={props.color} />
     </mesh>
 
