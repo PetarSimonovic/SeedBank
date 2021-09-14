@@ -4,9 +4,9 @@ import * as THREE from "three";
 
 
 function Plant(props) {
-  const x = props.x
-  const y = props.y
-  const z = props.z
+  console.log("Plant props")
+  console.log(props)
+  const {x, y, z} = props
 
 
   // This reference will give us direct access to the mesh
@@ -33,7 +33,7 @@ function Plant(props) {
       onClick={(event) => handleClick(event)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)} >
-      {buildPlant(props)}
+      {buildPlant({growth: 2, bloom: 2, date: Object, position: [-0.4857805246115523, 0.15000000596046448, -0.83316294107687]})}
     </mesh>
     </group>
 
@@ -42,23 +42,31 @@ function Plant(props) {
 
 function buildPlant(props) {
 
-  const stemLength = props.growth/6
+  let {growth, bloom} = props
+  let flower = false
+  if (growth >= bloom) {
+    flower = true
+    growth = bloom
+  }
+
+
+  const stemLength = growth/6
 
   let plant = [
     <Base />,
     <Stem stemLength={stemLength}/>,
   ]
 
-  for (let leaves = 0; leaves <= props.growth; leaves++) {
+  for (let leaves = 0; leaves <= growth; leaves++) {
     plant.push(
     <Leaf color="#377F34" position={[0.02, 0.15 + (leaves/12), 0.05]}/>,
     <Leaf color="#377F34" position={[-0.02, 0.15 + (leaves/12), -0.05]}/>,
   )
   }
 
-  if (props.growth == props.bloom) {
+  if (growth >= bloom) {
   plant.push(
-    <Flower color="#832134" position={[0, 0.15 + (props.growth/8), 0]} />
+    <Flower color="#832134" position={[0, 0.15 + (growth/8), 0]} />
   )
 }
 
@@ -128,5 +136,7 @@ function Flower(props) {
   )
 
 }
+
+
 
 export default Plant
