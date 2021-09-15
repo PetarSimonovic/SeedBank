@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // Generates a panel that contains buttons of available Seeds
 // PROTOTYPE ONLY: need to design an interface that coould contain an indefinite number of seeds or objects
 
-const Button = styled.button`
+const SeedButton = styled.button`
 color: palevioletred;
 font-size: 1em;
 margin: 1em;
@@ -19,9 +19,11 @@ const Panel = styled.div`
 
 
 function Seeds(props) {
+
+
   return (
     <Panel>
-    <Button onClick={props.selectSeed}> tulip </Button>
+    <SeedButton onClick={props.selectSeed}> tulip </SeedButton>
     </Panel>
   )
 }
