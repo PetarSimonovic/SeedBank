@@ -20,7 +20,7 @@ function extractPlants(plants) {
   for (let plant = 0; plant < plants.length; plant ++) {
     const key = plants[plant].key
     const parsedPlant = plants[plant].props
-    const savedPlant = {key: key, type: parsedPlant.type, date: parsedPlant.date, position: parsedPlant.position, plantData: parsedPlant.plantData}
+    const savedPlant = {key: key, type: parsedPlant.type, position: parsedPlant.position, plantData: parsedPlant.plantData}
     extractedPlants.push(savedPlant)
   }
   return extractedPlants

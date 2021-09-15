@@ -12,7 +12,7 @@ export default function createPlant(event, seed) {
   const plantData = new GenericPlant(key, date, position)
   console.log("plantData is:")
   console.log(plantData)
-  const newPlant = <Plant key={key} type={seed} date={setDate()} position={position} plantData={plantData} />
+  const newPlant = <Plant key={key} type={seed} position={position} plantData={plantData} />
   console.log("New Plant")
   console.log(newPlant)
 

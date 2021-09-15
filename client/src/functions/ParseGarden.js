@@ -8,19 +8,19 @@ export default function parseGarden(garden) {
   const today = setDate(Date()).stamp
   for (let plant = 0; plant < garden.length; plant ++ ) {
     const parsedPlant = garden[plant]
-    const growth = calculateGrowth(parsedPlant, today)
+    const growth = calculateGrowth(parsedPlant.plantData.date, today)
     parsedGarden.push(<Plant key={parsedPlant.key} type={parsedPlant.type} date={parsedPlant.date} position={parsedPlant.position} plantData={parsedPlant.plantData}/>)
   }
   console.log(parsedGarden)
   return parsedGarden
 }
 
-function calculateGrowth(plant, today) {
+function calculateGrowth(plantDate, today) {
   console.log("Plant date is")
-  console.log(plant.date.stamp)
+  console.log(plantDate.stamp)
   console.log("Today is")
   console.log(today)
-  const days = calculateDays(plant.date.stamp, today)
+  const days = calculateDays(plantDate.stamp, today)
   console.log(`${days} days have passed`)
   return days
 }
