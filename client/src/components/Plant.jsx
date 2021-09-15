@@ -1,6 +1,6 @@
 import React, { useRef, useState, useMemo } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
-import * as THREE from "three";
+import { createId } from '../functions'
 
 
 function Plant(props) {
@@ -11,9 +11,8 @@ function Plant(props) {
 
   // This reference will give us direct access to the mesh
   const mesh = useRef()
-  const [hovered, setHover] = useState(false)
-  const [active, setActive] = useState(false)
-  const [growth, setGrowth] = useState(0)
+//  const [hovered, setHover] = useState(false)
+//  const [active, setActive] = useState(false)
 
 
   const handleClick = (event) => {
@@ -31,8 +30,9 @@ function Plant(props) {
       {...props}
       ref={mesh}
       onClick={(event) => handleClick(event)}
-      onPointerOver={(event) => setHover(true)}
-      onPointerOut={(event) => setHover(false)} >
+    //  onPointerOver={(event) => setHover(true)}
+    //  onPointerOut={(event) => setHover(false)}
+    >
       {buildPlant(props)}
     </mesh>
     </group>
@@ -53,20 +53,20 @@ function buildPlant(props) {
   const stemLength = growth/6
 
   let plant = [
-    <Base />,
-    <Stem stemLength={stemLength}/>,
+    <Base key={createId()} />,
+    <Stem key={createId()} stemLength={stemLength}/>,
   ]
 
   for (let leaves = 0; leaves <= growth; leaves++) {
     plant.push(
-    <Leaf color="#377F34" position={[0.02, 0.15 + (leaves/12), 0.05]}/>,
-    <Leaf color="#377F34" position={[-0.02, 0.15 + (leaves/12), -0.05]}/>,
+    <Leaf key={createId()} color="#377F34" position={[0.02, 0.15 + (leaves/12), 0.05]}/>,
+    <Leaf key={createId()} color="#377F34" position={[-0.02, 0.15 + (leaves/12), -0.05]}/>,
   )
   }
 
   if (growth >= bloom) {
   plant.push(
-    <Flower color="#832134" position={[0, 0.15 + (growth/8), 0]} />
+    <Flower key={createId()} color="#832134" position={[0, 0.15 + (growth/8), 0]} />
   )
 }
 

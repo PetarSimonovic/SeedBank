@@ -17,6 +17,8 @@ function Garden(props) {
     const position = [event.point.x, event.point.y, event.point.z]
     const key = createId()
     const newPlant = <Plant key={key} growth={0} bloom={2} date={setDate()} position={position} />
+    console.log("New Plant")
+    console.log(newPlant)
     setPlants( (prev) => {
       return [newPlant, ...prev]
     })
