@@ -1,6 +1,7 @@
 import React, { useRef, useState, useMemo } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { createId } from '../functions'
+import { getSeed } from '../gameObjects'
 
 
 // Creates a Plant based on the props that it receives
@@ -46,7 +47,7 @@ function buildPlant(props) {
 
 
 
-  const {bloom, leafColour, stemColour, flowerColour} = props.plantData
+  const {bloom, leafColour, stemColour, flowerColour} = getSeed("generic_plant")
   const growth = props.growth
 
   // Stop plant from growing any further if it's in bloom
