@@ -17,12 +17,10 @@ const Nav = styled.nav.attrs({
 class NavBar extends Component {
     render() {
         return (
-            <Container>
                 <Nav>
                     <Logo />
                     <Links user={this.props.user} setUser={this.props.setUser} />
                 </Nav>
-            </Container>
         )
     }
 }

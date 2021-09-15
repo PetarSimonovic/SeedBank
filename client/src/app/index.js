@@ -46,10 +46,12 @@ class App extends React.Component {
 
     render() {
     return (
+    <div style={{ position: "relative", width: "100%", height: "100%" }}>
         <Router>
             <NavBar user={this.state.userName} setUser={this.setUser} />
-           {this.state.userName ?  <Garden id={this.state.id} garden={this.state.garden} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div> }
           </Router>
+          {this.state.userName ?  <Garden id={this.state.id} garden={this.state.garden} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div> }
+    </div>
     )
   }
 }

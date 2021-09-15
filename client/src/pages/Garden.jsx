@@ -33,7 +33,7 @@ function Garden(props) {
 
 
   return (
-    <Canvas id="canvas" className="App" camera={{ position: [0, 1.5, 2], lookat: [0, 0, 0] }}>
+    <Canvas id="canvas" className="App" camera={{ position: [0, 1, 2], lookat: [0, 0, 0] }}>
       <Camera />
       <Sun />
      //<pointLight position={[-10, -10, -10]} />
