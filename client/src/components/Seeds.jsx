@@ -21,7 +21,7 @@ const Panel = styled.div`
 function Seeds(props) {
   return (
     <Panel>
-    <Button> tulip </Button>
+    <Button onClick={props.selectSeed}> tulip </Button>
     </Panel>
   )
 }

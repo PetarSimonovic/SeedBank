@@ -19,10 +19,15 @@ function SeedBank(props) {
 
   const sowPlant = ( event ) => {
     if (seed) {
+      setSeed(false)
       setPlants( (prev) => {
         return [createPlant( event ), ...prev]
       })
     }
+  }
+
+  const selectSeed = () => {
+    setSeed (true)
   }
 
 
@@ -35,8 +40,8 @@ function SeedBank(props) {
 
   return (
     <div>
-    <Garden seed={seed} plants={plants} testProp="testProp" sowPlant={sowPlant} />
-    <Seeds />
+    <Garden plants={plants} testProp="testProp" sowPlant={sowPlant} />
+    <Seeds selectSeed={selectSeed} />
     </div>
   );
 }
