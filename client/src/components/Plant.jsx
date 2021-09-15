@@ -46,11 +46,7 @@ function buildPlant(props) {
 
 
 
-  let {growth, bloom} = props.plantData
-  console.log("Growth and Bloom")
-  console.log(growth)
-  console.log(bloom)
-  let flower = false
+  const {growth, bloom, leafColour, stemColour, flowerColour} = props.plantData
 
   // Stop plant from growing any further if it's in bloom
 
@@ -66,15 +62,15 @@ function buildPlant(props) {
 
   let plant = [
     <Base key={createId()} />,
-    <Stem key={createId()} stemLength={stemLength}/>,
+    <Stem key={createId()} stemColour={stemColour} stemLength={stemLength}/>,
   ]
 
   // Add leaves relative to the plant's growth level
 
   for (let leaves = 0; leaves <= growth; leaves++) {
     plant.push(
-    <Leaf key={createId()} color="#377F34" position={[0.02, 0.15 + (leaves/12), 0.05]}/>,
-    <Leaf key={createId()} color="#377F34" position={[-0.02, 0.15 + (leaves/12), -0.05]}/>,
+    <Leaf key={createId()} color={leafColour} position={[0.02, 0.15 + (leaves/12), 0.05]}/>,
+    <Leaf key={createId()} color={leafColour} position={[-0.02, 0.15 + (leaves/12), -0.05]}/>,
   )
   }
 
@@ -82,7 +78,7 @@ function buildPlant(props) {
 
   if (growth >= bloom) {
   plant.push(
-    <Flower key={createId()} color="#832134" position={[0, 0.15 + (growth/8), 0]} />
+    <Flower key={createId()} color={flowerColour} position={[0, 0.15 + (growth/8), 0]} />
   )
 }
 
@@ -116,7 +112,7 @@ function Stem(props) {
     ref={mesh}
     >
     <cylinderGeometry args={[0.02, 0.02, 0.3 + props.stemLength, 7]} />
-    <meshToonMaterial color={'#499B4A'} />
+    <meshToonMaterial color={props.stemColour} />
     </mesh>
   )
 }
