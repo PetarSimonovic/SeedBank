@@ -11,6 +11,8 @@ export default async function saveGarden(id, plants){
   await api.updateGarden(id, garden).then(res => {
         console.log('Garden updated successfully')
     })
+  console.log("SAVED GARDEN")
+  console.log(savedGarden)
 }
 
 function extractPlants(plants) {
@@ -18,7 +20,7 @@ function extractPlants(plants) {
   for (let plant = 0; plant < plants.length; plant ++) {
     const key = plants[plant].key
     const parsedPlant = plants[plant].props
-    const savedPlant = {key: key, growth: parsedPlant.growth, bloom: parsedPlant.bloom, date: parsedPlant.date, position: parsedPlant.position}
+    const savedPlant = {key: key, type: parsedPlant.type, growth: parsedPlant.growth, bloom: parsedPlant.bloom, date: parsedPlant.date, position: parsedPlant.position}
     extractedPlants.push(savedPlant)
   }
   return extractedPlants

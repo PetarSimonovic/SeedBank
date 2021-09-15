@@ -15,20 +15,21 @@ function SeedBank(props) {
 
 
   const [plants, setPlants] = useState(props.garden)
-  const [seed, setSeed] = useState(false)
+  const [seed, setSeed] = useState(null)
 
   const sowPlant = ( event ) => {
     if (seed) {
-      setSeed(false)
+      const newPlant = createPlant(event, seed)
+      setSeed(null)
       setPlants( (prev) => {
-        return [createPlant( event ), ...prev]
+        return [newPlant, ...prev]
       })
     }
   }
 
   const selectSeed = (selectedSeed) => {
     console.log(selectedSeed)
-    setSeed(true)
+    setSeed(selectedSeed)
     console.log(seed)
   }
 
