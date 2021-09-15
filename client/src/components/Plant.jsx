@@ -46,7 +46,8 @@ function buildPlant(props) {
 
 
 
-  const {growth, bloom, leafColour, stemColour, flowerColour} = props.plantData
+  const {bloom, leafColour, stemColour, flowerColour} = props.plantData
+  const growth = props.growth
 
   // Stop plant from growing any further if it's in bloom
 

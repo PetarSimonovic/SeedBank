@@ -9,10 +9,10 @@ export default function createPlant(event, seed) {
   const position = [event.point.x, event.point.y, event.point.z]
   const key = createId()
   const date = setDate()
-  const plantData = new GenericPlant(key, date, position)
+  const plantData = new GenericPlant()
   console.log("plantData is:")
   console.log(plantData)
-  const newPlant = <Plant key={key} position={position} plantData={plantData} />
+  const newPlant = <Plant key={key} growth={0} date={date} position={position} plantData={plantData} />
   console.log("New Plant")
   console.log(newPlant)
 
