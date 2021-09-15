@@ -3,14 +3,14 @@ import api from '../api';
 import React, { useRef, useState, useMemo, useEffect, Suspense } from "react";
 import { Canvas, useFrame, extend } from "@react-three/fiber";
 import * as THREE from "three";
-import { Grass, Plant, Camera, Sun, SkyBox, Seeds } from '../components';
+import { Grass, Plant, Camera, Sun, SkyBox, Seeds, Garden } from '../components';
 import { setDate, parseGarden, saveGarden, createId } from '../functions'
 import styled from 'styled-components';
 
 
 
 
-function Garden(props) {
+function SeedBank(props) {
 
 
   const [plants, setPlants] = useState(props.garden)
@@ -36,20 +36,10 @@ function Garden(props) {
 
   return (
     <div>
-    <Canvas id="canvas" className="App" background="blue" camera={{ position: [0, 1, 2], lookat: [0, 0, 0] }}>
-      <Camera />
-      <Sun />
-//      <SkyBox position={[0, 0, 0]}/>
-     //<pointLight position={[-10, -10, -10]} />
-     //<Suspense fallback={console.log("loading")}>
-      <Grass sowPlant={sowPlant} position={[0, 0, 0]} />
-      {plants}
-    //  </Suspense>
-    </Canvas>
-      <Seeds>
-      </Seeds>
+    <Garden plants={plants} testProp="testProp" sowPlant={sowPlant} />
+    <Seeds />
     </div>
   );
 }
 
-export default Garden;
+export default SeedBank;

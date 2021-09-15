@@ -5,8 +5,8 @@ import './App.css';
 
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { NavBar, SignUpButton, SeedBank } from '../components'
-import { SignUp, LogIn, Garden } from '../pages'
+import { NavBar, SignUpButton } from '../components'
+import { SignUp, LogIn, SeedBank } from '../pages'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -50,7 +50,7 @@ class App extends React.Component {
         <Router>
             <NavBar user={this.state.userName} setUser={this.setUser} />
           </Router>
-          {this.state.userName ?  <Garden id={this.state.id} garden={this.state.garden} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div> }
+          {this.state.userName ?  <SeedBank id={this.state.id} garden={this.state.garden} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div> }
     </div>
     )
   }

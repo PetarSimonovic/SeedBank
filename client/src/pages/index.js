@@ -1,6 +1,6 @@
 import SignUp from './SignUp'
 import LogIn from './LogIn'
-import Garden from './Garden'
+import SeedBank from './SeedBank'
 
 
-export { SignUp, LogIn, Garden }
+export { SignUp, LogIn, SeedBank }
