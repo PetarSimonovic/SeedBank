@@ -97,7 +97,7 @@ function Base(props) {
     {...props}
     ref={mesh}
      >
-    <dodecahedronGeometry args={[0.08, 2]} />
+    <dodecahedronGeometry args={[0.05, 2]} />
     <meshToonMaterial color={'#947352'} />
   </mesh>
 )
