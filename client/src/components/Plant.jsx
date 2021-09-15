@@ -39,11 +39,12 @@ function Plant(props) {
 }
 
 // buildPlant constructs an array of plant components that can be rendered
-// Order that components are added may affect rendering order/layering - check?
 // Refactoring: remove magic numbers
 // Extra features: randomise size and position of components (eg leaves)
 
 function buildPlant(props) {
+
+
 
   let {growth, bloom} = props
   let flower = false

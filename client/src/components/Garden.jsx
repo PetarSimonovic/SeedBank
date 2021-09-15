@@ -13,9 +13,6 @@ import styled from 'styled-components';
 
 function Garden(props) {
 
-  console.log("GARDEN PROPS in GARDEN")
-  console.log(props)
-
   return (
     <Canvas id="canvas" className="App" background="blue" camera={{ position: [0, 1, 2], lookat: [0, 0, 0] }}>
       <Camera />
