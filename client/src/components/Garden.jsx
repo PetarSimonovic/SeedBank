@@ -7,6 +7,10 @@ import { Grass, Plant, Camera, Sun, SkyBox, Seeds } from '../components';
 import { setDate, parseGarden, saveGarden, createId } from '../functions'
 import styled from 'styled-components';
 
+
+// Garden displays "the world", rendering the sun, the sky, the grass and plants
+// Receives instructions/props from the SeedBank page
+
 function Garden(props) {
 
   console.log("GARDEN PROPS in GARDEN")

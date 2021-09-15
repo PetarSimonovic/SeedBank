@@ -3,26 +3,24 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { createId } from '../functions'
 
 
+// Creates a Plant based on the props that it receives
+
 function Plant(props) {
-  console.log("Plant props")
-  console.log(props)
+  // Retrieve the x, y and z position of the plant
+
   const {x, y, z} = props
 
-
-  // This reference will give us direct access to the mesh
   const mesh = useRef()
-//  const [hovered, setHover] = useState(false)
-//  const [active, setActive] = useState(false)
 
+  // Clicking on a plant should bring up its info
+  // stopPropogation tells Three.js to only return info about the first mesh clicked
 
   const handleClick = (event) => {
     event.stopPropagation()
     console.log("This plant is:")
     console.log(props)
   }
-  // Set up state for the hovered and active state
-  // Rotate mesh every frame, this is outside of React without overhead
-  //useFrame(() => (mesh.current.rotation.y += 0.002))
+
 
   return (
     <group>
@@ -40,22 +38,34 @@ function Plant(props) {
   )
 }
 
+// buildPlant constructs an array of plant components that can be rendered
+// Order that components are added may affect rendering order/layering - check?
+// Refactoring: remove magic numbers
+// Extra features: randomise size and position of components (eg leaves)
+
 function buildPlant(props) {
 
   let {growth, bloom} = props
   let flower = false
+
+  // Stop plant from growing any further if it's in bloom
+
   if (growth >= bloom) {
-    flower = true
     growth = bloom
   }
 
+  // the length of the stem is based on the plant's growth
 
   const stemLength = growth/6
+
+  // push the Base and Stem into the plant array
 
   let plant = [
     <Base key={createId()} />,
     <Stem key={createId()} stemLength={stemLength}/>,
   ]
+
+  // Add leaves relative to the plant's growth level
 
   for (let leaves = 0; leaves <= growth; leaves++) {
     plant.push(
@@ -63,6 +73,8 @@ function buildPlant(props) {
     <Leaf key={createId()} color="#377F34" position={[-0.02, 0.15 + (leaves/12), -0.05]}/>,
   )
   }
+
+  // Add a flower to the array if it's in bloom
 
   if (growth >= bloom) {
   plant.push(

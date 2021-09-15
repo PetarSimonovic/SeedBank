@@ -1,6 +1,7 @@
 import { setDate, createId } from './'
 import { Plant } from '../components'
 
+// Creates a new Plant, with a uniqueID, growth initialised at 0 and a new date 
 
 export default function createPlant(event) {
 

@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import { OrbitControls } from 'three-stdlib';
 extend({ OrbitControls });
 
+
 const Camera = () => {
   // Get a reference to the Three.js Camera, and the canvas html element.
   // We need these to setup the OrbitControls component.

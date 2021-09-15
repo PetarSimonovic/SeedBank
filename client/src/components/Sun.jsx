@@ -1,4 +1,7 @@
 
+// directionaLight is Three.js's daylight equivalent
+// values are arbitraty for now
+
 function Sun(props) {
 
   return (

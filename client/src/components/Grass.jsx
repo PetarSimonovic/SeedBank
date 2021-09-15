@@ -3,6 +3,8 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 
+// The plane on which plants grow
+
 function Grass(props) {
   // This reference will give us direct access to the mesh
   const mesh = useRef()

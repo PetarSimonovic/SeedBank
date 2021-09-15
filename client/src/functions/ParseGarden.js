@@ -1,6 +1,7 @@
 import { Plant } from '../components'
 import { setDate, calculateDays } from '../functions'
 
+// Reads a saved Garden and creates an array of plants ready to render
 
 export default function parseGarden(garden) {
   let parsedGarden = []

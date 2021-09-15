@@ -8,7 +8,8 @@ import { setDate, parseGarden, saveGarden, createId, createPlant } from '../func
 import styled from 'styled-components';
 
 
-
+// Main page.
+// Displays the Garden and the Seed panel, handles interactions between them and updates the user's garden/seedbank
 
 function SeedBank(props) {
 
@@ -23,7 +24,7 @@ function SeedBank(props) {
     }
 
     useEffect(() => {
-    // Update the document title using the browser API
+    //
     console.log("Calling saveGarden")
     saveGarden(props.id, plants)
   });

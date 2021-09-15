@@ -1,3 +1,6 @@
+
+// calculates the difference in days between two dates using ISO strings for start and end
+
 export default function calculateDays(start, end) {
     const date1 = new Date(start);
     const date2 = new Date(end);

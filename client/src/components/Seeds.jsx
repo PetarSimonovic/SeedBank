@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import React, { Component } from 'react';
 
+// Generates a panel that contains buttons of available Seeds
+// PROTOTYPE ONLY: need to design an interface that coould contain an indefinite number of seeds or objects
+
 const Button = styled.button`
 color: palevioletred;
 font-size: 1em;

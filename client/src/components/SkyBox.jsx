@@ -2,6 +2,10 @@ import React, { useRef, useState, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
+// Not yet in use
+// In theory, this will be a cube/sphere that surrounds the garden
+// Sky images or shifting gradients can be projected on the cube
+
 function SkyBox(props) {
   // This reference will give us direct access to the mesh
   const mesh = useRef()

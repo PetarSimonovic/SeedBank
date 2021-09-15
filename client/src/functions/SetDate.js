@@ -1,5 +1,7 @@
 
 
+// creates a date object that contains day, month, year and stamp in an ISO format
+
 export default function setDate() {
   const date = new Date()
   const day = date.getDate()
