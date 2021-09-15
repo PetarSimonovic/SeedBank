@@ -15,15 +15,18 @@ function SeedBank(props) {
 
 
   const [plants, setPlants] = useState(props.garden)
+  const [seed, setSeed] = useState(false)
 
-  function sowPlant( event ) {
-
-    setPlants( (prev) => {
-      return [createPlant( event ), ...prev]
-    })
+  const sowPlant = ( event ) => {
+    if (seed) {
+      setPlants( (prev) => {
+        return [createPlant( event ), ...prev]
+      })
     }
+  }
 
-    useEffect(() => {
+
+  useEffect(() => {
     //
     console.log("Calling saveGarden")
     saveGarden(props.id, plants)
@@ -32,7 +35,7 @@ function SeedBank(props) {
 
   return (
     <div>
-    <Garden plants={plants} testProp="testProp" sowPlant={sowPlant} />
+    <Garden seed={seed} plants={plants} testProp="testProp" sowPlant={sowPlant} />
     <Seeds />
     </div>
   );
