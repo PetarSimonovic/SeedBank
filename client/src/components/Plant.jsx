@@ -47,7 +47,7 @@ function buildPlant(props) {
 
 
 
-  const {bloom, leafColour, stemColour, flowerColour} = getSeed("generic_plant")
+  const {bloom, leafColour, stemColour, flowerColour} = getSeed(props.type)
   const growth = props.growth
 
   // Stop plant from growing any further if it's in bloom

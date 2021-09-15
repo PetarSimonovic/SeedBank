@@ -23,6 +23,8 @@ function Seeds(props) {
   return (
     <Panel>
     <SeedButton onClick={(event) => props.selectSeed("generic_plant")}> Generic Plant </SeedButton>
+    <SeedButton onClick={(event) => props.selectSeed("tulip")}> Tulip </SeedButton>
+
     </Panel>
   )
 }
