@@ -21,12 +21,10 @@ class Links extends Component {
                 <Link to="/" className="navbar-brand">
                     SeedBank
                 </Link>
-                <Collapse>
-                    <List>
-                         <Item> <p> {this.props.user}</p> </Item>> }
-                    </List>
-                </Collapse>
-            </React.Fragment>
+                    <Link to="/" className="navbar-brand">
+                     { this.props.user }
+                    </Link>
+              </React.Fragment>
         )
     }
 }

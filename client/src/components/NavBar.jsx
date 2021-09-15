@@ -17,7 +17,7 @@ const Nav = styled.nav.attrs({
 class NavBar extends Component {
     render() {
         return (
-                <Nav>
+                <Nav height="50%">
                     <Logo />
                     <Links user={this.props.user} setUser={this.props.setUser} />
                 </Nav>
