@@ -26,9 +26,10 @@ function SeedBank(props) {
     }
   }
 
-  const selectSeed = () => {
-    console.log(seed)
+  const selectSeed = (selectedSeed) => {
+    console.log(selectedSeed)
     setSeed(true)
+    console.log(seed)
   }
 
 

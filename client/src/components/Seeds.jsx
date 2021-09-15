@@ -20,10 +20,9 @@ const Panel = styled.div`
 
 function Seeds(props) {
 
-
   return (
     <Panel>
-    <SeedButton onClick={props.selectSeed}> tulip </SeedButton>
+    <SeedButton onClick={(event) => props.selectSeed("tulip")}> tulip </SeedButton>
     </Panel>
   )
 }
