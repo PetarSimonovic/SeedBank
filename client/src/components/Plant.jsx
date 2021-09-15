@@ -46,7 +46,10 @@ function buildPlant(props) {
 
 
 
-  let {growth, bloom} = props
+  let {growth, bloom} = props.plantData
+  console.log("Growth and Bloom")
+  console.log(growth)
+  console.log(bloom)
   let flower = false
 
   // Stop plant from growing any further if it's in bloom
