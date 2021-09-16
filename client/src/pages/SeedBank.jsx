@@ -6,6 +6,8 @@ import * as THREE from "three";
 import { Grass, Plant, Camera, Sun, SkyBox, Seeds, Garden } from '../components';
 import { setDate, parseGarden, saveGarden, createId, createPlant } from '../functions'
 import styled from 'styled-components';
+import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from 'react-postprocessing'
+
 
 
 // Main page.
@@ -42,9 +44,9 @@ function SeedBank(props) {
 
 
   return (
-  <div>
+  <div className="App">
     <Garden plants={plants} testProp="testProp" sowPlant={sowPlant} />
-    <Seeds selectSeed={selectSeed} />
+    <Seeds className="App-header" selectSeed={selectSeed} />
   </div>
   );
 }
