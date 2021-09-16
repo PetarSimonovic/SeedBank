@@ -10,7 +10,7 @@ export default function parseGarden(garden) {
   for (let plant = 0; plant < garden.length; plant ++ ) {
     const parsedPlant = garden[plant]
     const growth = calculateGrowth(parsedPlant.date, today)
-    parsedGarden.push(<Plant key={parsedPlant.key} growth={parsedPlant.growth} date={parsedPlant.date} position={parsedPlant.position} type={parsedPlant.type}/>)
+    parsedGarden.push(<Plant key={parsedPlant.key} growth={growth} date={parsedPlant.date} position={parsedPlant.position} type={parsedPlant.type}/>)
   }
   console.log(parsedGarden)
   return parsedGarden
