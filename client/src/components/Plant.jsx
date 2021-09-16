@@ -29,7 +29,7 @@ function Plant(props) {
       {...props}
       ref={mesh}
       onClick={(event) => handleClick(event)}
-      scale={0.6}
+      scale={0.5}
     //  onPointerOver={(event) => setHover(true)}
     //  onPointerOut={(event) => setHover(false)}
     >
@@ -98,7 +98,7 @@ function Base(props) {
     {...props}
     ref={mesh}
      >
-    <dodecahedronGeometry args={[0.05, 2]} />
+    <dodecahedronGeometry args={[0.035, 2]} />
     <meshToonMaterial color={'#947352'} />
   </mesh>
 )
@@ -114,7 +114,7 @@ function Stem(props) {
     {...props}
     ref={mesh}
     >
-    <cylinderGeometry args={[0.02, 0.02, 0.3 + props.stemLength, 7]} />
+    <cylinderGeometry args={[0.01, 0.03, 0.3 + props.stemLength, 12]} />
     <meshToonMaterial color={props.stemColour} />
     </mesh>
   )

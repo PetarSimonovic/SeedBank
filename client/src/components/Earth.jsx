@@ -37,13 +37,13 @@ function createStalactites() {
   return [
     <Stalactite args={[1.6, 0.8, 1, 8]} position={[0.1, -0.28, 0, ]} colour={'#6c757d'}/>,
     <Stalactite args={[1.3, 0.5, 1, 7]} position={[-0.1, -0.5, 0.1]} colour={'#495057'} />,
-    <Stalactite args={[1.4, 0.55, 1, 4]} position={[-0, -0.7, 0.2]} colour={'#a5978b'} />,
-    <Stalactite args={[0.8, 0.3, 2, 8]} position={[0, -0.9, -0.2]} colour={'#8a817c'} />,
-    <Stalactite args={[0.3, 0.01, 3, 8]} position={[0, -1.9, -0.7]} colour={'#ced4da'} />,
-    <Stalactite args={[0.4, 0.01, 2, 12]} position={[0, -0.9, 1.0]} colour={'#ced4da'} />,
-    <Stalactite args={[0.8, 0.2, 1, 8]} position={[-0, -1.3, .40]} colour={'#5e503f'} />,
-    <Stalactite args={[0.5, 0.3, 1, 5]} position={[-0, -1.9, 0.30]} colour={'#c4bbaf'}/>,
-    <Stalactite args={[0.4, 0.01, 1, 12]} position={[0, -2.3, 0]} colour={'#ced4da'} />,
+    <Stalactite args={[1.4, 0.55, 1, 4]} position={[-0, -0.7, 0.2]} colour={'#706677'} />,
+    <Stalactite args={[0.8, 0.3, 2, 8]} position={[0, -0.9, -0.2]} colour={'#a6b3c7'} />,
+    <Stalactite args={[0.4, 0.01, 2, 4]} position={[0, -1.9, -0.5]} colour={'#ced4da'} />,
+    <Stalactite args={[0.4, 0.03, 2, 12]} position={[0, -0.9, 1.0]} colour={'#c3baba'} />,
+    <Stalactite args={[0.8, 0.2, 1, 8]} position={[-0, -1.3, .40]} colour={'#adb5bd'} />,
+    <Stalactite args={[0.6, 0.1, 1, 9]} position={[-0, -1.9, 0.30]} colour={'#c4bbaf'}/>,
+    <Stalactite args={[0.4, 0.01, 3, 8]} position={[0, -2.3, 0]} colour={'#ced4da'} />,
 
 
 
