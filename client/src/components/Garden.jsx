@@ -7,7 +7,7 @@ import { Grass, Plant, Camera, Sun, SkyBox, Seeds, Earth, Firmament } from '../c
 import { Sky } from '@react-three/drei';
 import { setDate, parseGarden, saveGarden, createId } from '../functions'
 import styled from 'styled-components';
-import { EffectComposer, Bloom, GodRays, Pixelation } from '@react-three/postprocessing'
+import { EffectComposer, BrightnessContrast, Bloom, GodRays, Pixelation } from '@react-three/postprocessing'
 import { BlurPass, BlendFunction, Resizer, KernelSize } from 'postprocessing'
 
 
@@ -26,7 +26,11 @@ function Garden(props) {
      </Suspense>
      <Sun />
      <Firmament />
-
+     <EffectComposer >
+     <BrightnessContrast brightness={0} // brightness. min: -1, max: 1
+    contrast={0} // contrast: min -1, max: 1
+    />
+     </ EffectComposer>
     </Canvas>
   )
 

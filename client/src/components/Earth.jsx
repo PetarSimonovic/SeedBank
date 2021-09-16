@@ -25,8 +25,8 @@ function Earth(props) {
       scale={1}
       onClick={(event) => handleClick(event)}
       >
-      <cylinderGeometry args={[1.65, 1, 0.5, 10]}  />
-      <meshToonMaterial color={'#947352'} />
+      <cylinderGeometry args={[1.65, 1, 0.68, 9]}  />
+      <meshToonMaterial color={'#8a817c'} />
       {createStalactites()}
     </mesh>
     </>
