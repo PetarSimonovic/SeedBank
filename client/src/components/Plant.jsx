@@ -29,6 +29,7 @@ function Plant(props) {
       {...props}
       ref={mesh}
       onClick={(event) => handleClick(event)}
+      scale={0.6}
     //  onPointerOver={(event) => setHover(true)}
     //  onPointerOut={(event) => setHover(false)}
     >
@@ -58,7 +59,7 @@ function buildPlant(props) {
 
   // the length of the stem is based on the plant's growth
 
-  const stemLength = growth/6
+  const stemLength = growth/12
 
   // push the Base and Stem into the plant array
 
@@ -71,8 +72,8 @@ function buildPlant(props) {
 
   for (let leaves = 0; leaves <= growth; leaves++) {
     plant.push(
-    <Leaf key={createId()} color={leafColour} position={[0.02, 0.15 + (leaves/12), 0.05]}/>,
-    <Leaf key={createId()} color={leafColour} position={[-0.02, 0.15 + (leaves/12), -0.05]}/>,
+    <Leaf key={createId()} color={leafColour} position={[0.02, 0.1 + (leaves/18), 0.05]}/>,
+    <Leaf key={createId()} color={leafColour} position={[-0.02, 0.1 + (leaves/18), -0.05]}/>,
   )
   }
 
@@ -80,7 +81,7 @@ function buildPlant(props) {
 
   if (growth >= bloom) {
   plant.push(
-    <Flower key={createId()} color={flowerColour} position={[0, 0.15 + (growth/8), 0]} />
+    <Flower key={createId()} color={flowerColour} position={[0, 0.1 + (growth/8), 0]} />
   )
 }
 
