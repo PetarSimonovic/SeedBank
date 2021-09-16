@@ -4,7 +4,7 @@ export default function Firmament(props) {
   return (
     <Sky
       turbidity={5}
-      distance={600} // Camera distance (default=450000)
+      distance={45000} // Camera distance (default=450000)
       sunPosition={[900000, 40000, 0]} // Sun position normal (defaults to inclination and azimuth if not set)
       inclination={0.3} // Sun elevation angle from 0 to 1 (default=0)
       elevation={1}

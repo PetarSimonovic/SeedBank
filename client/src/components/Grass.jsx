@@ -23,7 +23,7 @@ function Grass(props) {
       onClick={(event) => props.sowPlant(event)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)}>
-      <cylinderGeometry args={[1.5, 1.5, 0.3, 25]}  />
+      <cylinderGeometry args={[1.5, 1, 0.3, 25]}  />
       <meshToonMaterial color={'#5AAB61'} />
     </mesh>
   )

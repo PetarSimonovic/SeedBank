@@ -20,12 +20,12 @@ function Garden(props) {
     <Canvas id="canvas" camera={{ position: [0, 2, 3.5], lookat: [0, 0, 0] }}>
       <Camera />
       <Suspense fallback={console.log("loading")}>
-       <Earth position={[0, -0.18, 0]} />
+       <Earth position={[0, -0.2, 0]} />
       <Grass sowPlant={props.sowPlant} position={[0, 0, 0]} />
       {props.plants}
      </Suspense>
      <Sun />
-     <Firmament /> 
+     <Firmament />
 
     </Canvas>
   )
