@@ -5,14 +5,16 @@ import * as THREE from "three";
 
 // The plane on which plants grow
 
-function Grass(props) {
+function Earth(props) {
   // This reference will give us direct access to the mesh
   const mesh = useRef()
   // Set up state for the hovered and active state
-  const [hovered, setHover] = useState(false)
-  const [active, setActive] = useState(false)
   // Rotate mesh every frame, this is outside of React without overhead
   // useFrame(() => (mesh.current.rotation.y += 0.002))
+
+  const handleClick = (event) => {
+    event.stopPropagation()
+  }
 
 
   return (
@@ -20,13 +22,12 @@ function Grass(props) {
       {...props}
       ref={mesh}
       scale={1}
-      onClick={(event) => props.sowPlant(event)}
-      onPointerOver={(event) => setHover(true)}
-      onPointerOut={(event) => setHover(false)}>
-      <cylinderGeometry args={[1.5, 1.5, 0.3, 25]}  />
-      <meshToonMaterial color={'#5AAB61'} />
+      onClick={(event) => handleClick(event)}
+      >
+      <cylinderGeometry args={[1.6, 1.6, 0.6, 25]}  />
+      <meshToonMaterial color={'#947352'} />
     </mesh>
   )
 }
 
-export default Grass
+export default Earth

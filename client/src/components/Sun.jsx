@@ -6,7 +6,7 @@ function Sun(props) {
 
   return (
   <group>
-    <directionalLight position={[2.5, 1.3, 2.5]} intensity={0.5} />
+    <directionalLight position={[1.5, 1, 1]} intensity={0.9} />
   </group>
   )
 }

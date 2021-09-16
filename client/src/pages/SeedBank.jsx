@@ -42,10 +42,10 @@ function SeedBank(props) {
 
 
   return (
-    <div>
+  <div>
     <Garden plants={plants} testProp="testProp" sowPlant={sowPlant} />
     <Seeds selectSeed={selectSeed} />
-    </div>
+  </div>
   );
 }
 

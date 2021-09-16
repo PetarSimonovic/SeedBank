@@ -1,4 +1,5 @@
 import Grass from './Grass'
+import Earth from './Earth'
 import Plant from './Plant'
 import Seeds from './Seeds'
 import Garden from './Garden'
@@ -9,4 +10,4 @@ import NavBar from './NavBar'
 
 
 
-export {Garden, Grass, Plant, Camera, NavBar, Sun, SkyBox, Seeds}
+export {Garden, Grass, Plant, Camera, NavBar, Sun, SkyBox, Seeds, Earth}
