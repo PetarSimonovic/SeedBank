@@ -36,6 +36,8 @@ function SeedBank(props) {
   }
 
 
+
+
   useEffect(() => {
     //
     console.log("Calling saveGarden")
@@ -45,8 +47,8 @@ function SeedBank(props) {
 
   return (
   <div className="App">
-    <Garden plants={plants} world={props.world} sowPlant={sowPlant} />
-    <Seeds className="App-header" selectSeed={selectSeed} />
+    <Garden plants={plants} world={props.world} newWorld={props.newWorld} sowPlant={sowPlant} />
+    <Seeds className="App-header" newWorld={props.newWorld} selectSeed={selectSeed} />
   </div>
   );
 }

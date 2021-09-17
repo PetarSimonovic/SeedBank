@@ -1,11 +1,12 @@
 import {sample} from '../functions'
 
 
-const worldRadiusTop = 2.3
+const worldRadiusTop = 1.6
 const worldRadiusBottom = 1
 const worldScaler = 1.1
 const discHeight = 0.3
 const rockHeight = 0.6
+const stalactiteCount = 11
 
 export default class World {
 
@@ -28,7 +29,7 @@ function generateEarth() {
 function generateStalactites() {
   let stalactites = []
   let offset = 0
-  for (let stalactite = 0; stalactite < 10; stalactite++) {
+  for (let stalactite = 0; stalactite < stalactiteCount; stalactite++) {
     stalactites.push(generateStalactite(offset))
     offset += 0.1
   }
@@ -71,8 +72,8 @@ function stalactiteGeometry(offset) {
 
 function stalactitePosition(offset) {
 
-  const stalactiteY = {max: 0.2 + offset, min: 1.5 + offset }
-  const stalactiteXZ = {max: 0.8, min: -0.8 }
+  const stalactiteY = {max: 1.8 + offset, min: 1.5 + offset }
+  const stalactiteXZ = {max: 1, min: -1 }
   return [
     terrainRandomiser(stalactiteXZ),
     -terrainRandomiser(stalactiteY),

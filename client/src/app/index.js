@@ -24,6 +24,7 @@ class App extends React.Component {
         world: {}
       }
       this.setUser = this.setUser.bind(this)
+      this.newWorld = this.newWorld.bind(this)
       this.connecToServer = this.connecToServer.bind(this)
     }
 
@@ -50,6 +51,13 @@ class App extends React.Component {
       console.log(this.state.garden)
     }
 
+    newWorld() {
+      const newWorld = new World()
+      this.setState({
+        world: newWorld
+      })
+    }
+
 
     render() {
     return (
@@ -57,7 +65,7 @@ class App extends React.Component {
         <Router>
             <NavBar user={this.state.userName} setUser={this.setUser} />
           </Router>
-          {this.state.userName ?  <SeedBank id={this.state.id} world={this.state.world} garden={this.state.garden} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div> }
+          {this.state.userName ?  <SeedBank id={this.state.id} newWorld={this.newWorld} world={this.state.world} garden={this.state.garden} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div> }
     </div>
     )
   }

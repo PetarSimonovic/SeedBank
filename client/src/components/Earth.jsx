@@ -60,7 +60,7 @@ function Stalactite(props) {
       scale={1}
       >
       <cylinderGeometry args={props.args} />
-      <meshToonMaterial color={props.colour} />
+      <meshToonMaterial color={props.colour}  />
     </mesh>
   )
 }
