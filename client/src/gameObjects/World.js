@@ -7,6 +7,26 @@ const worldScaler = 1.1
 const discHeight = 0.3
 const rockHeight = 0.6
 
+export default class World {
+
+  constructor() {
+    this.grass = { geometry: [worldRadiusTop, worldRadiusBottom, discHeight, 25], colour: '#5AAB61'} // cylinder: [radiusTop, radiusBottom, height, radialSegments]
+    this.earth = { geometry: [worldRadiusTop * worldScaler, worldRadiusBottom, rockHeight, 9], colour: '#8a817c' } // cylinder: [radiusTop, radiusBottom, height, radialSegments]
+    this.stalactite1 = generateStalactite()
+    this.stalactite2 = generateStalactite(0.2)
+    this.stalactite3 = generateStalactite(0.3)
+    this.stalactite4 = generateStalactite(0.4)
+    this.stalactite5 = generateStalactite(0.5)
+    this.stalactite6 = generateStalactite(0.6)
+    this.stalactite7 = generateStalactite(0.7)
+    this.stalactite8 = generateStalactite(0.8)
+    this.stalactite9 = generateStalactite(0.9)
+    this.stalactite10 = generateStalactite(0.9)
+  }
+
+}
+
+
 function terrainRandomiser(range) {
   return Math.random() * (range.max - range.min) + range.min
 }
@@ -28,9 +48,9 @@ function generateStalactite(offset) {
 function stalactiteGeometry(offset) {
 
   const stalactiteMax = {max: 2 - offset, min: 1 - offset}
-  const stalactiteMin = {max: 1 - offset, min: 0.1}
-  const stalactiteDepth = {max: 2.5, min: 1}
-  const stalactiteSegments = {max: 12, min: 4}
+  const stalactiteMin = {max: 0.8 - offset, min: 0.05}
+  const stalactiteDepth = {max: 2.3, min: 1}
+  const stalactiteSegments = {max: 12, min: 6}
 
   return [
     terrainRandomiser(stalactiteMax),
@@ -44,7 +64,7 @@ function stalactiteGeometry(offset) {
 function stalactitePosition(offset) {
 
   const stalactiteY = {max: 0.2 + offset, min: 1.5 + offset }
-  const stalactiteXZ = {max: 0.9, min: -0.9 }
+  const stalactiteXZ = {max: 0.8, min: -0.8 }
   return [
     terrainRandomiser(stalactiteXZ),
     -terrainRandomiser(stalactiteY),
@@ -54,24 +74,6 @@ function stalactitePosition(offset) {
 }
 
 
-export default class World {
-
-  constructor() {
-    this.grass = { geometry: [worldRadiusTop, worldRadiusBottom, discHeight, 25], colour: '#5AAB61'} // cylinder: [radiusTop, radiusBottom, height, radialSegments]
-    this.earth = { geometry: [worldRadiusTop * worldScaler, worldRadiusBottom, rockHeight, 9], colour: '#8a817c' } // cylinder: [radiusTop, radiusBottom, height, radialSegments]
-    this.stalactite1 = generateStalactite()
-    this.stalactite2 = generateStalactite(0.2)
-    this.stalactite3 = generateStalactite(0.3)
-    this.stalactite4 = generateStalactite(0.4)
-    this.stalactite5 = generateStalactite(0.5)
-    this.stalactite6 = generateStalactite(0.6)
-    this.stalactite7 = generateStalactite(0.7)
-    this.stalactite8 = generateStalactite(0.8)
-    this.stalactite9 = generateStalactite(0.9)
-    this.stalactite10 = generateStalactite(0.9)
-  }
-
-}
 
 
 

@@ -7,6 +7,7 @@ const User = new Schema(
         email: { type: String, required: true },
         password: { type: String, required: true },
         garden: { type: Array, required: true },
+        world: { type: String, required: true},
     },
     { timestamps: true },
 )

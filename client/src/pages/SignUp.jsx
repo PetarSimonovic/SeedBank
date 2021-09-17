@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { World } from '../gameObjects'
 import api from '../api';
 
 import styled from 'styled-components';
@@ -63,7 +64,9 @@ class SignUp extends Component {
 
     handleAddUser = async () => {
         const { name, email, password } = this.state
-        const payload = { name, email, password }
+        const newWorld = new World()
+        const world = JSON.stringify(newWorld)
+        const payload = { name, email, password, world }
 
         await api.addUser(payload).then(res => {
             window.alert(`User added`)
