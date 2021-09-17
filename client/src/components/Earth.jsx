@@ -1,6 +1,7 @@
 import React, { useRef, useState, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { world } from '../gameObjects'
 
 
 // The plane on which plants grow
@@ -25,8 +26,8 @@ function Earth(props) {
       scale={1}
       onClick={(event) => handleClick(event)}
       >
-      <cylinderGeometry args={[1.65, 1, 0.68, 9]}  />
-      <meshToonMaterial color={'#8a817c'} />
+      <cylinderGeometry args={world.earth.geometry}  />
+      <meshToonMaterial color={world.earth.colour} />
       {createStalactites()}
     </mesh>
     </>
