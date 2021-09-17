@@ -1,5 +1,6 @@
 import React from 'react'
 import api from '../api';
+import { World } from '../gameObjects'
 
 import './App.css';
 
@@ -14,10 +15,12 @@ class App extends React.Component {
 
     constructor(props) {
       super(props)
+      const world = new World()
       this.state = {
         userName: "",
         id: 0,
-        garden: []
+        garden: [],
+        world: world
       }
       this.setUser = this.setUser.bind(this)
       this.connecToServer = this.connecToServer.bind(this)
@@ -50,7 +53,7 @@ class App extends React.Component {
         <Router>
             <NavBar user={this.state.userName} setUser={this.setUser} />
           </Router>
-          {this.state.userName ?  <SeedBank id={this.state.id} garden={this.state.garden} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div> }
+          {this.state.userName ?  <SeedBank id={this.state.id} world={this.state.world} garden={this.state.garden} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div> }
     </div>
     )
   }

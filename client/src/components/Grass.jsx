@@ -1,7 +1,6 @@
 import React, { useRef, useState, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import { world } from '../gameObjects'
 
 
 
@@ -25,8 +24,8 @@ function Grass(props) {
       onClick={(event) => props.sowPlant(event)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)}>
-      <cylinderGeometry args={world.grass.geometry}  />
-      <meshToonMaterial color={world.grass.colour} />
+      <cylinderGeometry args={props.world.grass.geometry}  />
+      <meshToonMaterial color={props.world.grass.colour} />
     </mesh>
   )
 }

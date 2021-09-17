@@ -45,7 +45,7 @@ function SeedBank(props) {
 
   return (
   <div className="App">
-    <Garden plants={plants} testProp="testProp" sowPlant={sowPlant} />
+    <Garden plants={plants} world={props.world} sowPlant={sowPlant} />
     <Seeds className="App-header" selectSeed={selectSeed} />
   </div>
   );

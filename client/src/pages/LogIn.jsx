@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { parseGarden } from '../functions'
 import api from '../api';
+import {World} from '../gameObjects'
 
 import styled from 'styled-components';
 
