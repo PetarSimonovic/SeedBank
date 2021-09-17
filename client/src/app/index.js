@@ -38,14 +38,13 @@ class App extends React.Component {
 
     setUser(userName, id, garden, world) {
       console.log("SETTING USER")
-      const newworld = new World()
-      console.log("NEW WORLD IS")
-      console.log(newworld)
+      console.log("WORLD IS")
+      console.log(world)
       this.setState({
         userName: userName,
         id: id,
         garden: garden,
-        world: newworld
+        world: world
       })
       console.log("User is " + this.state.id + " " + this.state.userName)
       console.log(this.state.garden)
