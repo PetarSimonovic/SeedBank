@@ -1,6 +1,8 @@
 import React, { useRef, useState, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { world } from '../gameObjects'
+
 
 
 // The plane on which plants grow
@@ -23,8 +25,8 @@ function Grass(props) {
       onClick={(event) => props.sowPlant(event)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)}>
-      <cylinderGeometry args={[1.5, 1, 0.3, 25]}  />
-      <meshToonMaterial color={'#5AAB61'} />
+      <cylinderGeometry args={world.grass.geometry}  />
+      <meshToonMaterial color={world.grass.colour} />
     </mesh>
   )
 }

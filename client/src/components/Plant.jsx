@@ -81,7 +81,7 @@ function buildPlant(props) {
 
   if (growth >= bloom) {
   plant.push(
-    <Flower key={createId()} color={flowerColour} position={[0, 0.1 + (growth/8), 0]} />
+    <Flower key={createId()} color={flowerColour} position={[0, 0.1 + (growth/11), 0]} />
   )
 }
 

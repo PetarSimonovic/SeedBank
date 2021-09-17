@@ -17,7 +17,7 @@ function Sun(props) {
       ref={sunRef}
       {...props}
       >
-    <directionalLight position={[0, 1, 0]} intensity={0.8} />
+    <directionalLight position={[0, 0.5, 1]} intensity={0.7} />
     </mesh>
 
   </group>

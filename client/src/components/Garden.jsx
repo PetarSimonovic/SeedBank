@@ -9,6 +9,7 @@ import { setDate, parseGarden, saveGarden, createId } from '../functions'
 import styled from 'styled-components';
 import { EffectComposer, BrightnessContrast, Bloom, GodRays, Pixelation } from '@react-three/postprocessing'
 import { BlurPass, BlendFunction, Resizer, KernelSize } from 'postprocessing'
+import { worldDimensions } from '../gameObjects'
 
 
 // Garden displays "the world", rendering the sun, the sky, the grass and plants
@@ -26,11 +27,6 @@ function Garden(props) {
      </Suspense>
      <Sun />
      <Firmament />
-     <EffectComposer >
-     <BrightnessContrast brightness={0} // brightness. min: -1, max: 1
-    contrast={0} // contrast: min -1, max: 1
-    />
-     </ EffectComposer>
     </Canvas>
   )
 
