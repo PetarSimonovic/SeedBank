@@ -69,7 +69,9 @@ class LogIn extends Component {
               const name = res.data.data.name
               const id = res.data.data._id
               const garden = parseGarden(res.data.data.garden)
-              this.props.setUser(name, id, garden)
+              const world = JSON.parse(res.data.data.world)
+              console.log(world)
+              this.props.setUser(name, id, garden, world)
             } else {
               window.alert(`Incorrect password`)
             }

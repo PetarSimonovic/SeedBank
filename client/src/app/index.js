@@ -1,6 +1,8 @@
 import React from 'react'
 import api from '../api';
 import { World } from '../gameObjects'
+import { FakeWorld } from '../gameObjects'
+
 
 import './App.css';
 
@@ -15,12 +17,11 @@ class App extends React.Component {
 
     constructor(props) {
       super(props)
-      const world = new World()
       this.state = {
         userName: "",
         id: 0,
         garden: [],
-        world: world
+        world: {}
       }
       this.setUser = this.setUser.bind(this)
       this.connecToServer = this.connecToServer.bind(this)
@@ -35,12 +36,16 @@ class App extends React.Component {
      }
 
 
-    setUser(userName, id, garden) {
+    setUser(userName, id, garden, world) {
       console.log("SETTING USER")
+      const newworld = new World()
+      console.log("NEW WORLD IS")
+      console.log(newworld)
       this.setState({
         userName: userName,
         id: id,
-        garden: garden
+        garden: garden,
+        world: newworld
       })
       console.log("User is " + this.state.id + " " + this.state.userName)
       console.log(this.state.garden)
