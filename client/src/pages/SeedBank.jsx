@@ -41,7 +41,7 @@ function SeedBank(props) {
   useEffect(() => {
     //
     console.log("Calling saveGarden")
-    saveGarden(props.id, plants)
+    saveGarden(props.id, plants, props.world)
   });
 
 

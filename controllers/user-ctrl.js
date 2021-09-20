@@ -57,6 +57,7 @@ getUser = async (req, res) => {
 updateGarden = async (req, res) => {
     console.log("In Update Garden")
     const body = req.body
+    console.log(body)
 
     if (!body) {
         return res.status(400).json({
@@ -72,7 +73,8 @@ updateGarden = async (req, res) => {
                 message: 'User not found!',
             })
         }
-        user.garden = body.garden
+        user.garden = body.garden.garden
+        user.world = body.world.world
         user
             .save()
             .then(() => {

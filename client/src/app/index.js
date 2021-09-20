@@ -1,7 +1,7 @@
 import React from 'react'
 import api from '../api';
 import { WorldData} from '../gameObjects'
-import { FakeWorld } from '../gameObjects'
+import { saveGarden } from '../functions'
 
 
 import './App.css';
@@ -56,6 +56,7 @@ class App extends React.Component {
       this.setState({
         world: newWorld
       })
+      saveGarden(this.state.id, [], newWorld)
     }
 
 
