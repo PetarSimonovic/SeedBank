@@ -40,7 +40,7 @@ function createStalactites(props) {
 
   for (let index = 0; index < world.stalactites.length; index++) {
     const stalactite = world.stalactites[index]
-    createdStalactites.push( <Stalactite sowPlant={props.sowPlant} key={createId()} args={stalactite.geometry} position={stalactite.position} color={stalactite.colour} />)
+    createdStalactites.push( <Stalactite key={createId()} sowPlant={props.sowPlant} args={stalactite.geometry} position={stalactite.position} colour={stalactite.colour} />)
   }
 
   return createdStalactites
@@ -50,29 +50,16 @@ function Stalactite(props) {
   const mesh = useRef()
   console.log("PROPS")
   console.log(props)
-  console.log("SOWPLANT")
-  console.log(props.sowPlant)
   let [top, bottom, depth, sections] = props.args
-
-
-
-  return (
-    <group>
-      <Rock args={props.args} color={props.color} />
-      <Grass sowPlant={props.sowPlant} position={[0, depth/2, 0]} args={[top, top, 0.01, sections]} />
-    </group>
-  )
-}
-
-function Rock(props) {
-
-  const mesh = useRef()
+  console.log("DEPTH")
+  console.log(depth)
 
   const handleClick = (event) => {
     event.stopPropagation()
   }
 
   return (
+    <group>
     <mesh
       {...props}
       ref={mesh}
@@ -80,10 +67,11 @@ function Rock(props) {
       onClick={(event) => handleClick(event)}
       >
       <cylinderGeometry args={props.args} />
-      <meshToonMaterial color={props.color}  />
+      <meshToonMaterial color={props.colour}  />
+      <Grass sowPlant={props.sowPlant} position={[0, depth/2, 0]} args={[top, top, 0.01, sections]} />
     </mesh>
+    </group>
   )
-
 }
 
 export default World
