@@ -47,7 +47,7 @@ function SeedBank(props) {
 
   return (
   <div className="App">
-    <Garden plants={plants} world={props.world} newWorld={props.newWorld} sowPlant={sowPlant} />
+    <Garden plants={plants} world={props.world} sowPlant={sowPlant} />
     {props.worldChosen ? <Seeds className="App-header" selectSeed={selectSeed} /> : <Worlds className="App-header" newWorld={props.newWorld} saveWorld={ props.saveWorld } />}
   </div>
   );
