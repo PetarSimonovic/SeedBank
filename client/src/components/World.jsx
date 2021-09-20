@@ -7,7 +7,7 @@ import * as THREE from "three";
 
 // The plane on which plants grow
 
-function Earth(props) {
+function World(props) {
   // This reference will give us direct access to the mesh
   const world = props.world
   const mesh = useRef()
@@ -65,10 +65,10 @@ function Stalactite(props) {
       >
       <cylinderGeometry args={props.args} />
       <meshToonMaterial color={props.colour}  />
-      <Grass position={[0, depth/2, 0]} args={[top, top, 0.2, sections]} />
+      <Grass position={[0, depth/2, 0]} args={[top, top, 0.01, sections]} />
     </mesh>
     </group>
   )
 }
 
-export default Earth
+export default World

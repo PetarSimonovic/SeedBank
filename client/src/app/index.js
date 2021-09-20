@@ -1,6 +1,6 @@
 import React from 'react'
 import api from '../api';
-import { World } from '../gameObjects'
+import { WorldData} from '../gameObjects'
 import { FakeWorld } from '../gameObjects'
 
 
@@ -52,7 +52,7 @@ class App extends React.Component {
     }
 
     newWorld() {
-      const newWorld = new World()
+      const newWorld = new WorldData()
       this.setState({
         world: newWorld
       })

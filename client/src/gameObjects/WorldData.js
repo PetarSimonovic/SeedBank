@@ -8,7 +8,7 @@ const discHeight = 0.3
 const rockHeight = 0.6
 const stalactiteCount = 20
 
-export default class World {
+export default class WorldData {
 
   constructor(stalactites = generateStalactites())  {
     this.stalactites = stalactites
