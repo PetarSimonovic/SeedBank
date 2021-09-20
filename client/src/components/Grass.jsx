@@ -21,7 +21,7 @@ function Grass(props) {
       {...props}
       ref={mesh}
       scale={1}
-    //  onClick={(event) => props.sowPlant(event)}
+      onClick={(event) => props.sowPlant(event)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)}>
       <cylinderGeometry args={props.args} />
