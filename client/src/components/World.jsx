@@ -9,17 +9,14 @@ import * as THREE from "three";
 
 function World(props) {
   // This reference will give us direct access to the mesh
-  const world = props.world
   const mesh = useRef()
   console.log("WORLD in EARTH is")
-  console.log(world)
+  console.log(props)
   // Set up state for the hovered and active state
   // Rotate mesh every frame, this is outside of React without overhead
   // useFrame(() => (mesh.current.rotation.y += 0.002))
 
-  const handleClick = (event) => {
-    event.stopPropagation()
-  }
+
 
 
   return (
@@ -28,16 +25,16 @@ function World(props) {
       {...props}
       ref={mesh}
       scale={1}
-      onClick={(event) => handleClick(event)}
       >
-      {createStalactites(world)}
+      {createStalactites(props)}
     </mesh>
     </>
   )
 }
 
-function createStalactites(world) {
+function createStalactites(props) {
   console.log("In create stalactites")
+  const world = props.world
   console.log(world)
   const createdStalactites = []
 
@@ -51,17 +48,23 @@ function createStalactites(world) {
 
 function Stalactite(props) {
   const mesh = useRef()
-  console.log("ARGS")
-  console.log(props.args)
+  console.log("PROPS")
+  console.log(props)
   let [top, bottom, depth, sections] = props.args
   console.log("DEPTH")
   console.log(depth)
+
+  const handleClick = (event) => {
+    event.stopPropagation()
+  }
+
   return (
     <group>
     <mesh
       {...props}
       ref={mesh}
       scale={1}
+      onClick={(event) => handleClick(event)}
       >
       <cylinderGeometry args={props.args} />
       <meshToonMaterial color={props.colour}  />

@@ -6,7 +6,7 @@ const worldRadiusBottom = 1
 const worldScaler = 1.1
 const discHeight = 0.3
 const rockHeight = 0.6
-const stalactiteCount = 20
+const stalactiteCount = 10
 
 export default class WorldData {
 
@@ -64,8 +64,8 @@ function stalactiteGeometry(offset) {
 
 function stalactitePosition(offset) {
 
-  const stalactiteY = {max: 1.8 + offset, min: 1.5 + offset }
-  const stalactiteXZ = {max: 2, min: -2 }
+  const stalactiteY = {max: 0 + offset, min: 1 + offset }
+  const stalactiteXZ = {max: 0.5, min: -0.5  }
   return [
     terrainRandomiser(stalactiteXZ),
     -terrainRandomiser(stalactiteY),
