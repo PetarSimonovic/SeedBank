@@ -22,8 +22,8 @@ function Seeds(props) {
 
   return (
     <Panel>
-    <WorldButton onClick={props.newWorld}> New World </WorldButton>
-    <WorldButton onClick={props.saveWorld}> Save World </WorldButton>
+    <WorldButton onClick={props.newWorld}> New Garden </WorldButton>
+    <WorldButton onClick={props.saveWorld}> Save Garden </WorldButton>
   </Panel>
   )
 }
