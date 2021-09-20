@@ -3,7 +3,7 @@ import api from '../api';
 import React, { useRef, useState, useMemo, useEffect, Suspense } from "react";
 import { Canvas, useFrame, extend } from "@react-three/fiber";
 import * as THREE from "three";
-import { Grass, Plant, Camera, Sun, SkyBox, Seeds, Garden } from '../components';
+import { Grass, Plant, Camera, Sun, SkyBox, Seeds, Garden, Worlds } from '../components';
 import { setDate, parseGarden, saveGarden, createId, createPlant } from '../functions'
 import styled from 'styled-components';
 import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from 'react-postprocessing'
@@ -41,14 +41,14 @@ function SeedBank(props) {
   useEffect(() => {
     //
     console.log("Calling saveGarden")
-    saveGarden(props.id, plants, props.world)
+    saveGarden(props.id, plants, props.world, props.worldChosen)
   });
 
 
   return (
   <div className="App">
     <Garden plants={plants} world={props.world} newWorld={props.newWorld} sowPlant={sowPlant} />
-    <Seeds className="App-header" newWorld={props.newWorld} selectSeed={selectSeed} />
+    {props.worldChosen ? <Seeds className="App-header" selectSeed={selectSeed} /> : <Worlds className="App-header" newWorld={props.newWorld} saveWorld={ props.saveWorld } />}
   </div>
   );
 }

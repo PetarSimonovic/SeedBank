@@ -66,7 +66,8 @@ class SignUp extends Component {
         const { name, email, password } = this.state
         const newWorld = new WorldData()
         const world = JSON.stringify(newWorld)
-        const payload = { name, email, password, world }
+        const worldChosen = false
+        const payload = { name, email, password, world, worldChosen }
 
         await api.addUser(payload).then(res => {
             window.alert(`User added`)
@@ -76,7 +77,7 @@ class SignUp extends Component {
                 password: '',
             })
             console.log("Result is")
-            this.props.setUser(name, res.data.id, [], newWorld)
+            this.props.setUser(name, res.data.id, [], newWorld, false)
         })
 
     }

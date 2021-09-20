@@ -21,10 +21,12 @@ class App extends React.Component {
         userName: "",
         id: 0,
         garden: [],
-        world: {}
+        world: {},
+        chosenWorld: false
       }
       this.setUser = this.setUser.bind(this)
       this.newWorld = this.newWorld.bind(this)
+      this.saveWorld = this.saveWorld.bind(this)
       this.connecToServer = this.connecToServer.bind(this)
     }
 
@@ -37,15 +39,18 @@ class App extends React.Component {
      }
 
 
-    setUser(userName, id, garden, world) {
+    setUser(userName, id, garden, world, worldChosen) {
       console.log("SETTING USER")
       console.log("WORLD IS")
       console.log(world)
+      console.log("CHOSEN?")
+      console.log(worldChosen)
       this.setState({
         userName: userName,
         id: id,
         garden: garden,
-        world: world
+        world: world,
+        worldChosen: worldChosen
       })
       console.log("User is " + this.state.id + " " + this.state.userName)
       console.log(this.state.garden)
@@ -56,7 +61,13 @@ class App extends React.Component {
       this.setState({
         world: newWorld
       })
-      saveGarden(this.state.id, [], newWorld)
+    }
+
+    saveWorld() {
+      this.setState({
+        worldChosen: true
+      })
+      saveGarden(this.state.id, [], this.state.world, true)
     }
 
 
@@ -66,7 +77,7 @@ class App extends React.Component {
         <Router>
             <NavBar user={this.state.userName} setUser={this.setUser} />
           </Router>
-          {this.state.userName ?  <SeedBank id={this.state.id} newWorld={this.newWorld} world={this.state.world} garden={this.state.garden} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div> }
+          {this.state.userName ?  <SeedBank id={this.state.id} newWorld={this.newWorld} world={this.state.world} worldChosen={this.state.worldChosen} saveWorld={this.saveWorld} garden={this.state.garden} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div> }
     </div>
     )
   }
