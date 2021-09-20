@@ -73,12 +73,12 @@ function buildPlant(props) {
 
   // Add leaves relative to the plant's growth level
 
-  // for (let leaves = 0; leaves <= growth; leaves++) {
-  //   plant.push(
-  //   <Leaf key={createId()} color={leafColour} position={[0.02, 0.1 + (leaves/18), 0.05]}/>,
-  //   <Leaf key={createId()} color={leafColour} position={[-0.02, 0.1 + (leaves/18), -0.05]}/>,
-  // )
-  // }
+  for (let leaves = 0; leaves <= growth; leaves++) {
+    plant.push(
+    <Leaf key={createId()} color={leafColour} position={[0.02, 0.1 + (leaves/18), 0.05]}/>,
+    <Leaf key={createId()} color={leafColour} position={[-0.02, 0.1 + (leaves/18), -0.05]}/>,
+  )
+  }
 
   // Add a flower to the array if it's in bloom
 
