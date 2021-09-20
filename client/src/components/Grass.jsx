@@ -25,7 +25,7 @@ function Grass(props) {
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)}>
       <cylinderGeometry args={props.args} />
-      <meshToonMaterial color={'green'} />
+      <meshToonMaterial color={'#a7c957'} />
     </mesh>
   )
 }

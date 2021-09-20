@@ -10,6 +10,8 @@ export default function calculateDays(start, end) {
 
     // Calculating the time difference between two dates
     const diffInTime = date2.getTime() - date1.getTime();
+    console.log("Time diff")
+    console.log(diffInTime)
 
     // Calculating the no. of days between two dates
     const diffInDays = Math.round(diffInTime / oneDay);

@@ -29,7 +29,7 @@ function Plant(props) {
       {...props}
       ref={mesh}
       onClick={(event) => handleClick(event)}
-      scale={0.5}
+      scale={0.2}
     //  onPointerOver={(event) => setHover(true)}
     //  onPointerOut={(event) => setHover(false)}
     >
@@ -46,8 +46,11 @@ function Plant(props) {
 
 function buildPlant(props) {
 
-
-
+  console.log("Plant props")
+  const [x, y, z] = props.position
+  console.log(x)
+  console.log(y)
+  console.log(z)
   const {bloom, leafColour, stemColour, flowerColour} = getSeed(props.type)
   let growth = props.growth
 
@@ -70,12 +73,12 @@ function buildPlant(props) {
 
   // Add leaves relative to the plant's growth level
 
-  for (let leaves = 0; leaves <= growth; leaves++) {
-    plant.push(
-    <Leaf key={createId()} color={leafColour} position={[0.02, 0.1 + (leaves/18), 0.05]}/>,
-    <Leaf key={createId()} color={leafColour} position={[-0.02, 0.1 + (leaves/18), -0.05]}/>,
-  )
-  }
+  // for (let leaves = 0; leaves <= growth; leaves++) {
+  //   plant.push(
+  //   <Leaf key={createId()} color={leafColour} position={[0.02, 0.1 + (leaves/18), 0.05]}/>,
+  //   <Leaf key={createId()} color={leafColour} position={[-0.02, 0.1 + (leaves/18), -0.05]}/>,
+  // )
+  // }
 
   // Add a flower to the array if it's in bloom
 
@@ -137,7 +140,6 @@ function Leaf(props) {
 }
 
 function Flower(props) {
-
   const mesh = useRef()
 
   return (
