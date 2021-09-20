@@ -75,7 +75,10 @@ class SignUp extends Component {
                 email: '',
                 password: '',
             })
+            console.log("Result is")
+            this.props.setUser(name, res.data.id, [], newWorld)
         })
+
     }
 
     render() {
