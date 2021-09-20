@@ -1,30 +1,22 @@
 import {sample} from '../functions'
 
 
-const worldRadiusTop = 1.6
+const worldRadiusTop = 2
 const worldRadiusBottom = 1
 const worldScaler = 1.1
 const discHeight = 0.3
 const rockHeight = 0.6
-const stalactiteCount = 11
+const stalactiteCount = 20
 
 export default class World {
 
-  constructor(grass = generateGrass(), earth = generateEarth(), stalactites = generateStalactites())  {
-    this.grass = grass
-    this.earth = earth
+  constructor(stalactites = generateStalactites())  {
     this.stalactites = stalactites
   }
 
 }
 
-function generateGrass() {
-  return { geometry: [worldRadiusTop, worldRadiusBottom, discHeight, 25], colour: '#5AAB61'} // cylinder: [radiusTop, radiusBottom, height, radialSegments]
-}
 
-function generateEarth() {
-  return { geometry: [worldRadiusTop * worldScaler, worldRadiusBottom, rockHeight, 9], colour: '#8a817c' } // cylinder: [radiusTop, radiusBottom, height, radialSegments]
-}
 
 function generateStalactites() {
   let stalactites = []
@@ -57,7 +49,7 @@ function generateStalactite(offset) {
 function stalactiteGeometry(offset) {
 
   const stalactiteMax = {max: 2 - offset, min: 1 - offset}
-  const stalactiteMin = {max: 0.8 - offset, min: 0.00 - offset}
+  const stalactiteMin = {max: 0.8 - offset, min: 0.01}
   const stalactiteDepth = {max: 2.3, min: 1}
   const stalactiteSegments = {max: 12, min: 6}
 
@@ -73,7 +65,7 @@ function stalactiteGeometry(offset) {
 function stalactitePosition(offset) {
 
   const stalactiteY = {max: 1.8 + offset, min: 1.5 + offset }
-  const stalactiteXZ = {max: 1, min: -1 }
+  const stalactiteXZ = {max: 2, min: -2 }
   return [
     terrainRandomiser(stalactiteXZ),
     -terrainRandomiser(stalactiteY),

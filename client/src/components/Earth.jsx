@@ -30,8 +30,6 @@ function Earth(props) {
       scale={1}
       onClick={(event) => handleClick(event)}
       >
-      <cylinderGeometry args={world.earth.geometry}  />
-      <meshToonMaterial color={world.earth.colour} />
       {createStalactites(world)}
     </mesh>
     </>
@@ -53,7 +51,11 @@ function createStalactites(world) {
 
 function Stalactite(props) {
   const mesh = useRef()
-
+  console.log("ARGS")
+  console.log(props.args)
+  let [top, bottom, depth, sections] = props.args
+  console.log("DEPTH")
+  console.log(depth)
   return (
     <group>
     <mesh
@@ -63,6 +65,7 @@ function Stalactite(props) {
       >
       <cylinderGeometry args={props.args} />
       <meshToonMaterial color={props.colour}  />
+      <Grass position={[0, depth/2, 0]} args={[top, top, 0.2, sections]} />
     </mesh>
     </group>
   )

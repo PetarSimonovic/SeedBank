@@ -21,8 +21,7 @@ function Garden(props) {
     <Canvas id="canvas" camera={{ position: [0, 2, 3.5], lookat: [0, 0, 0] }}>
       <Camera />
       <Suspense fallback={console.log("loading")}>
-       <Earth position={[0, -0.16, 0]} world={props.world} />
-      <Grass sowPlant={props.sowPlant} world={props.world} position={[0, 0, 0]} />
+       <Earth sowPlant={props.sowPlant} position={[0, 0, 0]} world={props.world} />
       {props.plants}
      </Suspense>
      <Sun />
