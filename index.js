@@ -24,7 +24,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 //Static file declaration
 
-app.use(express.static(path.join(__dirname, 'client/public')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 
 

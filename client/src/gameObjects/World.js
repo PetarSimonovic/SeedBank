@@ -57,7 +57,7 @@ function generateStalactite(offset) {
 function stalactiteGeometry(offset) {
 
   const stalactiteMax = {max: 2 - offset, min: 1 - offset}
-  const stalactiteMin = {max: 0.8 - offset, min: 0.05}
+  const stalactiteMin = {max: 0.8 - offset, min: 0.00 - offset}
   const stalactiteDepth = {max: 2.3, min: 1}
   const stalactiteSegments = {max: 12, min: 6}
 

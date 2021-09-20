@@ -1,6 +1,7 @@
 import React, { useRef, useState, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import { createId } from '../functions'
+import { Grass } from './'
 import * as THREE from "three";
 
 
@@ -44,7 +45,7 @@ function createStalactites(world) {
 
   for (let index = 0; index < world.stalactites.length; index++) {
     const stalactite = world.stalactites[index]
-    createdStalactites.push(<Stalactite key={createId()} args={stalactite.geometry} position={stalactite.position} colour={stalactite.colour} />)
+    createdStalactites.push( <Stalactite key={createId()} args={stalactite.geometry} position={stalactite.position} colour={stalactite.colour} />)
   }
 
   return createdStalactites
@@ -54,6 +55,7 @@ function Stalactite(props) {
   const mesh = useRef()
 
   return (
+    <group>
     <mesh
       {...props}
       ref={mesh}
@@ -62,6 +64,7 @@ function Stalactite(props) {
       <cylinderGeometry args={props.args} />
       <meshToonMaterial color={props.colour}  />
     </mesh>
+    </group>
   )
 }
 
