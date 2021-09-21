@@ -66,4 +66,26 @@ function Stalactite(props) {
   )
 }
 
+function SeedBoxStalactite(props) {
+  const mesh = useRef()
+
+  const handleClick = (event) => {
+    event.stopPropagation()
+  }
+
+  return (
+    <group>
+    <mesh
+      {...props}
+      ref={mesh}
+      scale={1}
+      onClick={(event) => handleClick(event)}
+      >
+      <cylinderGeometry args={[0.2, 0.01, 0.5, 12]} />
+      <meshToonMaterial color={'#FF0000'}  />
+    </mesh>
+    </group>
+  )
+}
+
 export default World

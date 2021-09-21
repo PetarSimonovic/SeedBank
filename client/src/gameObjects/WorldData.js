@@ -1,3 +1,6 @@
+
+// creates the data used to generate the Stalactite components
+
 import {sample} from '../functions'
 
 
@@ -48,7 +51,7 @@ function generateStalactite(offset) {
 
 function stalactiteGeometry(offset) {
 
-  const stalactiteMax = {max: 2 - offset, min: 1 - offset}
+  const stalactiteMax = {max: 1.3 - offset, min: 1 - offset}
   const stalactiteMin = {max: 0.8 - offset, min: 0.01}
   const stalactiteDepth = {max: 2.3, min: 1}
   const stalactiteSegments = {max: 12, min: 6}

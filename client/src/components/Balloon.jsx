@@ -25,7 +25,7 @@ function Balloon(props) {
       <dodecahedronGeometry args={[0.15, 4]} />
       <BalloonCone position={[0, -0.18, 0]}/>
       <BalloonString position={[0, -0.15, 0]}/>
-      <SeedBox position={[0, -0.25, 0]}/>
+      <BalloonCrate position={[0, -0.5, 0]}/>
       <meshToonMaterial color={'#db504a'} />
     </mesh>
   )
@@ -64,6 +64,23 @@ function Balloon(props) {
       </mesh>
     )
    }
+
+   function BalloonCrate(props) {
+     const mesh = useRef()
+     // Set up state for the hovered and active state
+
+
+     return (
+       <mesh
+         {...props}
+         ref={mesh}
+         scale={1}
+         >
+         <boxGeometry args={[0.15, 0.15, 0.15]} />
+         <meshToonMaterial color={'#ffd6a5'} />
+       </mesh>
+     )
+    }
 
 
 export default Balloon
