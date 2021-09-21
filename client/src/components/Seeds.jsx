@@ -19,13 +19,17 @@ const Panel = styled.div`
 
 
 function Seeds(props) {
+  console.log("PROPS SEEDS")
+  console.log(props.seeds)
+  const seeds = props.seeds
 
   return (
     <Panel>
+    <div>
     <SeedButton onClick={(event) => props.selectSeed("generic_plant")}>
-    Generic Plant {props.seeds.generic_plant.quantity}
+    Generic Plant {seeds.generic_plant.quantity}</SeedButton>
     <SeedButton onClick={(event) => props.updateSeeds("generic_plant") }> + </SeedButton>
-    </SeedButton>
+    </div>
     <SeedButton onClick={(event) => props.selectSeed("tulip")}> Tulip </SeedButton>
     <SeedButton onClick={(event) => props.selectSeed("sunflower")}> Sunflower </SeedButton>
     <SeedButton onClick={(event) => props.selectSeed("crocus")}> Crocus </SeedButton>

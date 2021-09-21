@@ -17,8 +17,8 @@ function SeedBank(props) {
 
 
   const [plants, setPlants] = useState(props.garden)
-  const [seeds, setSeeds] = useState(props.seeds)
   const [seed, setSeed] = useState(null)
+  const [seeds, setSeeds] = useState(props.seeds)
 
   const sowPlant = ( event ) => {
     if (seed) {
@@ -36,25 +36,32 @@ function SeedBank(props) {
     console.log(seed)
   }
 
-  const updateSeeds = ( event ) => {
-    console.log(event)
+  const updateSeeds = (seed) => {
+    console.log("updating seed")
+    console.log(seed)
+    console.log(seeds[seed].quantity)
+    console.log(seeds[seed].quantity + 1)
+    const s = seeds[seed]
+    console.log(s)
+
 
 
   }
 
 
 
+
   useEffect(() => {
     //
     console.log("Calling saveGarden")
-    saveGarden(props.id, plants, props.world, props.worldChosen, seeds)
+    saveGarden(props.id, plants, props.world, props.worldChosen, props.seeds)
   });
 
 
   return (
   <div className="App">
     <Garden plants={plants} world={props.world} sowPlant={sowPlant} />
-    {props.worldChosen ? <Seeds seeds={props.seeds} className="App-header" selectSeed={selectSeed} updateSeeds={updateSeeds}/> : <Worlds className="App-header" newWorld={props.newWorld} saveWorld={ props.saveWorld } />}
+    {props.worldChosen ? <Seeds seeds={props.seeds} className="App-header" selectSeed={selectSeed} updateSeeds={updateSeeds} /> : <Worlds className="App-header" newWorld={props.newWorld} saveWorld={ props.saveWorld } />}
   </div>
   );
 }

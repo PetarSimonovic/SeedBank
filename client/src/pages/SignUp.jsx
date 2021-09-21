@@ -66,8 +66,9 @@ class SignUp extends Component {
     handleAddUser = async () => {
         const { name, email, password } = this.state
         const newWorld = new WorldData()
+        const newSeeds = new Seeds()
         const world = JSON.stringify(newWorld)
-        const seeds = JSON.stringify(new Seeds())
+        const seeds = JSON.stringify(newSeeds)
         const worldChosen = false
         const payload = { name, email, password, world, worldChosen, seeds }
 
@@ -78,8 +79,9 @@ class SignUp extends Component {
                 email: '',
                 password: '',
             })
-            console.log("Result is")
-            this.props.setUser(name, res.data.id, [], newWorld, false)
+            console.log("SEEDS on SIGN UP")
+            console.log(seeds)
+            this.props.setUser(name, res.data.id, [], newWorld, false, newSeeds)
         })
 
     }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { loadGarden } from '../functions'
 import api from '../api';
-import {World} from '../gameObjects'
+import {World, Seeds} from '../gameObjects'
+
 
 import styled from 'styled-components';
 
@@ -69,11 +70,12 @@ class LogIn extends Component {
               const name = res.data.data.name
               const id = res.data.data._id
               const garden = loadGarden(res.data.data.garden)
-              const world = Object.assign(JSON.parse(res.data.data.world))
-              const seeds =  Object.assign(JSON.parse(res.data.data.seeds))
+              const world = JSON.parse(res.data.data.world)
+              const seeds =  JSON.parse(res.data.data.seeds)
               const worldChosen = res.data.data.worldChosen
               console.log("Loaded seeds")
               console.log(seeds)
+              console.log("loaded world")
               this.props.setUser(name, id, garden, world, worldChosen, seeds)
             } else {
               window.alert(`Incorrect password`)
