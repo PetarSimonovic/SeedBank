@@ -22,10 +22,13 @@ function Seeds(props) {
 
   return (
     <Panel>
-    <SeedButton onClick={(event) => props.selectSeed("generic_plant")}> Generic Plant </SeedButton>
+    <SeedButton onClick={(event) => props.selectSeed("generic_plant")}>
+    Generic Plant {props.seeds.generic_plant.quantity}
+    <SeedButton onClick={(event) => props.updateSeeds("generic_plant") }> + </SeedButton>
+    </SeedButton>
     <SeedButton onClick={(event) => props.selectSeed("tulip")}> Tulip </SeedButton>
     <SeedButton onClick={(event) => props.selectSeed("sunflower")}> Sunflower </SeedButton>
-    <SeedButton onClick={(event) => props.selectSeed("crocus")}> Crocus </SeedButton>  
+    <SeedButton onClick={(event) => props.selectSeed("crocus")}> Crocus </SeedButton>
     </Panel>
   )
 }
