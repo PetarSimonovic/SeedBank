@@ -36,17 +36,6 @@ function SeedBank(props) {
     console.log(seed)
   }
 
-  const updateSeeds = (seed) => {
-    console.log("updating seed")
-    console.log(seed)
-    console.log(seeds[seed].quantity)
-    console.log(seeds[seed].quantity + 1)
-    const s = seeds[seed]
-    console.log(s)
-
-
-
-  }
 
 
 
@@ -60,8 +49,8 @@ function SeedBank(props) {
 
   return (
   <div className="App">
-    <Garden plants={plants} world={props.world} sowPlant={sowPlant} />
-    {props.worldChosen ? <Seeds seeds={props.seeds} className="App-header" selectSeed={selectSeed} updateSeeds={updateSeeds} /> : <Worlds className="App-header" newWorld={props.newWorld} saveWorld={ props.saveWorld } />}
+    <Garden plants={plants} world={props.world} selectSeed={props.selectSeed} sowPlant={sowPlant} />
+    {props.worldChosen ? <Seeds seeds={props.seeds} className="App-header" selectSeed={selectSeed} /> : <Worlds className="App-header" newWorld={props.newWorld} saveWorld={ props.saveWorld } />}
   </div>
   );
 }

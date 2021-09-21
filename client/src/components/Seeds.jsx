@@ -25,11 +25,7 @@ function Seeds(props) {
 
   return (
     <Panel>
-    <div>
-    <SeedButton onClick={(event) => props.selectSeed("generic_plant")}>
-    Generic Plant {seeds.generic_plant.quantity}</SeedButton>
-    <SeedButton onClick={(event) => props.updateSeeds("generic_plant") }> + </SeedButton>
-    </div>
+    <SeedButton onClick={(event) => props.selectSeed("generic_plant")}>Generic Plant</SeedButton>
     <SeedButton onClick={(event) => props.selectSeed("tulip")}> Tulip </SeedButton>
     <SeedButton onClick={(event) => props.selectSeed("sunflower")}> Sunflower </SeedButton>
     <SeedButton onClick={(event) => props.selectSeed("crocus")}> Crocus </SeedButton>
