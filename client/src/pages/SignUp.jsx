@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { WorldData } from '../gameObjects'
+import { WorldData, Seeds } from '../gameObjects'
+
 import api from '../api';
 
 import styled from 'styled-components';
@@ -66,8 +67,9 @@ class SignUp extends Component {
         const { name, email, password } = this.state
         const newWorld = new WorldData()
         const world = JSON.stringify(newWorld)
+        const seeds = JSON.stringify(new Seeds())
         const worldChosen = false
-        const payload = { name, email, password, world, worldChosen }
+        const payload = { name, email, password, world, worldChosen, seeds }
 
         await api.addUser(payload).then(res => {
             window.alert(`User added`)

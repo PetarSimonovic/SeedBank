@@ -4,7 +4,7 @@ import { GenericPlant } from '../gameObjects'
 
 // Reads a saved Garden and creates an array of plants ready to render
 
-export default function parseGarden(garden) {
+export default function loadGarden(garden) {
   let parsedGarden = []
   const today = setDate(Date()).stamp
   for (let plant = 0; plant < garden.length; plant ++ ) {

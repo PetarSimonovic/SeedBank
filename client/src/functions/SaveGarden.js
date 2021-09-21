@@ -5,12 +5,13 @@ import { WorldData } from '../gameObjects'
 // Needs error handling!
 
 
-export default async function saveGarden(id, plants, newWorld, chosen){
+export default async function saveGarden(id, plants, newWorld, chosen, seeds){
   let savedGarden = extractPlants(plants)
   const garden = {"garden" : savedGarden}
   const world = {"world" : JSON.stringify(newWorld)}
+  const savedSeeds = {"seeds": JSON.stringify(seeds)}
   const worldChosen = {"worldChosen" : chosen}
-  const payload = {garden, world, worldChosen}
+  const payload = {garden, world, worldChosen, savedSeeds}
   console.log("PAYLOAD")
   console.log(payload)
   console.log(worldChosen)
