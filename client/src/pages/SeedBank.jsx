@@ -60,7 +60,7 @@ function SeedBank(props) {
     removedBalloon.claimed = true
     setBalloons(
       (prev) => {
-        return prev.filter(balloon => balloon.id !== removedBalloon.id)
+        return [prev.filter(balloon => balloon.id !== removedBalloon.id), removedBalloon]
       }
     )
     console.log(balloons)

@@ -55,9 +55,11 @@ function Balloon(props) {
   // Rotate mesh every frame, this is outside of React without overhead
   // useFrame(() => (mesh.current.rotation.y += 0.002))
   const handleClick = () => {
+    if (!props.claimed) {
     const seedChoice = Math.floor(Math.random() * props.seeds.length)
     props.updateSeeds(3, seedChoice)
     props.removeBalloon(props.index)
+  }
   }
 
   return (
