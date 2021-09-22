@@ -29,11 +29,11 @@ function Balloons(props) {
 function createBalloons(props) {
   console.log("In createBalloons")
   const balloonCollection = []
-  const balloons = props.balloons
+  const {balloons, updateSeeds, seeds} = props
   console.log(balloons)
   for (let index = 0; index < balloons.length; index++) {
   const balloon = balloons[index]
-  balloonCollection.push(<Balloon key={createId()} position={balloon.position} colour={balloon.colour} />)
+  balloonCollection.push(<Balloon key={createId()} updateSeeds={updateSeeds} seeds={seeds} position={balloon.position} colour={balloon.colour} />)
   }
   return balloonCollection
 }
