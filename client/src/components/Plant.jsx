@@ -62,13 +62,14 @@ function buildPlant(props) {
 
   // the length of the stem is based on the plant's growth
 
-  const stemLength = growth/12
+  const stemLength = growth/24
+
 
   // push the Base and Stem into the plant array
 
   let plant = [
     <Base key={createId()} />,
-    <Stem key={createId()} stemColour={stemColour} stemLength={stemLength}/>,
+    <Stem key={createId()} stemColour={stemColour} stemLength={stemLength} position={[0, 0.05, 0]}/>,
   ]
 
   // Add leaves relative to the plant's growth level
@@ -116,6 +117,8 @@ function Stem(props) {
   <mesh
     {...props}
     ref={mesh}
+    scale={0.5}
+
     >
     <cylinderGeometry args={[0.01, 0.03, 0.3 + props.stemLength, 12]} />
     <meshToonMaterial color={props.stemColour} />

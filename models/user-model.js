@@ -9,7 +9,7 @@ const User = new Schema(
         garden: { type: Array, required: true },
         world: { type: String, required: true},
         worldChosen: {type: Boolean, required: true},
-        seeds: {type: String, required: true}
+        seeds: {type: Array, required: true}
     },
     { timestamps: true },
 )

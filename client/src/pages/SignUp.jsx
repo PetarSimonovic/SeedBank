@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { WorldData, Seeds } from '../gameObjects'
+import { WorldData, newSeeds } from '../gameObjects'
 
 import api from '../api';
 
@@ -66,9 +66,8 @@ class SignUp extends Component {
     handleAddUser = async () => {
         const { name, email, password } = this.state
         const newWorld = new WorldData()
-        const newSeeds = new Seeds()
         const world = JSON.stringify(newWorld)
-        const seeds = JSON.stringify(newSeeds)
+        const seeds = newSeeds()
         const worldChosen = false
         const payload = { name, email, password, world, worldChosen, seeds }
 
@@ -81,7 +80,7 @@ class SignUp extends Component {
             })
             console.log("SEEDS on SIGN UP")
             console.log(seeds)
-            this.props.setUser(name, res.data.id, [], newWorld, false, newSeeds)
+            this.props.setUser(name, res.data.id, [], newWorld, false, seeds)
         })
 
     }
