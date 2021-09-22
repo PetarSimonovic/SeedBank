@@ -1,13 +1,19 @@
-import {sample, randomiser, createId} from '../functions'
+import {sample, randomiser, createId, calculateDays} from '../functions'
 
 
-export default function getBalloons(garden, seeds) {
+export default function getBalloons(garden, seeds, login, today) {
   console.log("CAlculating balloondata")
+  console.log("Last Login " + login)
+  console.log("Today " + today)
+  const dateDifference = calculateDays(login, today)
+  console.log(dateDifference)
   let balloons = []
   // if (garden.length % 6 === 0) {
   //   console.log("Balloon incoming!")
   // }
-  balloons.push(new Balloon())
+  if (calculateDays(login, today) > 0 ) {
+    balloons.push(new Balloon())
+}
   return balloons
 }
 

@@ -79,7 +79,7 @@ class App extends React.Component {
         <Router>
             <NavBar user={this.state.userName} setUser={this.setUser} />
           </Router>
-          {this.state.userName ?  <SeedBank id={this.state.id} newWorld={this.newWorld} world={this.state.world} worldChosen={this.state.worldChosen} saveWorld={this.saveWorld} seeds={this.state.seeds} garden={this.state.garden} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div> }
+          {this.state.userName ?  <SeedBank id={this.state.id} newWorld={this.newWorld} world={this.state.world} worldChosen={this.state.worldChosen} saveWorld={this.saveWorld} seeds={this.state.seeds} garden={this.state.garden} lastLogin={this.state.lastLogin} today={this.state.today} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div> }
     </div>
     )
   }
