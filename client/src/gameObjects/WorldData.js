@@ -1,7 +1,7 @@
 
 // creates the data used to generate the Stalactite components
 
-import {sample} from '../functions'
+import {sample, randomiser} from '../functions'
 
 
 const worldRadiusTop = 2
@@ -31,10 +31,6 @@ function generateStalactites() {
   return stalactites
 }
 
-function terrainRandomiser(range) {
-  return Math.random() * (range.max - range.min) + range.min
-}
-
 function earthColour() {
   const colours = [
     '#6C6460',
@@ -57,10 +53,10 @@ function stalactiteGeometry(offset) {
   const stalactiteSegments = {max: 12, min: 6}
 
   return [
-    terrainRandomiser(stalactiteMax),
-    terrainRandomiser(stalactiteMin),
-    terrainRandomiser(stalactiteDepth),
-    terrainRandomiser(stalactiteSegments)
+    randomiser(stalactiteMax),
+    randomiser(stalactiteMin),
+    randomiser(stalactiteDepth),
+    randomiser(stalactiteSegments)
   ]
 
 }
@@ -70,9 +66,9 @@ function stalactitePosition(offset) {
   const stalactiteY = {max: 0 + offset, min: 1 + offset }
   const stalactiteXZ = {max: 0.5, min: -0.5  }
   return [
-    terrainRandomiser(stalactiteXZ),
-    -terrainRandomiser(stalactiteY),
-    terrainRandomiser(stalactiteXZ)
+    randomiser(stalactiteXZ),
+    -randomiser(stalactiteY),
+    randomiser(stalactiteXZ)
   ]
 
 }

@@ -20,8 +20,6 @@ const Panel = styled.div`
 
 
 function Seeds(props) {
-  console.log("PROPS SEEDS")
-  console.log(props.seeds)
   const seeds = props.seeds
 
   return (
@@ -34,8 +32,6 @@ function Seeds(props) {
 function seedCollection(props) {
 
   const {seeds, selectSeed} = props
-  console.log("In SEED COLLECTION")
-  console.log(seeds)
   let seedCollection = []
 
   for (let index = 0; index < seeds.length; index++) {

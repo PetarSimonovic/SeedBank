@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { loadGarden } from '../functions'
+import { loadGarden, calculateRewards } from '../functions'
 import api from '../api';
 import {World, Seeds} from '../gameObjects'
 
@@ -66,16 +66,13 @@ class LogIn extends Component {
           console.log(res)
             console.log("Name is " + res.data.data.name)
             if (this.state.password === res.data.data.password) {
-              window.alert(`Logged in`)
               const name = res.data.data.name
               const id = res.data.data._id
               const garden = loadGarden(res.data.data.garden)
               const world = JSON.parse(res.data.data.world)
               const seeds =  JSON.parse(res.data.data.seeds)
               const worldChosen = res.data.data.worldChosen
-              console.log("Loaded seeds")
-              console.log(seeds)
-              console.log("loaded world")
+              window.alert(`Welcome back ${name}`)
               this.props.setUser(name, id, garden, world, worldChosen, seeds)
             } else {
               window.alert(`Incorrect password`)

@@ -1,7 +1,7 @@
 import React from 'react'
 import api from '../api';
-import { WorldData} from '../gameObjects'
-import { saveGarden } from '../functions'
+import { WorldData, getBalloonData} from '../gameObjects'
+import { saveGarden  } from '../functions'
 
 
 import './App.css';
@@ -23,7 +23,8 @@ class App extends React.Component {
         garden: [],
         world: {},
         chosenWorld: false,
-        seeds: {}
+        seeds: {},
+        balloons: []
       }
       this.setUser = this.setUser.bind(this)
       this.newWorld = this.newWorld.bind(this)
@@ -42,22 +43,17 @@ class App extends React.Component {
 
     setUser(userName, id, garden, world, worldChosen, seeds) {
       console.log("SETTING USER")
-      console.log("WORLD IS")
-      console.log(world)
-      console.log("CHOSEN?")
-      console.log(worldChosen)
+      const newBalloons = getBalloonData(garden, seeds)
       this.setState({
         userName: userName,
         id: id,
         garden: garden,
         world: world,
         worldChosen: worldChosen,
-        seeds: seeds
+        seeds: seeds,
+        ballons: newBalloons
       })
-      console.log("User is " + this.state.id + " " + this.state.userName)
-      console.log(this.state.garden)
-      console.log(this.state.seeds)
-    }
+      console.log("User is " + this.state.id + " " + this.state.userName)    }
 
     newWorld() {
       const newWorld = new WorldData()
@@ -73,7 +69,6 @@ class App extends React.Component {
       saveGarden(this.state.id, [], this.state.world, true, this.state.seeds)
     }
 
-    
 
 
     render() {
