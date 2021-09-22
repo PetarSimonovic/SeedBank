@@ -22,7 +22,7 @@ function Garden(props) {
       <Suspense fallback={console.log("loading")}>
        <World sowPlant={props.sowPlant} position={[0, 0, 0]} world={props.world} />
       {props.plants}
-      <Balloon unclaimed={true} selectSeed={props.selectSeed} position={[0, 1.5, 0]}/>
+      <Balloon unclaimed={true} updateSeeds={props.updateSeeds} seeds={props.seeds} position={[0, 1.5, 0]}/>
 
      </Suspense>
      <Sun />
