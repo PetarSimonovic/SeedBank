@@ -25,7 +25,7 @@ function SeedBank(props) {
     if (seed) {
       const newPlant = createPlant(event, seed)
       setSeed(null)
-      updateSeeds()
+      updateSeeds(-1)
       setPlants( (prev) => {
         return [newPlant, ...prev]
       })
@@ -37,11 +37,11 @@ function SeedBank(props) {
     setIndex(index)
   }
 
-  const updateSeeds = () => {
+  const updateSeeds = (increment) => {
     console.log("IN UPDATE SEED")
     let updatedSeed = seeds[index]
     console.log(updatedSeed)
-    updatedSeed.quantity--
+    updatedSeed.quantity += increment
     console.log(updatedSeed)
     setSeeds(seeds =>({
       ...seeds,
@@ -62,7 +62,7 @@ function SeedBank(props) {
 
   return (
   <div className="App">
-    <Garden plants={plants} world={props.world} selectSeed={props.selectSeed} sowPlant={sowPlant} />
+    <Garden plants={plants} world={props.world} seeds={props.seeds} selectSeed={props.selectSeed} sowPlant={sowPlant} />
     {props.worldChosen ? <Seeds seeds={props.seeds} className="App-header" selectSeed={selectSeed} /> : <Worlds className="App-header" newWorld={props.newWorld} saveWorld={ props.saveWorld } />}
   </div>
   );
