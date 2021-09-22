@@ -33,16 +33,20 @@ function SeedBank(props) {
   }
 
   const selectSeed = (selectedSeed, index) => {
+    console.log("SELECTED SEED")
+    const seed = seeds[index]
+    console.log(seed)
+    console.log(seed.quantity)
+    if (seeds[index].quantity > 0) {
+    console.log("Planting allowed!")
     setSeed(selectedSeed)
     setIndex(index)
+    }
   }
 
   const updateSeeds = (increment) => {
-    console.log("IN UPDATE SEED")
     let updatedSeed = seeds[index]
-    console.log(updatedSeed)
     updatedSeed.quantity += increment
-    console.log(updatedSeed)
     setSeeds(seeds =>({
       ...seeds,
       [index]: updatedSeed
