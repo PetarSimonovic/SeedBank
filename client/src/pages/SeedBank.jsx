@@ -30,10 +30,17 @@ function SeedBank(props) {
     }
   }
 
-  const selectSeed = (selectedSeed) => {
-    console.log(selectedSeed)
+  const selectSeed = (selectedSeed, index) => {
+    console.log("IN SELECTED SEED")
+    let updatedSeed = seeds[index]
+    console.log(updatedSeed)
+    updatedSeed.quantity--
+    console.log(updatedSeed)
     setSeed(selectedSeed)
-    console.log(seed)
+    setSeeds(seeds =>({
+      ...seeds,
+      [index]: updatedSeed
+    }))
   }
 
 

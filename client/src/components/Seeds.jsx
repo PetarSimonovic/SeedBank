@@ -41,7 +41,7 @@ function seedCollection(props) {
   for (let index = 0; index < seeds.length; index++) {
     const seed = seeds[index]
     seedCollection.push(
-      <SeedButton key={createId()} onClick={(event) => selectSeed(seed.type)} selectSeedtype={seed.type} quantity={seed.quantity} >
+      <SeedButton key={createId()} onClick={(event) => selectSeed(seed.type, index)} selectSeedtype={seed.type} quantity={seed.quantity} >
       {seed.type} {seed.quantity}
       </SeedButton>
     )
