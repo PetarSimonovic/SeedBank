@@ -19,11 +19,13 @@ function SeedBank(props) {
   const [plants, setPlants] = useState(props.garden)
   const [seed, setSeed] = useState(null)
   const [seeds, setSeeds] = useState(props.seeds)
+  const [index, setIndex] = useState(null)
 
   const sowPlant = ( event ) => {
     if (seed) {
       const newPlant = createPlant(event, seed)
       setSeed(null)
+      updateSeeds()
       setPlants( (prev) => {
         return [newPlant, ...prev]
       })
@@ -31,18 +33,22 @@ function SeedBank(props) {
   }
 
   const selectSeed = (selectedSeed, index) => {
-    console.log("IN SELECTED SEED")
+    setSeed(selectedSeed)
+    setIndex(index)
+  }
+
+  const updateSeeds = () => {
+    console.log("IN UPDATE SEED")
     let updatedSeed = seeds[index]
     console.log(updatedSeed)
     updatedSeed.quantity--
     console.log(updatedSeed)
-    setSeed(selectedSeed)
     setSeeds(seeds =>({
       ...seeds,
       [index]: updatedSeed
     }))
+    setIndex(null)
   }
-
 
 
 
