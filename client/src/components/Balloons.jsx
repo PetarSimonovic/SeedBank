@@ -33,7 +33,14 @@ function createBalloons(props) {
   console.log(balloons)
   for (let index = 0; index < balloons.length; index++) {
   const balloon = balloons[index]
-  balloonCollection.push(<Balloon key={createId()} updateSeeds={updateSeeds} seeds={seeds} position={balloon.position} colour={balloon.colour} />)
+  balloonCollection.push(
+    <Balloon
+    key={createId()}
+    updateSeeds={updateSeeds}
+    seeds={seeds}
+    position={balloon.position}
+    colour={balloon.colour} />
+  )
   }
   return balloonCollection
 }
@@ -58,10 +65,10 @@ function Balloon(props) {
       onClick={handleClick}
       >
       <dodecahedronGeometry args={[0.15, 4]} />
-      <BalloonCone position={[0, -0.18, 0]}/>
+      <BalloonCone colour = {props.colour} position={[0, -0.18, 0]}/>
       <BalloonString position={[0, -0.15, 0]}/>
       <BalloonCrate position={[0, -0.5, 0]}/>
-      <meshToonMaterial color={'#db504a'} />
+      <meshToonMaterial color={props.colour} />
     </mesh>
   )
  }
@@ -95,7 +102,7 @@ function Balloon(props) {
         scale={1}
         >
         <cylinderGeometry args={[0.15, -0.01, 0.3, 16]} />
-        <meshToonMaterial color={'#db504a'} />
+        <meshToonMaterial color={props.colour} />
       </mesh>
     )
    }
@@ -112,7 +119,7 @@ function Balloon(props) {
          scale={1}
          >
          <boxGeometry args={[0.15, 0.15, 0.15]} />
-         <meshToonMaterial color={'#ffd6a5'} />
+         <meshToonMaterial color={'#7f5539'} />
        </mesh>
      )
     }
