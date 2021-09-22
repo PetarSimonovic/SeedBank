@@ -55,6 +55,17 @@ function SeedBank(props) {
     setSeedindex(null)
   }
 
+  const removeBalloon = (index) => {
+    let removedBalloon = balloons[index]
+    removedBalloon.claimed = true
+    setBalloons(
+      (prev) => {
+        return prev.filter(balloon => balloon.id !== removedBalloon.id)
+      }
+    )
+    console.log(balloons)
+  }
+
 
 
 
@@ -67,7 +78,15 @@ function SeedBank(props) {
 
   return (
   <div className="App">
-    <Garden plants={plants} balloons={balloons} world={props.world} seeds={props.seeds} selectSeed={selectSeed} updateSeeds={updateSeeds} sowPlant={sowPlant} />
+    <Garden
+    plants={plants}
+    balloons={balloons}
+    world={props.world}
+    seeds={props.seeds}
+    selectSeed={selectSeed}
+    removeBalloon={removeBalloon}
+    updateSeeds={updateSeeds}
+    sowPlant={sowPlant} />
     {props.worldChosen ? <Seeds seeds={props.seeds} className="App-header" selectSeed={selectSeed} /> : <Worlds className="App-header" newWorld={props.newWorld} saveWorld={ props.saveWorld } />}
   </div>
   );

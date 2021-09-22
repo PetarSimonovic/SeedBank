@@ -1,4 +1,4 @@
-import {sample, randomiser} from '../functions'
+import {sample, randomiser, createId} from '../functions'
 
 
 export default function getBalloons(garden, seeds) {
@@ -13,8 +13,10 @@ export default function getBalloons(garden, seeds) {
 
 class Balloon {
   constructor(seeds) {
+    this.id = createId()
     this.colour = generateColour()
     this.position = generatePosition()
+    this.claimed = false
   }
 }
 

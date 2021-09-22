@@ -28,17 +28,21 @@ function Balloons(props) {
 
 function createBalloons(props) {
   console.log("In createBalloons")
+  console.log(props.balloons.length)
   const balloonCollection = []
-  const {balloons, updateSeeds, seeds} = props
+  const {balloons, removeBalloon, updateSeeds, seeds} = props
   console.log(balloons)
   for (let index = 0; index < balloons.length; index++) {
   const balloon = balloons[index]
   balloonCollection.push(
     <Balloon
     key={createId()}
+    claimed={balloon.claimed}
     updateSeeds={updateSeeds}
+    removeBalloon={removeBalloon}
     seeds={seeds}
     position={balloon.position}
+    index={index}
     colour={balloon.colour} />
   )
   }
@@ -48,29 +52,47 @@ function createBalloons(props) {
 function Balloon(props) {
   const mesh = useRef()
   // Set up state for the hovered and active state
-  const [hovered, setHover] = useState(false)
-  const [active, setActive] = useState(false)
   // Rotate mesh every frame, this is outside of React without overhead
   // useFrame(() => (mesh.current.rotation.y += 0.002))
   const handleClick = () => {
     const seedChoice = Math.floor(Math.random() * props.seeds.length)
     props.updateSeeds(3, seedChoice)
+    props.removeBalloon(props.index)
   }
 
   return (
+    <group>
     <mesh
       {...props}
       ref={mesh}
       scale={0.8}
       onClick={handleClick}
       >
-      <dodecahedronGeometry args={[0.15, 4]} />
+      <BalloonBody colour={props.colour} />
       <BalloonCone colour = {props.colour} position={[0, -0.18, 0]}/>
       <BalloonString position={[0, -0.15, 0]}/>
       <BalloonCrate position={[0, -0.5, 0]}/>
-      <meshToonMaterial color={props.colour} />
     </mesh>
+
+      </group>
+
   )
+ }
+
+ function BalloonBody(props) {
+
+   const mesh = useRef()
+
+   return (
+     <mesh
+       {...props}
+       ref={mesh}
+       scale={1}
+       >
+   <dodecahedronGeometry args={[0.15, 4]} />
+   <meshToonMaterial color={props.colour} />
+   </mesh>
+ )
  }
 
  function BalloonString(props) {
