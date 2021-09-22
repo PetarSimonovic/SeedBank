@@ -58,6 +58,8 @@ function SeedBank(props) {
   const removeBalloon = (index) => {
     let removedBalloon = balloons[index]
     removedBalloon.claimed = true
+
+    // setBalloons: creates a new array based on the previous one, removing the initial balloon, then adds a copy of the old balloon with 'claimed' set to true
     setBalloons(
       (prev) => {
         return [prev.filter(balloon => balloon.id !== removedBalloon.id), removedBalloon]

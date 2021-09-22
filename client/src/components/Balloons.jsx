@@ -51,6 +51,8 @@ function createBalloons(props) {
 
 function Balloon(props) {
   const mesh = useRef()
+
+  useFrame((state, delta) => (mesh.current.rotation.y += 0.01))
   // Set up state for the hovered and active state
   // Rotate mesh every frame, this is outside of React without overhead
   // useFrame(() => (mesh.current.rotation.y += 0.002))
