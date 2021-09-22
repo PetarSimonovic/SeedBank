@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { WorldData, newSeeds } from '../gameObjects'
+import { setDate } from '../functions'
+
 
 import api from '../api';
 
@@ -69,7 +71,10 @@ class SignUp extends Component {
         const world = JSON.stringify(newWorld)
         const seeds = newSeeds()
         const worldChosen = false
-        const payload = { name, email, password, world, worldChosen, seeds }
+        const date = setDate()
+        const lastLogin = date.stamp
+        const payload = { name, email, password, world, worldChosen, seeds, lastLogin }
+        console.log(payload)
 
         await api.addUser(payload).then(res => {
             window.alert(`User added`)
@@ -80,7 +85,7 @@ class SignUp extends Component {
             })
             console.log("SEEDS on SIGN UP")
             console.log(seeds)
-            this.props.setUser(name, res.data.id, [], newWorld, false, seeds)
+            this.props.setUser(name, res.data.id, [], newWorld, false, seeds, lastLogin)
         })
 
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import api from '../api';
 import { WorldData } from '../gameObjects'
-import { saveGarden  } from '../functions'
+import { saveGarden, setDate } from '../functions'
 
 
 import './App.css';
@@ -24,6 +24,7 @@ class App extends React.Component {
         world: {},
         chosenWorld: false,
         seeds: {},
+        lastLogin: ""
       }
       this.setUser = this.setUser.bind(this)
       this.newWorld = this.newWorld.bind(this)
@@ -40,7 +41,7 @@ class App extends React.Component {
      }
 
 
-    setUser(userName, id, garden, world, worldChosen, seeds) {
+    setUser(userName, id, garden, world, worldChosen, seeds, lastLogin) {
       console.log("SETTING USER")
       this.setState({
         userName: userName,
@@ -49,8 +50,13 @@ class App extends React.Component {
         world: world,
         worldChosen: worldChosen,
         seeds: seeds,
+        lastLogin: lastLogin,
+        today: setDate().stamp
       })
-      console.log("User is " + this.state.id + " " + this.state.userName)    }
+      console.log("User is " + this.state.id + " " + this.state.userName)
+      console.log("Last login " + this.state.lastLogin)
+      console.log("Today " + this.state.today)
+        }
 
     newWorld() {
       const newWorld = new WorldData()

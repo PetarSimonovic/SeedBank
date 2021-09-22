@@ -77,6 +77,7 @@ updateGarden = async (req, res) => {
         user.world = body.world.world
         user.worldChosen = body.worldChosen.worldChosen
         user.seeds = body.seeds.seeds
+        user.lastLogin = body.lastLogin.lastLogin
         user
             .save()
             .then(() => {

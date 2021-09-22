@@ -1,5 +1,6 @@
 import api from '../api';
 import { WorldData } from '../gameObjects'
+import { setDate } from './'
 
 // strips out react components from the state garden array and saves plant props as an object that's easy to parse
 // Needs error handling!
@@ -11,7 +12,9 @@ export default async function saveGarden(id, plants, newWorld, chosen, savedSeed
   const world = {"world" : JSON.stringify(newWorld)}
   const seeds = {"seeds": JSON.stringify(savedSeeds)}
   const worldChosen = {"worldChosen" : chosen}
-  const payload = {garden, world, worldChosen, seeds}
+  const date = setDate()
+  const lastLogin  = { "lastLogin" : date.stamp }
+  const payload = {garden, world, worldChosen, seeds, lastLogin}
   console.log("Attempting to save garden")
   await api.updateGarden(id, payload).then(res => {
         console.log('Garden updated successfully')
