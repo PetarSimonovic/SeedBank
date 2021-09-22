@@ -3,7 +3,7 @@ import api from '../api';
 import React, { useRef, useState, useMemo, useEffect, Suspense } from "react";
 import { Canvas, useFrame, extend } from "@react-three/fiber";
 import * as THREE from "three";
-import { Grass, Plant, Camera, Sun, SkyBox, Seeds, World, Firmament, Noticeboard, SeedBox, Balloon } from '../components';
+import { Grass, Plant, Camera, Sun, SkyBox, Seeds, World, Firmament, Noticeboard, SeedBox, Balloons } from '../components';
 import { Sky, Text } from '@react-three/drei';
 import { setDate, parseGarden, saveGarden, createId } from '../functions'
 import styled from 'styled-components';
@@ -22,8 +22,7 @@ function Garden(props) {
       <Suspense fallback={console.log("loading")}>
        <World sowPlant={props.sowPlant} position={[0, 0, 0]} world={props.world} />
       {props.plants}
-      <Balloon unclaimed={true} updateSeeds={props.updateSeeds} seeds={props.seeds} position={[0, 1.5, 0]}/>
-
+      <Balloons updateSeeds={props.updateSeeds} balloons={props.balloons} seeds={props.seeds} />
      </Suspense>
      <Sun />
      <Firmament />

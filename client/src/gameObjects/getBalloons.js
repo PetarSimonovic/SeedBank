@@ -1,13 +1,14 @@
-import {sample} from '../functions'
+import {sample, randomiser} from '../functions'
 
 
-export default function getBalloonData(garden, seeds) {
+export default function getBalloons(garden, seeds) {
   console.log("CAlculating balloondata")
   let balloons = []
   // if (garden.length % 6 === 0) {
   //   console.log("Balloon incoming!")
   // }
   balloons.push(new Balloon())
+  return balloons
 }
 
 class Balloon {
@@ -36,5 +37,9 @@ function generateColour() {
 }
 
 function generatePosition() {
+  const x = {max: 2, min: -2}
+  const y = {max: 1.8, min: 1.5}
+  const z = {max: 1.8, min: -1.8}
 
+  return [randomiser(x), randomiser(y), randomiser(z)]
 }
