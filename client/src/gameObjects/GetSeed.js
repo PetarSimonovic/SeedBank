@@ -1,4 +1,3 @@
-import { GenericPlant } from './'
 
  export default function getSeed(seed) {
 

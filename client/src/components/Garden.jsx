@@ -1,14 +1,7 @@
 import '../style/App.css';
-import api from '../api';
-import React, { useRef, useState, useMemo, useEffect, Suspense } from "react";
-import { Canvas, useFrame, extend } from "@react-three/fiber";
-import * as THREE from "three";
-import { Grass, Plant, Camera, Sun, SkyBox, Seeds, World, Firmament, Noticeboard, SeedBox, Balloons } from '../components';
-import { Sky, Text } from '@react-three/drei';
-import { setDate, parseGarden, saveGarden, createId } from '../functions'
-import styled from 'styled-components';
-import { EffectComposer, BrightnessContrast, Bloom, GodRays, Pixelation } from '@react-three/postprocessing'
-import { BlurPass, BlendFunction, Resizer, KernelSize } from 'postprocessing'
+import React, { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import {  Camera, Sun, World, Firmament, Noticeboard, Balloons } from '../components';
 
 
 // Garden displays "the world", rendering the sun, the sky, the grass and plants

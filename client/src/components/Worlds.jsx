@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { Component } from 'react';
+import React from 'react';
 
 // Generates a panel that contains buttons of available Seeds
 // PROTOTYPE ONLY: need to design an interface that coould contain an indefinite number of seeds or objects

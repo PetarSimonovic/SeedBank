@@ -1,6 +1,5 @@
 import { Plant } from '../components'
 import { setDate, calculateDays } from '../functions'
-import { GenericPlant } from '../gameObjects'
 
 // Reads a saved Garden and creates an array of plants ready to render
 

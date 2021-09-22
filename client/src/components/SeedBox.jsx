@@ -1,12 +1,11 @@
 import { RoundedBox, Text } from '@react-three/drei'
-import React, { useRef, useState, useMemo, delay } from "react";
-import * as THREE from "three";
+import React, { useRef, useState } from "react";
 
 
 // Creates a button that 'clicks'
 
 function SeedBox(props) {
-  
+
   const mesh = useRef()
   const [clickScale, setClickscale] = useState(1)
 

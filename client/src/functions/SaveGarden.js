@@ -1,5 +1,4 @@
 import api from '../api';
-import { WorldData } from '../gameObjects'
 import { setDate } from './'
 
 // strips out react components from the state garden array and saves plant props as an object that's easy to parse

@@ -4,11 +4,6 @@
 import {sample, randomiser} from '../functions'
 
 
-const worldRadiusTop = 2
-const worldRadiusBottom = 1
-const worldScaler = 1.1
-const discHeight = 0.3
-const rockHeight = 0.6
 const stalactiteCount = 10
 
 export default class WorldData {

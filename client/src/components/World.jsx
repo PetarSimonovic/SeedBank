@@ -1,8 +1,6 @@
-import React, { useRef, useState, useMemo } from "react";
-import { useFrame } from "@react-three/fiber";
+import React, { useRef } from "react";
 import { createId } from '../functions'
 import { Grass } from './'
-import * as THREE from "three";
 
 
 // The plane on which plants grow

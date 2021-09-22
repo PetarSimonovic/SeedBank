@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { Component } from 'react';
+import React from 'react';
 import { createId } from '../functions'
 
 // Generates a panel that contains buttons of available Seeds
@@ -20,7 +20,6 @@ const Panel = styled.div`
 
 
 function Seeds(props) {
-  const seeds = props.seeds
 
   return (
     <Panel>

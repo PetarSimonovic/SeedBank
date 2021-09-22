@@ -1,8 +1,4 @@
-import React, { useRef, useState, useMemo } from "react";
-import { useFrame } from "@react-three/fiber";
-import { createId } from '../functions'
 import { Billboard, Text } from '@react-three/drei'
-import * as THREE from "three";
 
 
 function Noticeboard(props) {

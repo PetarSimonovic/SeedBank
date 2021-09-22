@@ -1,10 +1,6 @@
-import React, { useRef, useState, useMemo } from "react";
+import React, { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { SeedBox } from './'
 import { createId } from '../functions'
-
-
-import * as THREE from "three";
 
 function Balloons(props) {
   // This reference will give us direct access to the mesh

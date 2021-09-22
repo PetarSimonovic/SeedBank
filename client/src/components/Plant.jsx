@@ -1,5 +1,4 @@
-import React, { useRef, useState, useMemo } from "react";
-import { useFrame, useThree } from "@react-three/fiber";
+import React, { useRef } from "react";
 import { createId } from '../functions'
 import { getSeed } from '../gameObjects'
 
@@ -7,9 +6,6 @@ import { getSeed } from '../gameObjects'
 // Creates a Plant based on the props that it receives
 
 function Plant(props) {
-  // Retrieve the x, y and z position of the plant
-
-  const {x, y, z} = props
 
   const mesh = useRef()
 

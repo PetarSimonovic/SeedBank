@@ -1,5 +1,4 @@
 import React from 'react'
-import api from '../api';
 import { WorldData } from '../gameObjects'
 import { saveGarden, setDate } from '../functions'
 
@@ -7,8 +6,8 @@ import { saveGarden, setDate } from '../functions'
 import './App.css';
 
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { NavBar, SignUpButton } from '../components'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { NavBar } from '../components'
 import { SignUp, LogIn, SeedBank } from '../pages'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
