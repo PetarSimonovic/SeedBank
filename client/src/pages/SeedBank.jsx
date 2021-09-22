@@ -16,15 +16,15 @@ import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from 'react-post
 function SeedBank(props) {
 
 
-  const [plants, setPlants] = useState(props.garden)
-  const [seed, setSeed] = useState(null)
-  const [seeds, setSeeds] = useState(props.seeds)
-  const [index, setIndex] = useState(null)
+  const [plants, setPlants] = useState(props.garden) //  an array of plant components
+  const [chosenSeed, setChosenseed] = useState(null) // contains the type of seed if chosen, or null if no seed is currently selected
+  const [seeds, setSeeds] = useState(props.seeds) //  an array of the player's available seeds
+  const [seedIndex, setSeedindex] = useState(null) //  the index within seeds of the chosenSeed
 
   const sowPlant = ( event ) => {
-    if (seed) {
-      const newPlant = createPlant(event, seed)
-      setSeed(null)
+    if (chosenSeed) {
+      const newPlant = createPlant(event, chosenSeed)
+      setChosenseed(null)
       updateSeeds(-1)
       setPlants( (prev) => {
         return [newPlant, ...prev]
@@ -33,25 +33,21 @@ function SeedBank(props) {
   }
 
   const selectSeed = (selectedSeed, index) => {
-    console.log("SELECTED SEED")
     const seed = seeds[index]
-    console.log(seed)
-    console.log(seed.quantity)
     if (seeds[index].quantity > 0) {
-    console.log("Planting allowed!")
-    setSeed(selectedSeed)
-    setIndex(index)
+    setChosenseed(selectedSeed)
+    setSeedindex(index)
     }
   }
 
   const updateSeeds = (increment) => {
-    let updatedSeed = seeds[index]
+    let updatedSeed = seeds[seedIndex]
     updatedSeed.quantity += increment
     setSeeds(seeds =>({
       ...seeds,
-      [index]: updatedSeed
+      [seedIndex]: updatedSeed
     }))
-    setIndex(null)
+    setSeedindex(null)
   }
 
 

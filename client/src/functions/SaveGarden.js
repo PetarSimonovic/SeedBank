@@ -12,15 +12,10 @@ export default async function saveGarden(id, plants, newWorld, chosen, savedSeed
   const seeds = {"seeds": JSON.stringify(savedSeeds)}
   const worldChosen = {"worldChosen" : chosen}
   const payload = {garden, world, worldChosen, seeds}
-  console.log("PAYLOAD")
-  console.log(payload)
-  console.log(worldChosen)
   console.log("Attempting to save garden")
   await api.updateGarden(id, payload).then(res => {
         console.log('Garden updated successfully')
     })
-  console.log("SAVED GARDEN")
-  console.log(savedGarden)
 }
 
 function extractPlants(plants) {
