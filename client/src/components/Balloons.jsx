@@ -74,7 +74,7 @@ function Balloon(props) {
       <BalloonBody colour={props.colour} />
       <BalloonCone colour = {props.colour} position={[0, -0.18, 0]}/>
       <BalloonString position={[0, -0.15, 0]}/>
-      <BalloonCrate position={[0, -0.5, 0]}/>
+      <BalloonCrate position={[0, -0.48, 0]}/>
     </mesh>
 
       </group>
@@ -92,7 +92,7 @@ function Balloon(props) {
        ref={mesh}
        scale={1}
        >
-   <dodecahedronGeometry args={[0.15, 4]} />
+   <dodecahedronGeometry args={[0.153, 8]} />
    <meshToonMaterial color={props.colour} />
    </mesh>
  )

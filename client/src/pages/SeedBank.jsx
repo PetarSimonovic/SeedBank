@@ -71,7 +71,7 @@ function SeedBank(props) {
     console.log("FivePlants")
     console.log(fivePlants)
     console.log("Achievement Count")
-    const achievementCount = seeds.length / 5 // how many multuples of five?
+    const achievementCount = plants.length / 5 // how many multuples of five?
     const startingSeeds = 2 // offset for the starting seeds
     console.log(achievementCount)
     console.log(achievementCount + startingSeeds)
