@@ -92,12 +92,12 @@ function SeedBank(props) {
     plants={plants}
     balloons={balloons}
     world={props.world}
-    seeds={props.seeds}
+    seeds={seeds}
     selectSeed={selectSeed}
     removeBalloon={removeBalloon}
     updateSeeds={updateSeeds}
     sowPlant={sowPlant} />
-    {props.worldChosen ? <Seeds seeds={props.seeds} className="App-header" selectSeed={selectSeed} /> : <Worlds className="App-header" newWorld={props.newWorld} saveWorld={ props.saveWorld } />}
+    {props.worldChosen ? <Seeds seeds={seeds} className="App-header" selectSeed={selectSeed} /> : <Worlds className="App-header" newWorld={props.newWorld} saveWorld={ props.saveWorld } />}
   </div>
   );
 }
