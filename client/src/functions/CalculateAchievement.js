@@ -1,4 +1,7 @@
 export default function calculateAchievement(seeds) {
+  if (seeds.length === seedBank.length) {
+    return seeds
+  }
   console.log(seeds)
   let duplicate = true
   let newSeed = {}
@@ -8,7 +11,7 @@ export default function calculateAchievement(seeds) {
   }
   console.log("Chosen seed is")
   console.log(newSeed)
-  return newSeed
+  return updateSeeds(seeds, newSeed)
 }
 
 
@@ -28,6 +31,25 @@ function checkDuplicate(newSeed, seeds) {
   return false
 
 }
+
+function updateSeeds(seeds, newSeed) {
+  const updatedSeeds = []
+  console.log("In updateSeeds")
+  console.log(seeds)
+  console.log("SEEDS LENGTH")
+  console.log(seeds.length)
+  for (let index = 0; index < seeds.length; index++) {
+    console.log("In loop!")
+    const seed = seeds[index]
+    console.log("Pushing")
+    console.log(seed)
+    updatedSeeds.push(seed)
+    console.log(updatedSeeds)
+  }
+  updatedSeeds.push(newSeed)
+  return updatedSeeds
+}
+
 
 const seedBank = [
   {type: "generic_plant", quantity: 3},

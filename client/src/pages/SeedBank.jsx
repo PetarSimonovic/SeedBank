@@ -16,6 +16,9 @@ function SeedBank(props) {
   const [seedIndex, setSeedindex] = useState(null) //  the index within seeds of the chosenSeed
   const [balloons, setBalloons] = useState(getBalloons(plants, seeds, props.lastLogin, props.today))
 
+  console.log("SEEDS IN SEEDBANK IS")
+  console.log(seeds)
+
 
   const sowPlant = ( event ) => {
     if (chosenSeed) {
@@ -37,15 +40,11 @@ function SeedBank(props) {
   }
 
   const updateSeeds = (increment, index = seedIndex) => {
-    let updatedSeed = seeds[index]
-    console.log(updatedSeed)
-    updatedSeed.quantity += increment
-    setSeeds(prev =>({
-      ...prev,
-      [index]: updatedSeed
-    }))
-    console.log("SEEDS")
+    console.log("UPDATING SEEDS")
     console.log(seeds)
+    const updatedSeeds = [...seeds]
+    updatedSeeds[index].quantity += increment
+    setSeeds(updatedSeeds)
     setSeedindex(null)
   }
 
@@ -64,20 +63,25 @@ function SeedBank(props) {
   const checkAchievements = () => {
     console.log("Checking achievements")
     const fivePlants = plants.length % 5
+    console.log(seeds)
     console.log(fivePlants)
-    if (fivePlants === 0 && plants.length) {
+    if (fivePlants === 0 && plants.length > 0) {
       console.log("Achievement!")
-      const newSeed = calculateAchievement(seeds)
-      console.log(newSeed.type + " " + "Unlocked!")
-      console.log(seeds)
+      const newSeeds = calculateAchievement(seeds)
+      console.log("New seeds is")
+      console.log(newSeeds)
+      setSeeds(newSeeds)
+
     }
+    console.log("SEEDS is")
+    console.log(seeds)
   }
 
 
   useEffect(() => {
     //
     console.log("Calling saveGarden")
-    saveGarden(props.id, plants, props.world, props.worldChosen, props.seeds)
+    saveGarden(props.id, plants, props.world, props.worldChosen, seeds)
     checkAchievements()
   });
 
