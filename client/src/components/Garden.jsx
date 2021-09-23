@@ -23,7 +23,7 @@ function Garden(props) {
      </Suspense>
      <Sun />
      <Firmament />
-     <Noticeboard />
+     <Noticeboard today={props.today}/>
     </Canvas>
   )
 

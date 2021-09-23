@@ -1,7 +1,9 @@
 import { Billboard, Text } from '@react-three/drei'
+import { setDate } from '../functions'
 
 
 function Noticeboard(props) {
+  const date = setDate()
 
 return (
 
@@ -14,7 +16,7 @@ return (
     lockY={false}
     lockZ={false} // Lock the rotation on the z axis (default=false)
     >
-    <Text fontSize={0.5} color={"black"}>SeedBank</Text>
+    <Text fontSize={0.5} color={"#857c8d"}>{date.day} {date.month} {date.year}</Text>
     </Billboard>
 )
 }

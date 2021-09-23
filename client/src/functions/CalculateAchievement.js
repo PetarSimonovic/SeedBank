@@ -1,17 +1,20 @@
+
 export default function calculateAchievement(seeds) {
+  let duplicate = true
+  let unlock = true
+  let newSeed = {}
   if (seeds.length === seedBank.length) {
     return seeds
-  }
-  console.log(seeds)
-  let duplicate = true
-  let newSeed = {}
+    // newSeed = sample(seedBank)
+    // console.log("FULL BANK")
+    // unlock = false
+  } else {
   while (duplicate) {
     newSeed = sample(seedBank)
     duplicate = checkDuplicate(newSeed, seeds)
   }
-  console.log("Chosen seed is")
-  console.log(newSeed)
-  return updateSeeds(seeds, newSeed)
+}
+  return updateSeeds(seeds, newSeed, unlock)
 }
 
 
@@ -23,8 +26,6 @@ function checkDuplicate(newSeed, seeds) {
   for (let index = 0; index < seeds.length; index++) {
     const seed = seeds[index]
     if (seed.type === newSeed.type) {
-      console.log(seed.type + " " + newSeed.type )
-      console.log("Duplicate " + seed.type + " " + newSeed.type)
       return true
     }
   }
@@ -32,28 +33,27 @@ function checkDuplicate(newSeed, seeds) {
 
 }
 
-function updateSeeds(seeds, newSeed) {
+function updateSeeds(seeds, newSeed, unlock) {
   const updatedSeeds = []
-  console.log("In updateSeeds")
-  console.log(seeds)
-  console.log("SEEDS LENGTH")
-  console.log(seeds.length)
   for (let index = 0; index < seeds.length; index++) {
-    console.log("In loop!")
     const seed = seeds[index]
-    console.log("Pushing")
-    console.log(seed)
+    if (seed.type === newSeed.type) {
+      console.log(newSeed)
+      seed.quantity += newSeed.quantity
+      console.log(seed)
+    }
     updatedSeeds.push(seed)
-    console.log(updatedSeeds)
   }
-  updatedSeeds.push(newSeed)
+  if (unlock) { updatedSeeds.push(newSeed) }
   return updatedSeeds
 }
-
 
 const seedBank = [
   {type: "generic_plant", quantity: 3},
   {type: "tulip", quantity: 3},
   {type: "sunflower", quantity: 3},
-  {type: "crocus", quantity: 3}
+  {type: "crocus", quantity: 3},
+  {type: "snowdrop", quantity: 3},
+  {type: "rose", quantity: 3},
+  {type: "venusFlyTrap", quantity: 3}
 ]
