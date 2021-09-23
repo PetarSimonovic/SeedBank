@@ -1,4 +1,4 @@
-import calculateAchievement from './CalculateAchievement'
+import calculateAchievement from './calculateAchievement'
 import calculateDays from './CalculateDays'
 import createId from './CreateId'
 import createPlant from './CreatePlant'

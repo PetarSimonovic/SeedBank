@@ -7,6 +7,10 @@ import { getBalloons, Balloon } from '../gameObjects'
 // Main page.
 // Displays the Garden and the Seed panel, handles interactions between them and updates the user's garden/seedbank
 
+
+// REFACTOR: avoid assiging state from index as state here (eg useState(props.seeds) - leads to confusion and makes it harder to troubleshoot
+// This affects garden and seeds currently, which are loaded via login, passed to state in index, then passed here where they are updated and saved
+
 function SeedBank(props) {
 
 
@@ -15,6 +19,7 @@ function SeedBank(props) {
   const [seeds, setSeeds] = useState(props.seeds) //  an array of the player's available seeds
   const [seedIndex, setSeedindex] = useState(null) //  the index within seeds of the chosenSeed
   const [balloons, setBalloons] = useState(getBalloons(plants, seeds, props.lastLogin, props.today))
+
 
   console.log("SEEDS IN SEEDBANK IS")
   console.log(seeds)
@@ -63,9 +68,15 @@ function SeedBank(props) {
   const checkAchievements = () => {
     console.log("Checking achievements")
     const fivePlants = plants.length % 5
-    console.log(seeds)
+    console.log("FivePlants")
     console.log(fivePlants)
-    if (fivePlants === 0 && plants.length > 0) {
+    console.log("Achievement Count")
+    const achievementCount = seeds.length / 5 // how many multuples of five?
+    const startingSeeds = 2 // offset for the starting seeds
+    console.log(achievementCount)
+    console.log(achievementCount + startingSeeds)
+    console.log(seeds.length)
+    if (fivePlants === 0 && plants.length > 0 && seeds.length < (achievementCount + startingSeeds)) {
       console.log("Achievement!")
       const newSeeds = calculateAchievement(seeds)
       console.log("New seeds is")
