@@ -4,6 +4,7 @@ import { Plant } from '../components'
 // Creates a new Plant, with a uniqueID, growth initialised at 0 and a new date
 
 export default function createPlant(event, seed) {
+  console.log("In createPlant")
 
   const position = [event.point.x, event.point.y, event.point.z]
   const key = createId()

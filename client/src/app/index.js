@@ -22,7 +22,7 @@ class App extends React.Component {
         garden: [],
         world: {},
         chosenWorld: false,
-        seeds: {},
+        seeds: [],
         lastLogin: ""
       }
       this.setUser = this.setUser.bind(this)
@@ -55,6 +55,8 @@ class App extends React.Component {
       console.log("User is " + this.state.id + " " + this.state.userName)
       console.log("Last login " + this.state.lastLogin)
       console.log("Today " + this.state.today)
+      console.log("Seeds is")
+      console.log(this.state.seeds)
         }
 
     newWorld() {

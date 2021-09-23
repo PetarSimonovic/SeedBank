@@ -1,15 +1,17 @@
+import calculateAchievement from './CalculateAchievement'
 import calculateDays from './CalculateDays'
-import createId from './CreateId.js'
-import createPlant from './CreatePlant.js'
-import loadGarden from './LoadGarden.js'
-import sample from './Sample.js'
-import saveGarden from './SaveGarden.js'
+import createId from './CreateId'
+import createPlant from './CreatePlant'
+import loadGarden from './LoadGarden'
+import sample from './Sample'
+import saveGarden from './SaveGarden'
 import setDate from './SetDate'
-import randomiser from './Randomiser.js'
+import randomiser from './Randomiser'
 
 
 export {
   calculateDays,
+  calculateAchievement,
   createId,
   createPlant,
   loadGarden,

@@ -1,8 +1,8 @@
 import '../style/App.css';
 import React, { useState, useEffect } from "react";
 import { Seeds, Garden, Worlds } from '../components';
-import { saveGarden, createPlant } from '../functions'
-import { getBalloons } from '../gameObjects'
+import { calculateAchievement, saveGarden, createPlant } from '../functions'
+import { getBalloons, Balloon } from '../gameObjects'
 
 // Main page.
 // Displays the Garden and the Seed panel, handles interactions between them and updates the user's garden/seedbank
@@ -11,7 +11,7 @@ function SeedBank(props) {
 
 
   const [plants, setPlants] = useState(props.garden) //  an array of plant components
-  const [chosenSeed, setChosenseed] = useState(null) // contains the type of seed if chosen, or null if no seed is currently selected
+  const [chosenSeed, setChosenseed] = useState("") // contains the type of seed if chosen, or null if no seed is currently selected
   const [seeds, setSeeds] = useState(props.seeds) //  an array of the player's available seeds
   const [seedIndex, setSeedindex] = useState(null) //  the index within seeds of the chosenSeed
   const [balloons, setBalloons] = useState(getBalloons(plants, seeds, props.lastLogin, props.today))
@@ -20,11 +20,11 @@ function SeedBank(props) {
   const sowPlant = ( event ) => {
     if (chosenSeed) {
       const newPlant = createPlant(event, chosenSeed)
-      setChosenseed(null)
-      updateSeeds(-1)
+      setChosenseed("")
       setPlants( (prev) => {
         return [newPlant, ...prev]
       })
+      updateSeeds(-1)
     }
   }
 
@@ -37,14 +37,15 @@ function SeedBank(props) {
   }
 
   const updateSeeds = (increment, index = seedIndex) => {
-    console.log("In update seed")
     let updatedSeed = seeds[index]
     console.log(updatedSeed)
     updatedSeed.quantity += increment
-    setSeeds(seeds =>({
-      ...seeds,
+    setSeeds(prev =>({
+      ...prev,
       [index]: updatedSeed
     }))
+    console.log("SEEDS")
+    console.log(seeds)
     setSeedindex(null)
   }
 
@@ -60,13 +61,24 @@ function SeedBank(props) {
     console.log(balloons)
   }
 
-
+  const checkAchievements = () => {
+    console.log("Checking achievements")
+    const fivePlants = plants.length % 5
+    console.log(fivePlants)
+    if (fivePlants === 0 && plants.length) {
+      console.log("Achievement!")
+      const newSeed = calculateAchievement(seeds)
+      console.log(newSeed.type + " " + "Unlocked!")
+      console.log(seeds)
+    }
+  }
 
 
   useEffect(() => {
     //
     console.log("Calling saveGarden")
     saveGarden(props.id, plants, props.world, props.worldChosen, props.seeds)
+    checkAchievements()
   });
 
 

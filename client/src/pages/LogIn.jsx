@@ -64,7 +64,7 @@ class LogIn extends Component {
               const id = res.data.data._id
               const garden = loadGarden(res.data.data.garden)
               const world = JSON.parse(res.data.data.world)
-              const seeds =  JSON.parse(res.data.data.seeds)
+              const seeds =  res.data.data.seeds
               const worldChosen = res.data.data.worldChosen
               const lastLogin = res.data.data.lastLogin
 
