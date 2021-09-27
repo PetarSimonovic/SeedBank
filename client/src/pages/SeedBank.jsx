@@ -4,7 +4,7 @@ import { Seeds, Garden, Worlds } from '../components';
 import { calculateAchievement, saveGarden, createPlant } from '../functions'
 import { getBalloons, Balloon } from '../gameObjects'
 import { Canvas } from "@react-three/fiber";
-import {  Camera, Sun, World, Firmament, Noticeboard, Balloons, SeedBox } from '../components';
+import {  Camera, Sun, World, Firmament, Noticeboard, Balloons, SeedBox, IntroBalloons } from '../components';
 
 
 
@@ -103,16 +103,6 @@ function SeedBank(props) {
       world={props.world}
       seeds={seeds}
        />
-       <SeedBox
-        seeds={seeds}
-        chosenSeed={chosenSeed}
-        seedList={seedList}
-        position={[-1, -1, 1.9]}
-        selectSeed={selectSeed}
-        chosenSeed={chosenSeed}
-        toggleSeeds={toggleSeeds}
-         />
-
       {plants}
       <Balloons
       removeBalloon={removeBalloon}
@@ -123,8 +113,9 @@ function SeedBank(props) {
       <Firmament />
       <Noticeboard today={props.today}/>
      </Suspense>
+     {props.worldChosen ? <SeedBox seeds={seeds} chosenSeed={chosenSeed} seedList={seedList} position={[-1, -1, 1.9]} selectSeed={selectSeed} chosenSeed={chosenSeed} toggleSeeds={toggleSeeds} /> : < IntroBalloons saveWorld={props.saveWorld} newWorld={props.newWorld} /> }
     </Canvas>
-    {props.worldChosen ? <Seeds chosenSeed={chosenSeed} /> : <Worlds className="App-header" newWorld={props.newWorld} saveWorld={ props.saveWorld } />}
+
   </div>
   );
 }

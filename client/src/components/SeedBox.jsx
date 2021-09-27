@@ -1,4 +1,4 @@
-import { RoundedBox, Text } from '@react-three/drei'
+import { RoundedBox, Text, Billboard } from '@react-three/drei'
 import React, { useRef, useState, useEffect } from "react";
 import { createId } from '../functions'
 
@@ -102,6 +102,11 @@ function SeedText(props) {
         {...props}
         ref={mesh}
         >
+        <Billboard
+        follow={true}
+        lockX={false}
+        lockY={false}
+        lockZ={false} >
         < Text
         fontSize={0.05}
         onClick={(event) => handleClick(event)}
@@ -113,6 +118,7 @@ function SeedText(props) {
           seed: {seed.type} {'\n'}
           quantity: {seed.quantity}
         </ Text>
+        </ Billboard>
       </mesh>
       )
     }
@@ -125,6 +131,11 @@ function NoSeedText(props) {
             {...props}
             ref={mesh}
             >
+            <Billboard
+            follow={true}
+            lockX={false}
+            lockY={false}
+            lockZ={false} >
             < Text
             fontSize={0.05}
             position={[0.5, props.index/4, 0]}
@@ -134,6 +145,7 @@ function NoSeedText(props) {
             rotation={[0, 0, 0]} >
               No seeds available
             </ Text>
+            </Billboard>
           </mesh>
         )
   }

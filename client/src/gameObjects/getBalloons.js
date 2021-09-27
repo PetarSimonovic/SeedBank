@@ -4,7 +4,6 @@ import { Balloon } from './'
 
 export default function getBalloons(garden, seeds, login, today) {
   const dateDifference = calculateDays(login, today)
-  console.log(dateDifference)
   let balloons = []
   // if (garden.length % 6 === 0) {
   //   console.log("Balloon incoming!")
