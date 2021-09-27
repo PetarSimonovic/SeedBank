@@ -37,12 +37,12 @@ function SeedBank(props) {
   }
 
   const selectSeed = (selectedSeed, index) => {
-    console.log("In selectSeed")
-    console.log(selectedSeed)
     const seed = seeds[index]
     if (seeds[index].quantity > 0) {
-    setChosenseed(selectedSeed)
-    setSeedindex(index)
+      console.log("In selectSeed")
+      console.log(selectedSeed)
+      setChosenseed(selectedSeed)
+      setSeedindex(index)
     }
   }
 
