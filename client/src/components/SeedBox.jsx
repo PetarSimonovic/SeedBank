@@ -46,12 +46,30 @@ function seedSelectors(props, seedSelect) {
   let seedSelectors = []
   for (let index = 0; index < props.seeds.length; index++) {
     let seed = props.seeds[index]
-    seedSelectors.push(  <Text fontSize={0.05} position={[0.5, index/4, 0]} outlineWidth={0.04} outlineColor="#b1b5c8" color="#293241" rotation={[0, 0, 0]}>
-      seed: {seed.type} {'\n'}
-      quantity: {seed.quantity}
-      </Text>)
+    seedSelectors.push( <SeedText seed={seed} index={index} />)
   }
   return seedSelectors
 }
+
+function SeedText(props) {
+  const seed = props.seed
+  const mesh = useRef()
+
+  const handleClick = (event) => {
+    event.stopPropagation()
+  }
+
+  return (
+      <mesh
+        {...props}
+        ref={mesh}
+        >
+        < Text fontSize={0.05} position={[0.5, props.index/4, 0]} outlineWidth={0.04} outlineColor="#b1b5c8" color="#293241" rotation={[0, 0, 0]} >
+          seed: {seed.type} {'\n'}
+          quantity: {seed.quantity}
+        </ Text>
+      </mesh>
+      )
+    }
 
 export default SeedBox
