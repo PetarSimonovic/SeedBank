@@ -25,10 +25,6 @@ function SeedBank(props) {
   const [balloons, setBalloons] = useState(getBalloons(plants, seeds, props.lastLogin, props.today))
 
 
-  console.log("SEEDS IN SEEDBANK IS")
-  console.log(seeds)
-
-
   const sowPlant = ( event ) => {
     if (chosenSeed) {
       const newPlant = createPlant(event, chosenSeed)
@@ -41,6 +37,8 @@ function SeedBank(props) {
   }
 
   const selectSeed = (selectedSeed, index) => {
+    console.log("In selectSeed")
+    console.log(selectedSeed)
     const seed = seeds[index]
     if (seeds[index].quantity > 0) {
     setChosenseed(selectedSeed)
@@ -101,11 +99,12 @@ function SeedBank(props) {
       <Camera />
       <Suspense fallback={console.log("loading")}>
        <World
-       sowPlant={props.sowPlant}
+       sowPlant={sowPlant}
        position={[0, 0, 0]}
        world={props.world}
        seeds={seeds}
-       selectSeed={selectSeed} />
+       selectSeed={selectSeed}
+       chosenSeed={chosenSeed} />
       {plants}
       <Balloons
       removeBalloon={removeBalloon}

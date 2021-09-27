@@ -84,7 +84,7 @@ function SeedBoxStalactite(props) {
       >
       <cylinderGeometry args={[0.2, 0.01, 0.5, 12]} />
       <meshToonMaterial color={'#6c757d'}  />
-      <SeedBox seeds={props.seeds} position={[0, 0.1, 0]} />
+      <SeedBox selectSeed={props.selectSeed} chosenSeed={props.chosenSeed} seeds={props.seeds} position={[0, 0.1, 0]} />
     </mesh>
     </group>
   )
