@@ -25,10 +25,10 @@ return (
   scale={clickScale}
   >
   <group>
-  <RoundedBox args={[0.5, 0.5, 0.5]} radius={0.05} smoothness={4} {...props}>
-  <meshToonMaterial attach="material" color="#7f5539" />
+  <RoundedBox args={[0.2, 0.2, 0.2]} radius={0.05} smoothness={4} {...props}>
+  <meshToonMaterial attach="material" color="#212529" />
   </RoundedBox>
-  <Text position={[0, 0.46, 0]} color="black" rotation={[4.713, 0, 0]}> Seeds </Text>
+  <Text position={[0, 0.4, 0]} outlineWidth={0.04} outlineColor="#b1b5c8" color="#293241" rotation={[0, 0, 0]}> Seeds </Text>
   </group>
 
   </mesh>

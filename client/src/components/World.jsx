@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { createId } from '../functions'
-import { Grass } from './'
+import { Grass, SeedBox } from './'
 
 
 // The plane on which plants grow
@@ -37,6 +37,7 @@ function createStalactites(props) {
     createdStalactites.push( <Stalactite key={createId()} sowPlant={props.sowPlant} args={stalactite.geometry} position={stalactite.position} colour={stalactite.colour} />)
   }
 
+  createdStalactites.push( <SeedBoxStalactite key={createId()} position={[1, -1, 1]} />)
   return createdStalactites
 }
 
@@ -80,7 +81,8 @@ function SeedBoxStalactite(props) {
       onClick={(event) => handleClick(event)}
       >
       <cylinderGeometry args={[0.2, 0.01, 0.5, 12]} />
-      <meshToonMaterial color={'#FF0000'}  />
+      <meshToonMaterial color={'#6c757d'}  />
+      <SeedBox position={[0, 0.1, 0]} />
     </mesh>
     </group>
   )

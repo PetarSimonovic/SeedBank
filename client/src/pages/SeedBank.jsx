@@ -107,6 +107,8 @@ function SeedBank(props) {
     selectSeed={selectSeed}
     removeBalloon={removeBalloon}
     updateSeeds={updateSeeds}
+    seeds={seeds}
+    selectSeed={selectSeed}
     sowPlant={sowPlant} />
     {props.worldChosen ? <Seeds seeds={seeds} className="App-header" selectSeed={selectSeed} /> : <Worlds className="App-header" newWorld={props.newWorld} saveWorld={ props.saveWorld } />}
   </div>
