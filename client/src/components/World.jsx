@@ -29,6 +29,8 @@ function World(props) {
 }
 
 function createStalactites(props) {
+  console.log("SEEDS in stalactites")
+  console.log(props.seeds)
   const world = props.world
   const createdStalactites = []
 
@@ -37,7 +39,7 @@ function createStalactites(props) {
     createdStalactites.push( <Stalactite key={createId()} sowPlant={props.sowPlant} args={stalactite.geometry} position={stalactite.position} colour={stalactite.colour} />)
   }
 
-  createdStalactites.push( <SeedBoxStalactite key={createId()} position={[1, -1, 1]} />)
+  createdStalactites.push( <SeedBoxStalactite key={createId()} seeds={props.seeds} selectSeed={props.selectSeed} position={[1, -1, 1]} />)
   return createdStalactites
 }
 
@@ -82,7 +84,7 @@ function SeedBoxStalactite(props) {
       >
       <cylinderGeometry args={[0.2, 0.01, 0.5, 12]} />
       <meshToonMaterial color={'#6c757d'}  />
-      <SeedBox position={[0, 0.1, 0]} />
+      <SeedBox seeds={props.seeds} position={[0, 0.1, 0]} />
     </mesh>
     </group>
   )

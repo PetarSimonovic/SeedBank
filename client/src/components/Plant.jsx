@@ -42,11 +42,7 @@ function Plant(props) {
 
 function buildPlant(props) {
 
-  console.log("Plant props")
   const [x, y, z] = props.position
-  console.log(x)
-  console.log(y)
-  console.log(z)
   const {bloom, leafColour, stemColour, flowerColour} = getSeed(props.type)
   let growth = props.growth
 

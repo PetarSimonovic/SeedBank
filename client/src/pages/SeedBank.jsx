@@ -1,8 +1,12 @@
 import '../style/App.css';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { Seeds, Garden, Worlds } from '../components';
 import { calculateAchievement, saveGarden, createPlant } from '../functions'
 import { getBalloons, Balloon } from '../gameObjects'
+import { Canvas } from "@react-three/fiber";
+import {  Camera, Sun, World, Firmament, Noticeboard, Balloons } from '../components';
+
+
 
 // Main page.
 // Displays the Garden and the Seed panel, handles interactions between them and updates the user's garden/seedbank
@@ -66,11 +70,7 @@ function SeedBank(props) {
   }
 
   const checkAchievements = () => {
-    console.log("Checking achievements")
     const fivePlants = plants.length % 5
-    console.log("FivePlants")
-    console.log(fivePlants)
-    console.log("Achievement Count")
     const achievementCount = plants.length / 5 // how many multuples of five?
     const startingSeeds = 2 // offset for the starting seeds
     console.log(achievementCount)
@@ -84,8 +84,6 @@ function SeedBank(props) {
       setSeeds(newSeeds)
 
     }
-    console.log("SEEDS is")
-    console.log(seeds)
   }
 
 
@@ -99,17 +97,26 @@ function SeedBank(props) {
 
   return (
   <div className="App">
-    <Garden
-    plants={plants}
-    balloons={balloons}
-    world={props.world}
-    seeds={seeds}
-    selectSeed={selectSeed}
-    removeBalloon={removeBalloon}
-    updateSeeds={updateSeeds}
-    seeds={seeds}
-    selectSeed={selectSeed}
-    sowPlant={sowPlant} />
+    <Canvas id="canvas" camera={{ position: [0, 2, 3.5], lookat: [0, 0, 0] }}>
+      <Camera />
+      <Suspense fallback={console.log("loading")}>
+       <World
+       sowPlant={props.sowPlant}
+       position={[0, 0, 0]}
+       world={props.world}
+       seeds={seeds}
+       selectSeed={selectSeed} />
+      {plants}
+      <Balloons
+      removeBalloon={removeBalloon}
+      updateSeeds={updateSeeds}
+      balloons={balloons}
+      seeds={seeds} />
+      <Sun />
+      <Firmament />
+      <Noticeboard today={props.today}/>
+     </Suspense>
+    </Canvas>
     {props.worldChosen ? <Seeds seeds={seeds} className="App-header" selectSeed={selectSeed} /> : <Worlds className="App-header" newWorld={props.newWorld} saveWorld={ props.saveWorld } />}
   </div>
   );
