@@ -9,8 +9,6 @@ const selectedSeedTextColours = {type: "#b1b5c8", outline: "#293241"}
 
 function SeedBox(props) {
 
-  console.log("PROPS IN SEEDBOX")
-  console.log(props)
   const mesh = useRef()
 
 
@@ -41,13 +39,16 @@ function seedSelectors(props) {
     return []
   }
   let seedSelectors = []
+  let textPosition = 0
   for (let index = 0; index < props.seeds.length; index++) {
     console.log("Generating seedselectors")
+    console.log("INDEX " + index)
     let seed = props.seeds[index]
     if (seed.quantity === 0) { continue }
+    textPosition++
     let colours = {}
     seed.type === props.chosenSeed ? colours = selectedSeedTextColours : colours = seedTextColours
-    seedSelectors.push( <SeedText selectSeed={props.selectSeed} seed={seed} colours={colours} index={index} position={[0, 0, 0]} />)
+    seedSelectors.push( <SeedText selectSeed={props.selectSeed} seed={seed} colours={colours} index={index} textPosition={textPosition} position={[0, 0, 0]} />)
   }
   if (seedSelectors.length === 0) {
     seedSelectors.push( <NoSeedText colours={seedTextColours} index={1} />)
@@ -110,7 +111,7 @@ function SeedText(props) {
         < Text
         fontSize={0.05}
         onClick={(event) => handleClick(event)}
-        position={[0.5, props.index/4, 0]}
+        position={[0.5, props.textPosition/4, 0]}
         outlineWidth={0.04}
         outlineColor={props.colours.outline}
         color={props.colours.type}

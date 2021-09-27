@@ -9,6 +9,7 @@ export default function getBalloons(garden, seeds, login, today) {
   //   console.log("Balloon incoming!")
   // }
   if (calculateDays(login, today) > 0 ) {
+    console.log("BALLOON COMING!")
     balloons.push(new Balloon())
 }
 

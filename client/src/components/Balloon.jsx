@@ -40,7 +40,7 @@ function Balloon(props) {
       lockX={false}
       lockY={false}
       lockZ={false} >
-      <Text position={[0, -0.7, 0]} fontSize={0.09} outlineWidth={0.04} outlineColor={ballonTextColour.outline} color={ballonTextColour.message} > {props.message} </Text>
+      <Text position={[0, -0.7, 0]} fontSize={0.09} outlineWidth={0.04} outlineColor={ballonTextColour.outline} color={ballonTextColour.message} claimed={true} > {props.message} </Text>
       </Billboard>
     </mesh>
       </group>

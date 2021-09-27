@@ -3,13 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { createId } from '../functions'
 import { Balloon } from './'
 
-const handleClick = (props) => {
-  if (!props.claimed) {
-  const seedChoice = Math.floor(Math.random() * props.seeds.length)
-  props.updateSeeds(3, seedChoice)
-  props.removeBalloon(props.index)
-}
-}
+
 
 function Balloons(props) {
   // This reference will give us direct access to the mesh
@@ -21,7 +15,7 @@ function Balloons(props) {
   return (
     <>
     <mesh
-      {...props}
+      {...props }
       ref={mesh}
       scale={1}
       >
@@ -34,14 +28,22 @@ function Balloons(props) {
 function createBalloons(props) {
   const balloonCollection = []
   const {balloons, removeBalloon, updateSeeds, seeds} = props
+
   for (let index = 0; index < balloons.length; index++) {
   const balloon = balloons[index]
+
+  const handleClick = (props) => {
+    if (!balloon.claimed) {
+    const seedChoice = Math.floor(Math.random() * seeds.length)
+    updateSeeds(3, seedChoice)
+    removeBalloon(index)
+  }
+  }
+
   balloonCollection.push(
     <Balloon
     key={createId()}
     claimed={balloon.claimed}
-    updateSeeds={updateSeeds}
-    removeBalloon={removeBalloon}
     seeds={seeds}
     position={balloon.position}
     index={index}

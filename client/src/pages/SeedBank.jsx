@@ -54,7 +54,10 @@ function SeedBank(props) {
 
   const removeBalloon = (index) => {
     let removedBalloon = balloons[index]
+    console.log("REMOVED BALLOON")
+    console.log(removedBalloon)
     removedBalloon.claimed = true
+
     // setBalloons: creates a new array based on the previous one, removing the initial balloon, then adds a copy of the old balloon with 'claimed' set to true
     setBalloons(
       (prev) => {
@@ -115,7 +118,6 @@ function SeedBank(props) {
      </Suspense>
      {props.worldChosen ? <SeedBox seeds={seeds} chosenSeed={chosenSeed} seedList={seedList} position={[-1, -1, 1.9]} selectSeed={selectSeed} chosenSeed={chosenSeed} toggleSeeds={toggleSeeds} /> : < IntroBalloons saveWorld={props.saveWorld} newWorld={props.newWorld} /> }
     </Canvas>
-
   </div>
   );
 }
