@@ -41,7 +41,9 @@ function seedSelectors(props) {
   for (let index = 0; index < props.seeds.length; index++) {
     console.log("Generating seedselectors")
     let seed = props.seeds[index]
-    seedSelectors.push( <SeedText selectSeed={props.selectSeed} seed={seed} index={index} position={[0, 0, 0]} />)
+    let colours = {}
+    seed.type === props.chosenSeed ? colours = {type: "#b1b5c8", outline: "#293241"} : colours = {type: "#293241", outline: "#b1b5c8"}
+    seedSelectors.push( <SeedText selectSeed={props.selectSeed} seed={seed} colours={colours} index={index} position={[0, 0, 0]} />)
   }
   return seedSelectors
 }
@@ -80,7 +82,6 @@ function SeedText(props) {
   const seed = props.seed
   const mesh = useRef()
   const [selected, setSelected] = useState(false)
-  const [colours, setColours] = useState(["#b1b5c8", "#293241"])
 
   const handleClick = (event) => {
     event.stopPropagation()
@@ -100,8 +101,8 @@ function SeedText(props) {
         onClick={(event) => handleClick(event)}
         position={[0.5, props.index/4, 0]}
         outlineWidth={0.04}
-        outlineColor={colours[0]}
-        color={colours[1]}
+        outlineColor={props.colours.outline}
+        color={props.colours.type}
         rotation={[0, 0, 0]} >
           seed: {seed.type} {'\n'}
           quantity: {seed.quantity}
