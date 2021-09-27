@@ -4,7 +4,7 @@ import { Seeds, Garden, Worlds } from '../components';
 import { calculateAchievement, saveGarden, createPlant } from '../functions'
 import { getBalloons, Balloon } from '../gameObjects'
 import { Canvas } from "@react-three/fiber";
-import {  Camera, Sun, World, Firmament, Noticeboard, Balloons } from '../components';
+import {  Camera, Sun, World, Firmament, Noticeboard, Balloons, SeedBox } from '../components';
 
 
 
@@ -23,6 +23,7 @@ function SeedBank(props) {
   const [seeds, setSeeds] = useState(props.seeds) //  an array of the player's available seeds
   const [seedIndex, setSeedindex] = useState(null) //  the index within seeds of the chosenSeed
   const [balloons, setBalloons] = useState(getBalloons(plants, seeds, props.lastLogin, props.today))
+  const [seedList, setSeedlist] = useState(false)
 
 
   const sowPlant = ( event ) => {
@@ -39,16 +40,12 @@ function SeedBank(props) {
   const selectSeed = (selectedSeed, index) => {
     const seed = seeds[index]
     if (seeds[index].quantity > 0) {
-      console.log("In selectSeed")
-      console.log(selectedSeed)
       setChosenseed(selectedSeed)
       setSeedindex(index)
     }
   }
 
   const updateSeeds = (increment, index = seedIndex) => {
-    console.log("UPDATING SEEDS")
-    console.log(seeds)
     const updatedSeeds = [...seeds]
     updatedSeeds[index].quantity += increment
     setSeeds(updatedSeeds)
@@ -64,16 +61,12 @@ function SeedBank(props) {
         return [prev.filter(balloon => balloon.id !== removedBalloon.id), removedBalloon]
       }
     )
-    console.log(balloons)
   }
 
   const checkAchievements = () => {
     const fivePlants = plants.length % 5
     const achievementCount = plants.length / 5 // how many multuples of five?
     const startingSeeds = 2 // offset for the starting seeds
-    console.log(achievementCount)
-    console.log(achievementCount + startingSeeds)
-    console.log(seeds.length)
     if (fivePlants === 0 && plants.length > 0 && seeds.length < (achievementCount + startingSeeds)) {
       console.log("Achievement!")
       const newSeeds = calculateAchievement(seeds)
@@ -84,27 +77,41 @@ function SeedBank(props) {
     }
   }
 
+  const toggleSeeds = () => {
+    setSeedlist((prevState) => !prevState)
+    console.log("TOGGLE " + seedList)
+  }
+
 
   useEffect(() => {
     //
     console.log("Calling saveGarden")
     saveGarden(props.id, plants, props.world, props.worldChosen, seeds)
+    setSeedlist(seedList)
     checkAchievements()
   });
 
 
   return (
   <div className="App">
-    <Canvas id="canvas" camera={{ position: [0, 2, 3.5], lookat: [0, 0, 0] }}>
+    <Canvas id="canvas" camera={{ position: [0, 2, 3.5] }}>
       <Camera />
       <Suspense fallback={console.log("loading")}>
-       <World
-       sowPlant={sowPlant}
-       position={[0, 0, 0]}
-       world={props.world}
-       seeds={seeds}
-       selectSeed={selectSeed}
-       chosenSeed={chosenSeed} />
+      <World
+      sowPlant={sowPlant}
+      position={[0, 0, 0]}
+      world={props.world}
+      seeds={seeds}
+       />
+       <SeedBox
+        seeds={seeds}
+        chosenSeed={chosenSeed}
+        seedList={seedList}
+        position={[-1, -1, 1]}
+        selectSeed={selectSeed}
+        toggleSeeds={toggleSeeds}
+         />
+
       {plants}
       <Balloons
       removeBalloon={removeBalloon}
@@ -116,7 +123,7 @@ function SeedBank(props) {
       <Noticeboard today={props.today}/>
      </Suspense>
     </Canvas>
-    {props.worldChosen ? <Seeds seeds={seeds} className="App-header" selectSeed={selectSeed} /> : <Worlds className="App-header" newWorld={props.newWorld} saveWorld={ props.saveWorld } />}
+    {props.worldChosen ? <Seeds chosenSeed={chosenSeed} /> : <Worlds className="App-header" newWorld={props.newWorld} saveWorld={ props.saveWorld } />}
   </div>
   );
 }

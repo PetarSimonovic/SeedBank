@@ -23,7 +23,7 @@ function Seeds(props) {
 
   return (
     <Panel>
-      {seedCollection(props)}
+     {props.chosenSeed} 
     </Panel>
   )
 }

@@ -5,35 +5,43 @@ import { createId } from '../functions'
 // Creates a button that 'clicks'
 
 function SeedBox(props) {
-  const [seedSelect, setSeedselect] = useState(false)
+
+  console.log("PROPS IN SEEDBOX")
+  console.log(props)
+  const mesh = useRef()
 
 
-  const toggleSeeds = () => {
-    setSeedselect(!seedSelect)
-    console.log("Toggling")
-    console.log(seedSelect)
-  }
+
+
 
   return (
   <>
-  <SeedButton position={[0, 0.1, 0]} toggleSeeds={toggleSeeds}/>
-  {seedSelectors(props, seedSelect)}
+  <mesh
+    {...props}
+    ref={mesh}
+    scale={1}
+    >
+  <SeedBoxStalactite seeds={props.seeds} selectSeed={props.selectSeed}/>
+  <SeedButton position={[0, 0.1, 0]} toggleSeeds={props.toggleSeeds}/>
+   {seedSelectors(props)}
+  </mesh>
   </>
 
 
 )
 }
 
-function seedSelectors(props, seedSelect) {
-  if (!seedSelect) {
-    return
-  }
-  console.log("In seedSelectors props are")
+function seedSelectors(props) {
+  console.log("PROPS in SEEDSELECTORS")
   console.log(props)
+  if (!props.seedList) {
+    return []
+  }
   let seedSelectors = []
   for (let index = 0; index < props.seeds.length; index++) {
+    console.log("Generating seedselectors")
     let seed = props.seeds[index]
-    seedSelectors.push( <SeedText selectSeed={props.selectSeed} seed={seed} index={index} />)
+    seedSelectors.push( <SeedText selectSeed={props.selectSeed} seed={seed} index={index} position={[0, 0, 0]} />)
   }
   return seedSelectors
 }
@@ -78,7 +86,6 @@ function SeedText(props) {
     event.stopPropagation()
     console.log(seed.type)
     props.selectSeed(seed.type, props.index)
-    seed.quantity > 0 ? setColours(["#293241", "#b1b5c8"]) : setColours(["#293241", "#b1b5c8"])
   }
 
 
@@ -103,5 +110,28 @@ function SeedText(props) {
       )
     }
 
+
+function SeedBoxStalactite(props) {
+
+      const mesh = useRef()
+
+      const handleClick = (event) => {
+        event.stopPropagation()
+      }
+
+      return (
+        <group>
+        <mesh
+          {...props}
+          ref={mesh}
+          scale={1}
+          onClick={(event) => handleClick(event)}
+          >
+          <cylinderGeometry args={[0.2, 0.01, 0.5, 12]} />
+          <meshToonMaterial color={'#6c757d'}  />
+        </mesh>
+        </group>
+      )
+    }
 
 export default SeedBox

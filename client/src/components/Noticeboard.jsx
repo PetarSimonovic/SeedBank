@@ -10,7 +10,6 @@ return (
   <Billboard
     position={[0.5, 1, 6]}
     args={[20, 200]}
-    onclick={console.log("clicked")}
     follow={true}
     lockX={false}
     lockY={false}

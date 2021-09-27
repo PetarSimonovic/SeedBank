@@ -41,7 +41,6 @@ class App extends React.Component {
 
 
     setUser(userName, id, garden, world, worldChosen, seeds, lastLogin) {
-      console.log("SETTING USER")
       this.setState({
         userName: userName,
         id: id,
@@ -52,11 +51,6 @@ class App extends React.Component {
         lastLogin: lastLogin,
         today: setDate().stamp
       })
-      console.log("User is " + this.state.id + " " + this.state.userName)
-      console.log("Last login " + this.state.lastLogin)
-      console.log("Today " + this.state.today)
-      console.log("Seeds is")
-      console.log(this.state.seeds)
         }
 
     newWorld() {

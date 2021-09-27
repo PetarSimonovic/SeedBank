@@ -15,8 +15,6 @@ export default async function saveGarden(id, plants, newWorld, chosen, savedSeed
   const lastLogin  = { "lastLogin" : date.stamp }
   const payload = {garden, world, worldChosen, seeds, lastLogin}
   console.log("Attempting to save garden")
-  console.log(payload)
-  console.log(id)
   await api.updateGarden(id, payload).then(res => {
         console.log('Garden updated successfully')
     })

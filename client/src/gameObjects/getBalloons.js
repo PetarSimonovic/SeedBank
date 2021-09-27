@@ -3,9 +3,6 @@ import { Balloon } from './'
 
 
 export default function getBalloons(garden, seeds, login, today) {
-  console.log("CAlculating balloondata")
-  console.log("Last Login " + login)
-  console.log("Today " + today)
   const dateDifference = calculateDays(login, today)
   console.log(dateDifference)
   let balloons = []
