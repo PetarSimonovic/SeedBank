@@ -4,6 +4,9 @@ import { createId } from '../functions'
 
 // Creates a button that 'clicks'
 
+const seedTextColours = {type: "#293241", outline: "#b1b5c8"}
+const selectedSeedTextColours = {type: "#b1b5c8", outline: "#293241"}
+
 function SeedBox(props) {
 
   console.log("PROPS IN SEEDBOX")
@@ -41,9 +44,13 @@ function seedSelectors(props) {
   for (let index = 0; index < props.seeds.length; index++) {
     console.log("Generating seedselectors")
     let seed = props.seeds[index]
+    if (seed.quantity === 0) { continue }
     let colours = {}
-    seed.type === props.chosenSeed ? colours = {type: "#b1b5c8", outline: "#293241"} : colours = {type: "#293241", outline: "#b1b5c8"}
+    seed.type === props.chosenSeed ? colours = selectedSeedTextColours : colours = seedTextColours
     seedSelectors.push( <SeedText selectSeed={props.selectSeed} seed={seed} colours={colours} index={index} position={[0, 0, 0]} />)
+  }
+  if (seedSelectors.length === 0) {
+    seedSelectors.push( <NoSeedText colours={seedTextColours} index={1} />)
   }
   return seedSelectors
 }
@@ -90,7 +97,6 @@ function SeedText(props) {
   }
 
 
-
   return (
       <mesh
         {...props}
@@ -111,11 +117,31 @@ function SeedText(props) {
       )
     }
 
+function NoSeedText(props) {
+      const mesh = useRef()
+
+      return (
+          <mesh
+            {...props}
+            ref={mesh}
+            >
+            < Text
+            fontSize={0.05}
+            position={[0.5, props.index/4, 0]}
+            outlineWidth={0.04}
+            outlineColor={props.colours.outline}
+            color={props.colours.type}
+            rotation={[0, 0, 0]} >
+              No seeds available
+            </ Text>
+          </mesh>
+        )
+  }
+
 
 function SeedBoxStalactite(props) {
 
       const mesh = useRef()
-
       const handleClick = (event) => {
         event.stopPropagation()
       }

@@ -107,7 +107,7 @@ function SeedBank(props) {
         seeds={seeds}
         chosenSeed={chosenSeed}
         seedList={seedList}
-        position={[-1, -1, 1]}
+        position={[-1, -1, 1.9]}
         selectSeed={selectSeed}
         chosenSeed={chosenSeed}
         toggleSeeds={toggleSeeds}
