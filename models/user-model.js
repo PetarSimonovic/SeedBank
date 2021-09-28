@@ -11,6 +11,7 @@ const User = new Schema(
         worldChosen: {type: Boolean, required: true},
         seeds: {type: Array, required: true},
         lastLogin: {type: String, required: true},
+        balloons: {type: Array, required: true}
 
     },
     { timestamps: true },
