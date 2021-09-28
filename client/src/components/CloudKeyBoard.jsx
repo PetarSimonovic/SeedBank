@@ -16,8 +16,21 @@ const fontZ = 3
 
 function CloudKeyBoard(props) {
 
-  console.log("Props in FriendCloud")
-  console.log(props)
+  const [sentenceArray, setSentencearray] = useState([])
+  const [sentence, setSentence] = useState('')
+
+  const buildSentence = (character) => {
+    setSentencearray( (prev) => {
+      return [...prev, character]
+    })
+  }
+
+  useEffect(() => {
+    //
+    setSentence(sentenceArray.join(''))
+    console.log(sentence)
+  });
+
 
   const mesh = useRef()
 
@@ -25,22 +38,21 @@ function CloudKeyBoard(props) {
 
   return (
   <>
-  {createCloudKeyboard(props)}
+  {createCloudKeyboard(props, buildSentence)}
   </>
 
 )
 }
 
-function createCloudKeyboard(props) {
+function createCloudKeyboard(props, buildSentence) {
   let cloudKeyboard = []
-  console.log(alphabet)
   let fontX = 0.5
   let fontY = 3
   let column = 1
   for (let char = 0; char < alphabet.length; char++) {
     let character = alphabet[char]
     fontX += 0.3
-    cloudKeyboard.push( < CloudKey key={createId()} character={character} fontX={fontX} fontY={fontY} /> )
+    cloudKeyboard.push( < CloudKey key={createId()} buildSentence={buildSentence} character={character} fontX={fontX} fontY={fontY} /> )
     if (column % 6 === 0) {
       fontY -= 0.3
       fontX = 0.5
@@ -48,7 +60,6 @@ function createCloudKeyboard(props) {
     column++
 
   }
-  console.log(cloudKeyboard)
   return cloudKeyboard
 
 }
@@ -60,6 +71,7 @@ function CloudKey(props) {
     const handleClick = (event, character) => {
       event.stopPropagation()
       console.log(character)
+      props.buildSentence(character)
     }
 
     return (
