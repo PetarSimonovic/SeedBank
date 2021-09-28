@@ -39,7 +39,7 @@ return (
     {displayOption(option)}
      </Text>
     </Billboard>
-    {option === 1 ? <SeedBox seeds={props.seeds} selectSeed={props.selectSeed} /> : ''}
+    {option === 1 ? <SeedBox seeds={props.seeds} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} chosenSeed={props.chosenSeed} /> : ''}
 
     </mesh>
 )
