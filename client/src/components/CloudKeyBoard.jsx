@@ -54,14 +54,13 @@ function CloudKeyBoard(props) {
 
   return (
   <>
-  {createCloudKeyboard(props, buildSentence, deleteCharacter)}
-  < CloudText sentence={sentence} />
+  {createCloudKeyboard(props, buildSentence, deleteCharacter, sentence) } />
   </>
 
 )
 }
 
-function createCloudKeyboard(props, buildSentence, deleteCharacter) {
+function createCloudKeyboard(props, buildSentence, deleteCharacter, sentence) {
   let cloudKeyboard = []
   let fontX = 0.5
   let fontY = 3
@@ -78,7 +77,9 @@ function createCloudKeyboard(props, buildSentence, deleteCharacter) {
 
   }
   cloudKeyboard.push( <DeleteKey key={createId()} deleteCharacter={deleteCharacter} fontX={fontX + 0.3} fontY={fontY} /> )
+  cloudKeyboard.push( < CloudText key={createId()} sentence={sentence} fontX={0.8} fontY={fontY - 0.3} /> )
   return cloudKeyboard
+
 
 }
 
@@ -172,10 +173,10 @@ function CloudText(props) {
           lockZ={false} >
           < Text
           fontSize={fontSize}
-          position={[0.5, 2, 3]}
+          position={[props.fontX, props.fontY, fontZ]}
           outlineWidth={fontSize}
-          outlineColor={cloudKeyboardColours.outline}
-          color={cloudKeyboardColours.text}
+          outlineColor={cloudFunctionButtonColours.outline}
+          color={cloudFunctionButtonColours.text}
            >
            {props.sentence}
           </ Text>
