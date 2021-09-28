@@ -16,9 +16,9 @@ const fontZ = 3
 
 
 function CloudKeyBoard(props) {
-
   const [sentenceArray, setSentencearray] = useState([])
   const [sentence, setSentence] = useState('')
+  const [submitted, setSubmitted] = useState(false)
 
   const buildSentence = (character) => {
     setSentencearray( (prev) => {
@@ -38,13 +38,16 @@ function CloudKeyBoard(props) {
     console.log(sentenceArray)
   }
 
+  const submit = () => {
+    setSubmitted(true)
+    props.handleSubmit(sentence)
+  }
+
   useEffect(() => {
 
-    console.log("In useEffect")
     //
-    console.log(sentenceArray)
     setSentence(sentenceArray.join(''))
-    console.log(sentence)
+    setSubmitted(submitted)
   });
 
 
@@ -54,13 +57,13 @@ function CloudKeyBoard(props) {
 
   return (
   <>
-  {createCloudKeyboard(props, buildSentence, deleteCharacter, sentence) } />
+  {submitted ? < CloudText key={createId()} sentence={sentence} fontX={0.8} fontY={1.8} /> : createCloudKeyboard(props, buildSentence, deleteCharacter, sentence, submit) } />
   </>
 
 )
 }
 
-function createCloudKeyboard(props, buildSentence, deleteCharacter, sentence) {
+function createCloudKeyboard(props, buildSentence, deleteCharacter, sentence, submit) {
   let cloudKeyboard = []
   let fontX = 0.5
   let fontY = 3
@@ -76,8 +79,10 @@ function createCloudKeyboard(props, buildSentence, deleteCharacter, sentence) {
     column++
 
   }
-  cloudKeyboard.push( <DeleteKey key={createId()} deleteCharacter={deleteCharacter} fontX={fontX + 0.3} fontY={fontY} /> )
+  cloudKeyboard.push( <FunctionKey key={createId()} handleClick={deleteCharacter} fontX={fontX + 0.3} fontY={fontY} character='X' /> )
+  cloudKeyboard.push( <FunctionKey key={createId()} handleClick={submit} fontX={fontX + 0.6} fontY={fontY} character='+'/>)
   cloudKeyboard.push( < CloudText key={createId()} sentence={sentence} fontX={0.8} fontY={fontY - 0.3} /> )
+
   return cloudKeyboard
 
 
@@ -118,20 +123,23 @@ function CloudKey(props) {
         )
       }
 
-function DeleteKey(props) {
+function FunctionKey(props) {
+
+// Receives a 'handleclick' prop that can vary according to functions
+// Varies in colour to cloudkey but other than that the two could prob be merged into single component
 
 const mesh = useRef()
 
 const handleClick = (event) => {
 event.stopPropagation()
-props.deleteCharacter()
+props.handleClick()
 }
 
 return (
   <mesh
     {...props}
     ref={mesh}
-    onClick={(event) => handleClick(event, props.character)}
+    onClick={(event) => handleClick(event)}
     >
     <Billboard
     follow={true}
@@ -145,7 +153,7 @@ return (
     outlineColor={cloudFunctionButtonColours.outline}
     color={cloudFunctionButtonColours.text}
      >
-     X
+     {props.character}
     </ Text>
     </ Billboard>
   </mesh>
