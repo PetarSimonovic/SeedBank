@@ -114,9 +114,8 @@ function SeedBank(props) {
       seeds={seeds} />
       <Sun />
       <Firmament />
-      <Noticeboard today={props.today}/>
      </Suspense>
-     {props.worldChosen ? <SeedBox seeds={seeds} chosenSeed={chosenSeed} seedList={seedList} position={[-1, -1, 1.9]} selectSeed={selectSeed} chosenSeed={chosenSeed} toggleSeeds={toggleSeeds} /> : < IntroBalloons saveWorld={props.saveWorld} newWorld={props.newWorld} /> }
+     {props.worldChosen ? <Noticeboard seeds={seeds} chosenSeed={chosenSeed} seedList={seedList} position={[-1, -1, 1.9]} selectSeed={selectSeed} chosenSeed={chosenSeed} toggleSeeds={toggleSeeds} /> : < IntroBalloons saveWorld={props.saveWorld} newWorld={props.newWorld} /> }
     </Canvas>
   </div>
   );
