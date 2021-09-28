@@ -48,10 +48,10 @@ function seedSelectors(props) {
     textPosition++
     let colours = {}
     seed.type === props.chosenSeed ? colours = selectedSeedTextColours : colours = seedTextColours
-    seedSelectors.push( <SeedText selectSeed={props.selectSeed} seed={seed} colours={colours} index={index} textPosition={textPosition} position={[0, 0, 0]} />)
+    seedSelectors.push( <SeedText key={createId()} selectSeed={props.selectSeed} seed={seed} colours={colours} index={index} textPosition={textPosition} position={[0, 0, 0]} />)
   }
   if (seedSelectors.length === 0) {
-    seedSelectors.push( <NoSeedText colours={seedTextColours} index={1} />)
+    seedSelectors.push( <NoSeedText key={createId()} colours={seedTextColours} index={1} />)
   }
   return seedSelectors
 }

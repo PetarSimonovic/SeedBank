@@ -1,10 +1,10 @@
 import '../style/App.css';
 import React, { useState, useEffect, Suspense } from "react";
-import { Seeds, Garden, Worlds } from '../components';
+import { Seeds, Worlds } from '../components';
 import { calculateAchievement, saveGarden, createPlant } from '../functions'
 import { getBalloons, Balloon } from '../gameObjects'
 import { Canvas } from "@react-three/fiber";
-import {  Camera, Sun, World, Firmament, Noticeboard, Balloons, SeedBox, IntroBalloons } from '../components';
+import {  Camera, Sun, World, Firmament, Cloud, Balloons, SeedBox, IntroBalloons } from '../components';
 
 
 
@@ -67,6 +67,8 @@ function SeedBank(props) {
   }
 
   const checkAchievements = () => {
+    console.log("Checking achievements")
+    console.log(plants.length)
     const fivePlants = plants.length % 5
     const achievementCount = plants.length / 5 // how many multuples of five?
     const startingSeeds = 2 // offset for the starting seeds
@@ -115,7 +117,7 @@ function SeedBank(props) {
       <Sun />
       <Firmament />
      </Suspense>
-     {props.worldChosen ? <Noticeboard seeds={seeds} chosenSeed={chosenSeed} seedList={seedList} position={[-1, -1, 1.9]} selectSeed={selectSeed} toggleSeeds={toggleSeeds} /> : < IntroBalloons saveWorld={props.saveWorld} newWorld={props.newWorld} /> }
+     {props.worldChosen ? <Cloud seeds={seeds} chosenSeed={chosenSeed} seedList={seedList} position={[-1, -1, 1.9]} selectSeed={selectSeed} toggleSeeds={toggleSeeds} /> : < IntroBalloons saveWorld={props.saveWorld} newWorld={props.newWorld} /> }
     </Canvas>
   </div>
   );

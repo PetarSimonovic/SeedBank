@@ -6,7 +6,7 @@ import { SeedBox } from './'
 
 
 
-function Noticeboard(props) {
+function Cloud(props) {
   const mesh = useRef()
   const [option, setOption] = useState(0)
 
@@ -59,4 +59,4 @@ function displayOption(option) {
 
 }
 
-export default Noticeboard
+export default Cloud
