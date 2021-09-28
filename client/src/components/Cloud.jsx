@@ -37,16 +37,16 @@ return (
     lockZ={false} // Lock the rotation on the z axis (default=false)
     >
     <Text fontSize={size} outlineWidth={size} outlineColor={noticeTextColour.outline} color={noticeTextColour.message}>
-    {displayOption(option)}
+    {displayText(option)}
      </Text>
     </Billboard>
-    {option === 1 ? <SeedCloud seeds={props.seeds} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} chosenSeed={props.chosenSeed} /> : ''}
+    {displayFunctionality(option, props)}
 
     </mesh>
 )
 }
 
-function displayOption(option) {
+function displayText(option) {
 
   switch(option) {
     case 0:
@@ -58,6 +58,15 @@ function displayOption(option) {
      return "hello"
   }
 
+}
+
+function displayFunctionality(option, props) {
+  switch(option) {
+    case 1:
+      return <SeedCloud seeds={props.seeds} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} chosenSeed={props.chosenSeed} />
+    default:
+     return ""
+  }
 }
 
 export default Cloud

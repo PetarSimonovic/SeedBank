@@ -87,7 +87,7 @@ function SeedText(props) {
         outlineColor={props.colours.outline}
         color={props.colours.type}
         rotation={[0, 0, 0]} >
-          seed: {seed.type} {'\n'}
+          {seed.type} {'\n'}
           quantity: {seed.quantity}
         </ Text>
         </ Billboard>

@@ -18,8 +18,8 @@ function IntroBalloons(props) {
       ref={mesh}
       scale={1}
       >
-      <Balloon position={[-0.6, 2, 0]} handleClick={props.newWorld} colour="#ee6055" message="New world" />
-      <Balloon position={[0.6, 2, 0]} handleClick={props.saveWorld} colour="#ffd97d" message="Save world" />
+      <Balloon position={[-0.6, 2, 0]} handleClick={props.newWorld} colour="#ee6055" message="New garden" />
+      <Balloon position={[0.6, 2, 0]} handleClick={props.saveWorld} colour="#ffd97d" message="Save garden" />
     </mesh>
     </>
   )
