@@ -5,7 +5,7 @@ import { Grass, SeedBox } from './'
 
 // The plane on which plants grow
 
-function World(props) {
+function Garden(props) {
   // This reference will give us direct access to the mesh
   const mesh = useRef()
   // Set up state for the hovered and active state
@@ -65,4 +65,4 @@ function Stalactite(props) {
 }
 
 
-export default World
+export default Garden

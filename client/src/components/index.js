@@ -4,14 +4,13 @@ import Cloud from './Cloud'
 import Camera from './Camera'
 import Firmament from './Firmament'
 import Grass from './Grass'
+import Garden from './Garden'
 import IntroBalloons from './IntroBalloons'
 import NavBar from './NavBar'
 import Plant from './Plant'
-import SeedBox from './SeedSelector'
+import SeedCloud from './SeedCloud'
 import Seeds from './Seeds'
 import Sun from './Sun'
-import World from './World'
-import Worlds from './Worlds'
 
 
 
@@ -23,13 +22,12 @@ export {
   Cloud,
   Camera,
   Firmament,
+  Garden,
   Grass,
   IntroBalloons,
   NavBar,
   Plant,
-  SeedBox,
+  SeedCloud,
   Seeds,
   Sun,
-  World,
-  Worlds,
 }

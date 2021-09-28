@@ -6,12 +6,16 @@ import { createId } from '../functions'
 
 const seedTextColours = {type: "#293241", outline: "#b1b5c8"}
 const selectedSeedTextColours = {type: "#b1b5c8", outline: "#293241"}
+const fontSize = 0.1
+const fontZ = 2
+const fontY = 1.5
 
-function SeedBox(props) {
+function SeedCloud(props) {
+
+  console.log("Props in SeedBox")
+  console.log(props)
 
   const mesh = useRef()
-
-
 
 
 
@@ -22,12 +26,9 @@ function SeedBox(props) {
     ref={mesh}
     scale={1}
     >
-  <SeedBoxStalactite seeds={props.seeds} selectSeed={props.selectSeed}/>
-  <SeedButton position={[0, 0.1, 0]} toggleSeeds={props.toggleSeeds}/>
    {seedSelectors(props)}
   </mesh>
   </>
-
 
 )
 }
@@ -35,56 +36,25 @@ function SeedBox(props) {
 function seedSelectors(props) {
   console.log("PROPS in SEEDSELECTORS")
   console.log(props)
-  if (!props.seedList) {
-    return []
-  }
   let seedSelectors = []
-  let textPosition = 0
+  let fontX = 0
   for (let index = 0; index < props.seeds.length; index++) {
     console.log("Generating seedselectors")
     console.log("INDEX " + index)
     let seed = props.seeds[index]
     if (seed.quantity === 0) { continue }
-    textPosition++
+    fontX += 1
     let colours = {}
     seed.type === props.chosenSeed ? colours = selectedSeedTextColours : colours = seedTextColours
-    seedSelectors.push( <SeedText key={createId()} selectSeed={props.selectSeed} seed={seed} colours={colours} index={index} textPosition={textPosition} position={[0, 0, 0]} />)
+    seedSelectors.push( <SeedText selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} seed={seed} colours={colours} index={index} fontX={fontX} />)
   }
   if (seedSelectors.length === 0) {
-    seedSelectors.push( <NoSeedText key={createId()} colours={seedTextColours} index={1} />)
+    seedSelectors.push( <NoSeedText colours={seedTextColours} index={1} />)
   }
+  console.log(seedSelectors)
   return seedSelectors
 }
 
-function SeedButton(props) {
-
-  const mesh = useRef()
-  const [clickScale, setClickscale] = useState(1)
-
-  const handleClick = () => {
-    setClickscale(0.97)
-    props.toggleSeeds()
-    setTimeout(() => {
-      setClickscale(1)
-    }, 100)
-  };
-
-
-return (
-  <>
-  <mesh
-  {...props}
-  ref={mesh}
-  onClick={handleClick}
-  scale={clickScale}
-  >
-  <RoundedBox onClick={handleClick} args={[0.2, 0.2, 0.2]} radius={0.05} smoothness={4} {...props}>
-  <meshToonMaterial attach="material" color="#212529" />
-  </RoundedBox>
-  </mesh>
-  </>
-  )
-}
 
 function SeedText(props) {
   const seed = props.seed
@@ -95,6 +65,7 @@ function SeedText(props) {
     event.stopPropagation()
     console.log(seed.type)
     props.selectSeed(seed.type, props.index)
+    props.toggleSeeds()
   }
 
 
@@ -109,10 +80,10 @@ function SeedText(props) {
         lockY={false}
         lockZ={false} >
         < Text
-        fontSize={0.05}
+        fontSize={fontSize}
         onClick={(event) => handleClick(event)}
-        position={[0.5, props.textPosition/4, 0]}
-        outlineWidth={0.04}
+        position={[props.fontX, fontY, fontZ]}
+        outlineWidth={fontSize}
         outlineColor={props.colours.outline}
         color={props.colours.type}
         rotation={[0, 0, 0]} >
@@ -138,9 +109,9 @@ function NoSeedText(props) {
             lockY={false}
             lockZ={false} >
             < Text
-            fontSize={0.05}
-            position={[0.5, props.index/4, 0]}
-            outlineWidth={0.04}
+            fontSize={0.25}
+            position={[1, 3, 1]}
+            outlineWidth={0.25}
             outlineColor={props.colours.outline}
             color={props.colours.type}
             rotation={[0, 0, 0]} >
@@ -152,26 +123,4 @@ function NoSeedText(props) {
   }
 
 
-function SeedBoxStalactite(props) {
-
-      const mesh = useRef()
-      const handleClick = (event) => {
-        event.stopPropagation()
-      }
-
-      return (
-        <group>
-        <mesh
-          {...props}
-          ref={mesh}
-          scale={1}
-          onClick={(event) => handleClick(event)}
-          >
-          <cylinderGeometry args={[0.2, 0.01, 0.5, 12]} />
-          <meshToonMaterial color={'#6c757d'}  />
-        </mesh>
-        </group>
-      )
-    }
-
-export default SeedBox
+export default SeedCloud

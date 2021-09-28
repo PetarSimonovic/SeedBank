@@ -1,10 +1,11 @@
 import { Billboard, Text } from '@react-three/drei'
 import { setDate } from '../functions'
 import React, { Component, useState, useRef } from 'react';
-import { SeedBox } from './'
+import { SeedCloud } from './'
 
 
-
+const position = [0.5, 1.7, 3]
+const size = 0.5
 
 function Cloud(props) {
   const mesh = useRef()
@@ -29,17 +30,17 @@ return (
     onClick={handleClick}
     >
   <Billboard
-    position={[0.5, 1, 6]}
+    position={position}
     follow={true}
     lockX={false}
     lockY={false}
     lockZ={false} // Lock the rotation on the z axis (default=false)
     >
-    <Text fontSize={0.5} outlineWidth={0.4} outlineColor={noticeTextColour.outline} color={noticeTextColour.message}>
+    <Text fontSize={size} outlineWidth={size} outlineColor={noticeTextColour.outline} color={noticeTextColour.message}>
     {displayOption(option)}
      </Text>
     </Billboard>
-    {option === 1 ? <SeedBox seeds={props.seeds} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} chosenSeed={props.chosenSeed} /> : ''}
+    {option === 1 ? <SeedCloud seeds={props.seeds} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} chosenSeed={props.chosenSeed} /> : ''}
 
     </mesh>
 )

@@ -1,10 +1,9 @@
 import '../style/App.css';
 import React, { useState, useEffect, Suspense } from "react";
-import { Seeds, Worlds } from '../components';
 import { calculateAchievement, saveGarden, createPlant } from '../functions'
 import { getBalloons, Balloon } from '../gameObjects'
 import { Canvas } from "@react-three/fiber";
-import {  Camera, Sun, World, Firmament, Cloud, Balloons, SeedBox, IntroBalloons } from '../components';
+import { Garden, Camera, Sun, World, Firmament, Cloud, Balloons, SeedBox, IntroBalloons } from '../components';
 
 
 
@@ -102,7 +101,7 @@ function SeedBank(props) {
     <Canvas id="canvas" camera={{ position: [0, 2, 3.5] }}>
       <Camera />
       <Suspense fallback={console.log("loading")}>
-      <World
+      <Garden
       sowPlant={sowPlant}
       position={[0, 0, 0]}
       world={props.world}
