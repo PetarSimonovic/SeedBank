@@ -1,6 +1,7 @@
 import Balloons from './Balloons'
 import Balloon from './Balloon'
 import Cloud from './Cloud'
+import CloudKeyBoard from './CloudKeyBoard'
 import Camera from './Camera'
 import Firmament from './Firmament'
 import Grass from './Grass'
@@ -21,6 +22,7 @@ export {
   Balloon,
   Cloud,
   Camera,
+  CloudKeyBoard,
   Firmament,
   Garden,
   Grass,

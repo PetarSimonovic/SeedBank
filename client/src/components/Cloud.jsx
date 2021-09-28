@@ -1,11 +1,12 @@
 import { Billboard, Text } from '@react-three/drei'
 import { setDate } from '../functions'
 import React, { Component, useState, useRef } from 'react';
-import { SeedCloud } from './'
+import { SeedCloud, CloudKeyBoard } from './'
 
 
-const position = [0.5, 1.7, 3]
+const position = [0.5, 2.8, 3]
 const size = 0.5
+const options = 2
 
 function Cloud(props) {
   const mesh = useRef()
@@ -17,7 +18,7 @@ function Cloud(props) {
   }
 
   const handleClick = () => {
-    option >=1 ? setOption(0) : setOption(prev => prev + 1)
+    option >= options ? setOption(0) : setOption(prev => prev + 1)
     console.log(option)
 
   }
@@ -54,6 +55,8 @@ function displayText(option) {
       return `${date.day} ${date.month} ${date.year}`
     case 1:
       return 'Choose Seed'
+    case 2:
+      return 'Send friend request'
     default:
      return "hello"
   }
@@ -64,6 +67,8 @@ function displayFunctionality(option, props) {
   switch(option) {
     case 1:
       return <SeedCloud seeds={props.seeds} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} chosenSeed={props.chosenSeed} />
+    case 2:
+      return <CloudKeyBoard />
     default:
      return ""
   }

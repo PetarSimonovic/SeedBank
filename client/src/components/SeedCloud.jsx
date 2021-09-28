@@ -1,4 +1,4 @@
-import { RoundedBox, Text, Billboard } from '@react-three/drei'
+import { Text, Billboard } from '@react-three/drei'
 import React, { useRef, useState, useEffect } from "react";
 import { createId } from '../functions'
 
@@ -34,22 +34,18 @@ function SeedCloud(props) {
 }
 
 function seedSelectors(props) {
-  console.log("PROPS in SEEDSELECTORS")
-  console.log(props)
   let seedSelectors = []
   let fontX = 0
   for (let index = 0; index < props.seeds.length; index++) {
-    console.log("Generating seedselectors")
-    console.log("INDEX " + index)
     let seed = props.seeds[index]
     if (seed.quantity === 0) { continue }
     fontX += 1
     let colours = {}
     seed.type === props.chosenSeed ? colours = selectedSeedTextColours : colours = seedTextColours
-    seedSelectors.push( <SeedText selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} seed={seed} colours={colours} index={index} fontX={fontX} />)
+    seedSelectors.push( <SeedText key={createId()} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} seed={seed} colours={colours} index={index} fontX={fontX} />)
   }
   if (seedSelectors.length === 0) {
-    seedSelectors.push( <NoSeedText colours={seedTextColours} index={1} />)
+    seedSelectors.push( <NoSeedText key={createId()} colours={seedTextColours} index={1} />)
   }
   console.log(seedSelectors)
   return seedSelectors
