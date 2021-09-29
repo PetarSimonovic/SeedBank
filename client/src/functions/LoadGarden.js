@@ -11,13 +11,10 @@ export default function loadGarden(garden) {
     const growth = calculateGrowth(parsedPlant.date, today)
     parsedGarden.push(<Plant key={parsedPlant.key} growth={growth} date={parsedPlant.date} position={parsedPlant.position} type={parsedPlant.type}/>)
   }
-  console.log(parsedGarden)
   return parsedGarden
 }
 
 function calculateGrowth(plantDate, today) {
-  console.log(plantDate.stamp)
-  console.log(today)
   const days = calculateDays(plantDate.stamp, today)
   return days
 }

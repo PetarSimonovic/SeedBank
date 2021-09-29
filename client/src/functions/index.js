@@ -7,6 +7,7 @@ import makeFriendRequest from './MakeFriendRequest'
 import sample from './Sample'
 import saveGarden from './SaveGarden'
 import setDate from './SetDate'
+import sendBalloon from './SendBalloon'
 import randomiser from './Randomiser'
 
 
@@ -20,5 +21,6 @@ export {
   sample,
   saveGarden,
   setDate,
+  sendBalloon,
   randomiser
  }

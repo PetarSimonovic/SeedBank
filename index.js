@@ -7,8 +7,7 @@ const path = require('path');
 
 
 const db = require('./db')
-const userRouter = require('./routes/user-router')
-const movieRouter = require('./routes/movie-router')
+const seedbankRouter = require('./routes/seedbank-router')
 
 
 const app = express()
@@ -30,7 +29,8 @@ app.use(express.static(path.join(__dirname, 'client/index')));
 
 
 
-app.use('/api', userRouter)
+app.use('/api', seedbankRouter)
+
 
 
 //production mode
