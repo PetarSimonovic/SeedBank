@@ -45,13 +45,10 @@ function SeedBank(props) {
   }
 
   const updateSeeds = (increment, type) => {
-    console.log("Looking for " + type)
     const updatedSeeds = [...seeds]
     console.log(updatedSeeds)
     const index = updatedSeeds.findIndex(seed => seed.type === type)
-    console.log("Index " + index)
-    updatedSeeds[index].quantity += increment
-    setSeeds(updatedSeeds)
+    index -1 ?  setSeeds( (prev) => {return [{type: type, quantity: increment}, ...prev]}) : updatedSeeds[index].quantity += increment
     setSeedindex(null)
   }
 
@@ -83,6 +80,7 @@ function SeedBank(props) {
     saveGarden(props.id, plants, props.world, props.worldChosen, seeds)
     setSeedlist(seedList)
     checkAchievements()
+    setSeeds(seeds)
     });
 
 

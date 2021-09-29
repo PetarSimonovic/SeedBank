@@ -17,10 +17,11 @@ function Balloon(props) {
 
   const handleClick = () => {
     if (!claimed) {
-      setClaimed(prev => !prev)
+      if (props.type !== "introBalloon") { setClaimed(prev => !prev) }
       console.log("Claimed?!")
       console.log(claimed)
       props.handleClick()
+    //  updateBalloons(props.id)
     }
   }
 

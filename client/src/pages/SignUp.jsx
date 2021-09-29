@@ -72,7 +72,7 @@ class SignUp extends Component {
         let userId = ""
         const newWorld = new WorldData()
         const world = JSON.stringify(newWorld)
-        const seeds = newSeeds()
+        const seeds = []
         const worldChosen = false
         const date = setDate()
         const lastLogin = date.stamp
