@@ -23,7 +23,8 @@ class App extends React.Component {
         world: {},
         chosenWorld: false,
         seeds: [],
-        lastLogin: ""
+        lastLogin: "",
+        newUser: true
       }
       this.setUser = this.setUser.bind(this)
       this.newWorld = this.newWorld.bind(this)
@@ -40,7 +41,7 @@ class App extends React.Component {
      }
 
 
-    setUser(userName, id, garden, world, worldChosen, seeds, lastLogin) {
+    setUser(userName, id, garden, world, worldChosen, seeds, lastLogin, newUser) {
       this.setState({
         userName: userName,
         id: id,
@@ -49,7 +50,8 @@ class App extends React.Component {
         worldChosen: worldChosen,
         seeds: seeds,
         lastLogin: lastLogin,
-        today: setDate().stamp
+        today: setDate().stamp,
+        newUser: newUser
       })
         }
 
@@ -75,7 +77,22 @@ class App extends React.Component {
         <Router>
             <NavBar user={this.state.userName} setUser={this.setUser} />
           </Router>
-          {this.state.userName ?  <SeedBank id={this.state.id} newWorld={this.newWorld} world={this.state.world} worldChosen={this.state.worldChosen} saveWorld={this.saveWorld} seeds={this.state.seeds} garden={this.state.garden} lastLogin={this.state.lastLogin} today={this.state.today} /> : <div><LogIn setUser={this.setUser} /> <SignUp setUser={this.setUser} /></div> }
+          {this.state.userName ?
+            <SeedBank
+              id={this.state.id}
+              newWorld={this.newWorld}
+              world={this.state.world}
+              worldChosen={this.state.worldChosen}
+              saveWorld={this.saveWorld}
+              seeds={this.state.seeds}
+              garden={this.state.garden}
+              lastLogin={this.state.lastLogin}
+              today={this.state.today}
+            /> :
+            <div>
+              <LogIn setUser={this.setUser} />
+              <SignUp setUser={this.setUser} />
+            </div> }
     </div>
     )
   }

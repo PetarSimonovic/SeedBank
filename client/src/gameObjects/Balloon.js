@@ -6,10 +6,9 @@ export default class Balloon {
     this.id = createId()
     this.colour = generateColour()
     this.position = generatePosition()
-    this.claimed = false
     this.type = type
     this.quantity = quantity
-    this.message = message 
+    this.message = message
   }
 }
 

@@ -67,9 +67,10 @@ class LogIn extends Component {
               const seeds =  res.data.data.seeds
               const worldChosen = res.data.data.worldChosen
               const lastLogin = res.data.data.lastLogin
+              const newUser = false
 
               window.alert(`Welcome back ${name}`)
-              this.props.setUser(name, id, garden, world, worldChosen, seeds, lastLogin)
+              this.props.setUser(name, id, garden, world, worldChosen, seeds, lastLogin, newUser)
             } else {
               window.alert(`Incorrect password`)
             }

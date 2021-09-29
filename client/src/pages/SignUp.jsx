@@ -76,7 +76,8 @@ class SignUp extends Component {
         const worldChosen = false
         const date = setDate()
         const lastLogin = date.stamp
-        const payload = { name, email, password, world, worldChosen, seeds, lastLogin }
+        const newUser = true
+        const payload = { name, email, password, world, worldChosen, seeds, lastLogin, newUser }
         console.log(payload)
 
         await api.addUser(payload).then(res => {

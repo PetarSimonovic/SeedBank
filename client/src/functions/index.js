@@ -2,6 +2,7 @@ import calculateAchievement from './CalculateAchievement'
 import calculateDays from './CalculateDays'
 import createId from './CreateId'
 import createPlant from './CreatePlant'
+import loadBalloons from './LoadBalloons'
 import loadGarden from './LoadGarden'
 import makeFriendRequest from './MakeFriendRequest'
 import sample from './Sample'
@@ -16,6 +17,7 @@ export {
   calculateAchievement,
   createId,
   createPlant,
+  loadBalloons,
   loadGarden,
   makeFriendRequest,
   sample,

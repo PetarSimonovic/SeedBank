@@ -1,14 +1,13 @@
-import {sample, randomiser, createId, calculateDays} from '../functions'
-import { Balloon } from './'
+import {sample, randomiser, createId, calculateDays} from './'
+import { Balloon } from '../gameObjects'
 import api from '../api';
 
 
 
-export default async function getBalloons(garden, seeds, login, today, id) {
+export default async function loadBalloons(seeds, login, id, today) {
+  console.log("IN LOAD BALLOONS")
+
   const dateDifference = calculateDays(login, today)
-  // if (calculateDays(login, today) === 0 ) {
-  //   return balloons
-  // }
   let loadedBalloons = await api.getBalloons(id)
   let balloonData = loadedBalloons.data.data.balloons
 
@@ -18,6 +17,8 @@ export default async function getBalloons(garden, seeds, login, today, id) {
   const dailyMessage = `${newSeeds.quantity} x ${newSeeds.type}!`
   let balloons = parseBalloons(balloonData)
   balloons.push(dailyBalloon(seeds))
+  console.log("LOADED BALLOONS")
+  console.log(balloons)
   return balloons
 }
 

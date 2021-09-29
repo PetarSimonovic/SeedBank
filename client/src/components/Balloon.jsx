@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Text, Billboard } from '@react-three/drei'
 import { useFrame } from "@react-three/fiber";
 import { createId } from '../functions'
@@ -8,10 +8,25 @@ import { createId } from '../functions'
 function Balloon(props) {
 
   const mesh = useRef()
+  const [claimed, setClaimed] = useState(false)
+
   const ballonTextColour = {
     message: "#293241",
     outline: "#b1b5c8"
   }
+
+  const handleClick = () => {
+    if (!claimed) {
+      setClaimed(prev => !prev)
+      console.log("Claimed?!")
+      console.log(claimed)
+      props.handleClick()
+    }
+  }
+
+  useEffect(() => {
+    setClaimed(claimed)
+  }, [])
 
 
   useFrame((state, delta) => ( mesh.current.rotation.y += 0.01))
@@ -29,7 +44,7 @@ function Balloon(props) {
       {...props}
       ref={mesh}
       scale={0.8}
-      onClick={props.handleClick}
+      onClick={handleClick}
       >
       <BalloonBody colour={props.colour} />
       <BalloonCone colour = {props.colour} position={[0, -0.18, 0]}/>

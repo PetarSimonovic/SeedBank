@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
-import { createId } from '../functions'
+import { createId, loadBalloons } from '../functions'
 import { Balloon } from './'
 
 
@@ -8,8 +8,15 @@ import { Balloon } from './'
 function Balloons(props) {
   // This reference will give us direct access to the mesh
   const mesh = useRef()
+  const [balloons, setBalloons] = useState([])
   console.log("Balloons in balloons")
-  console.log(props.balloons)
+  console.log(balloons)
+
+  useEffect(() => {
+    loadBalloons(props.seeds, props.lastLogin, props.userId, props.today).then(data => setBalloons(data))
+  }, [])
+
+
   // Set up state for the hovered and active state
   // Rotate mesh every frame, this is outside of React without overhead
   // useFrame(() => (mesh.current.rotation.y += 0.002))
@@ -21,30 +28,30 @@ function Balloons(props) {
       ref={mesh}
       scale={1}
       >
-      {createBalloons(props)}
+      {createBalloons(props, balloons)}
     </mesh>
     </>
   )
 }
 
-function createBalloons(props) {
+function createBalloons(props, balloons) {
+  console.log("Balloons in createballoons")
+  console.log(balloons)
   const balloonCollection = []
-  const {balloons, removeBalloon, updateSeeds, seeds} = props
+  const {removeBalloon, updateSeeds, seeds} = props
 
   for (let index = 0; index < balloons.length; index++) {
   const balloon = balloons[index]
 
+  // handleClick for seed balloons
+
   const handleClick = (props) => {
-    if (!balloon.claimed) {
     updateSeeds(balloon.quantity, balloon.type)
-    removeBalloon(index)
-  }
   }
 
   balloonCollection.push(
     <Balloon
     key={createId()}
-    claimed={balloon.claimed}
     seeds={seeds}
     position={balloon.position}
     index={index}
@@ -55,6 +62,8 @@ function createBalloons(props) {
     message={balloon.message} />
   )
   }
+  console.log("Balloon collection")
+  console.log(balloonCollection)
   return balloonCollection
 }
 

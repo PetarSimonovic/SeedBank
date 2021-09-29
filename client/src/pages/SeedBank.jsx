@@ -1,7 +1,7 @@
 import '../style/App.css';
 import React, { useState, useEffect, Suspense } from "react";
-import { calculateAchievement, saveGarden, createPlant } from '../functions'
-import { getBalloons, Balloon } from '../gameObjects'
+import { calculateAchievement, saveGarden, createPlant, loadBalloons } from '../functions'
+import { Balloon } from '../gameObjects'
 import { Canvas } from "@react-three/fiber";
 import { Garden, Camera, Sun, World, Firmament, Cloud, Balloons, SeedBox, IntroBalloons } from '../components';
 
@@ -32,7 +32,7 @@ function SeedBank(props) {
       setPlants( (prev) => {
         return [newPlant, ...prev]
       })
-      updateSeeds(-1)
+      updateSeeds(-1, chosenSeed)
     }
   }
 
@@ -55,19 +55,6 @@ function SeedBank(props) {
     setSeedindex(null)
   }
 
-  const removeBalloon = (index) => {
-    let removedBalloon = balloons[index]
-    console.log("REMOVED BALLOON")
-    console.log(removedBalloon)
-    removedBalloon.claimed = true
-
-    // setBalloons: creates a new array based on the previous one, removing the initial balloon, then adds a copy of the old balloon with 'claimed' set to true
-    setBalloons(
-      (prev) => {
-        return [prev.filter(balloon => balloon.id !== removedBalloon.id), removedBalloon]
-      }
-    )
-  }
 
   const checkAchievements = () => {
     console.log("Checking achievements")
@@ -90,16 +77,13 @@ function SeedBank(props) {
     console.log("TOGGLE " + seedList)
   }
 
-
   useEffect(() => {
     //
     console.log("Calling saveGarden")
     saveGarden(props.id, plants, props.world, props.worldChosen, seeds)
     setSeedlist(seedList)
-    setBalloons(balloons)
     checkAchievements()
-    getBalloons(plants, seeds, props.lastLogin, props.today, props.id).then(data => setBalloons(data))
-  }, [plants, seedList, seedIndex, seeds, seedIndex]);
+    });
 
 
   return (
@@ -114,15 +98,29 @@ function SeedBank(props) {
       seeds={seeds}
        />
       {plants}
-      <Balloons
-      removeBalloon={removeBalloon}
-      updateSeeds={updateSeeds}
-      balloons={balloons}
-      seeds={seeds} />
       <Sun />
       <Firmament />
      </Suspense>
-     {props.worldChosen ? <Cloud seeds={seeds} chosenSeed={chosenSeed} seedList={seedList} position={[-1, -1, 1.9]} selectSeed={selectSeed} toggleSeeds={toggleSeeds} /> : < IntroBalloons saveWorld={props.saveWorld} newWorld={props.newWorld} /> }
+     {props.worldChosen ?
+       <>
+       <Balloons
+        updateSeeds={updateSeeds}
+        userId={props.id}
+        today={props.today}
+        lastLogin={props.lastLogin}
+        seeds={seeds} />
+       <Cloud
+        seeds={seeds}
+        chosenSeed={chosenSeed}
+        seedList={seedList}
+        position={[-1, -1, 1.9]}
+        selectSeed={selectSeed}
+        toggleSeeds={toggleSeeds} />
+        </> :
+        < IntroBalloons
+          saveWorld={props.saveWorld}
+          newWorld={props.newWorld}
+        /> }
     </Canvas>
   </div>
   );
