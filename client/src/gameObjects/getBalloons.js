@@ -16,17 +16,14 @@ export default async function getBalloons(garden, seeds, login, today, id) {
 
   const newSeeds = sample(seeds)
   const dailyMessage = `${newSeeds.quantity} x ${newSeeds.type}!`
-  let balloons = await parseBalloons(balloonData)
+  let balloons = parseBalloons(balloonData)
   balloons.push(dailyBalloon(seeds))
-  console.log("Balloons")
-  console.log(balloons)
+  return balloons
 }
 
-async function parseBalloons(balloonData) {
-  console.log("In parseBalloons")
+function parseBalloons(balloonData) {
   let parsedBalloons = []
   for (let index = 0; index < balloonData.length; index++) {
-    console.log("In for loop")
     const balloon = balloonData[index]
     console.log(balloon)
     parsedBalloons.push(new Balloon(balloon.type, balloon.quantity, balloon.message))

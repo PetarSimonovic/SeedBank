@@ -8,6 +8,8 @@ import { Balloon } from './'
 function Balloons(props) {
   // This reference will give us direct access to the mesh
   const mesh = useRef()
+  console.log("Balloons in balloons")
+  console.log(props.balloons)
   // Set up state for the hovered and active state
   // Rotate mesh every frame, this is outside of React without overhead
   // useFrame(() => (mesh.current.rotation.y += 0.002))
@@ -34,8 +36,7 @@ function createBalloons(props) {
 
   const handleClick = (props) => {
     if (!balloon.claimed) {
-    const seedChoice = Math.floor(Math.random() * seeds.length)
-    updateSeeds(3, seedChoice)
+    updateSeeds(balloon.quantity, balloon.type)
     removeBalloon(index)
   }
   }
@@ -48,7 +49,10 @@ function createBalloons(props) {
     position={balloon.position}
     index={index}
     handleClick={handleClick}
-    colour={balloon.colour} />
+    colour={balloon.colour}
+    type={balloon.type}
+    quantity={balloon.quantity}
+    message={balloon.message} />
   )
   }
   return balloonCollection

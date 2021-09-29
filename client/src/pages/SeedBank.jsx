@@ -21,7 +21,7 @@ function SeedBank(props) {
   const [chosenSeed, setChosenseed] = useState("") // contains the type of seed if chosen, or null if no seed is currently selected
   const [seeds, setSeeds] = useState(props.seeds) //  an array of the player's available seeds
   const [seedIndex, setSeedindex] = useState(null) //  the index within seeds of the chosenSeed
-  const [balloons, setBalloons] = useState(getBalloons(plants, seeds, props.lastLogin, props.today, props.id))
+  const [balloons, setBalloons] = useState([])
   const [seedList, setSeedlist] = useState(false)
 
 
@@ -44,8 +44,12 @@ function SeedBank(props) {
     }
   }
 
-  const updateSeeds = (increment, index = seedIndex) => {
+  const updateSeeds = (increment, type) => {
+    console.log("Looking for " + type)
     const updatedSeeds = [...seeds]
+    console.log(updatedSeeds)
+    const index = updatedSeeds.findIndex(seed => seed.type === type)
+    console.log("Index " + index)
     updatedSeeds[index].quantity += increment
     setSeeds(updatedSeeds)
     setSeedindex(null)
@@ -92,8 +96,10 @@ function SeedBank(props) {
     console.log("Calling saveGarden")
     saveGarden(props.id, plants, props.world, props.worldChosen, seeds)
     setSeedlist(seedList)
+    setBalloons(balloons)
     checkAchievements()
-  });
+    getBalloons(plants, seeds, props.lastLogin, props.today, props.id).then(data => setBalloons(data))
+  }, [plants, seedList, seedIndex, seeds, seedIndex]);
 
 
   return (
