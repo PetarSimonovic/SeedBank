@@ -45,10 +45,18 @@ function SeedBank(props) {
   }
 
   const updateSeeds = (increment, type) => {
+    console.log("UPDATED SEEDS " + chosenSeed)
     const updatedSeeds = [...seeds]
     console.log(updatedSeeds)
     const index = updatedSeeds.findIndex(seed => seed.type === type)
-    index -1 ?  setSeeds( (prev) => {return [{type: type, quantity: increment}, ...prev]}) : updatedSeeds[index].quantity += increment
+    console.log(index)
+    console.log(increment)
+    if (index === -1) {
+      setSeeds( (prev) => {return [{type: type, quantity: increment}, ...prev]})
+    } else {
+      updatedSeeds[index].quantity += increment
+      setSeeds(updatedSeeds)
+    }
     setSeedindex(null)
   }
 
