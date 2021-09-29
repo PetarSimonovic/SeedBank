@@ -67,7 +67,7 @@ class SignUp extends Component {
 
     handleAddUser = async () => {
         const { name, email, password } = this.state
-        let id = ""
+        let userId = ""
         const newWorld = new WorldData()
         const world = JSON.stringify(newWorld)
         const seeds = newSeeds()
@@ -87,10 +87,27 @@ class SignUp extends Component {
             console.log("SEEDS on SIGN UP")
             console.log(seeds)
             this.props.setUser(name, res.data.id, [], newWorld, false, seeds, lastLogin)
-            id = res.data.id
+            userId = res.data.id
         })
         console.log("ID is")
-        console.log(id)
+        console.log(userId)
+        const balloons = [
+          {
+            type: "generic_plant",
+            quantity: 3,
+            message: "Welcome to Seedbank!"
+          },
+          {
+            type: "tulip",
+            quantity: 3,
+            message: "Welcome to Seedbank!"
+          }
+        ]
+        const balloonPayload = { userId, balloons }
+        await api.addBalloons(balloonPayload).then(res => {
+          console.log("Welcome balloons added")
+        })
+
     }
 
     render() {

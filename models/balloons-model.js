@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const Balloons = new Schema(
     {
-        user: { type: String, required: true },
+        userId: { type: String, required: true },
         balloons: { type: Array, required: true },
     },
     { timestamps: true },
