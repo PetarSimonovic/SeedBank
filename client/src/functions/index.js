@@ -10,6 +10,7 @@ import saveGarden from './SaveGarden'
 import setDate from './SetDate'
 import sendBalloon from './SendBalloon'
 import randomiser from './Randomiser'
+import updateBalloons from './UpdateBalloons'
 
 
 export {
@@ -24,5 +25,6 @@ export {
   saveGarden,
   setDate,
   sendBalloon,
-  randomiser
+  randomiser,
+  updateBalloons
  }

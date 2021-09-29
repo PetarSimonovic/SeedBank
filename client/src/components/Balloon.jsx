@@ -17,11 +17,10 @@ function Balloon(props) {
 
   const handleClick = () => {
     if (!claimed) {
-      if (props.type !== "introBalloon") { setClaimed(prev => !prev) }
+      if (props.type !== "introBalloon") { setClaimed(prev => !prev) } // introballoons (save/new world) can't be claimed
       console.log("Claimed?!")
       console.log(claimed)
       props.handleClick()
-    //  updateBalloons(props.id)
     }
   }
 

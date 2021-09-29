@@ -48,6 +48,7 @@ function createBalloons(props, balloons) {
   const handleClick = (props) => {
     updateSeeds(balloon.quantity, balloon.type)
   }
+  
 
   balloonCollection.push(
     <Balloon
