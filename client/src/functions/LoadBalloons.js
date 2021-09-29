@@ -2,7 +2,7 @@ import {sample, randomiser, createId, calculateDays} from './'
 import { Balloon } from '../gameObjects'
 import api from '../api';
 
-
+const defaultQuantity = 3 // default quantity for a pack of new seeds
 
 export default async function loadBalloons(seeds, login, id, today) {
   console.log(seeds)
@@ -12,14 +12,11 @@ export default async function loadBalloons(seeds, login, id, today) {
   let balloonData = loadedBalloons.data.data.balloons
 
 
-
+  let balloons = parseBalloons(balloonData)
   if (seeds.length > 0) {
-    const newSeeds = sample(seeds)
-    const dailyMessage = `${newSeeds.quantity} x ${newSeeds.type}!`
     balloons.push(dailyBalloon(seeds))
   }
 
-  let balloons = parseBalloons(balloonData)
   console.log("LOADED BALLOONS")
   console.log(balloons)
   return balloons
@@ -36,7 +33,8 @@ function parseBalloons(balloonData) {
 }
 
 function dailyBalloon(seeds) {
-  const newSeeds = sample(seeds)
+  const sampleSeeds = sample(seeds)
+  const newSeeds = {type: sampleSeeds.type, quantity: defaultQuantity}
   const dailyMessage = `${newSeeds.quantity} x ${newSeeds.type}!`
   return new Balloon(newSeeds.type, newSeeds.quantity, dailyMessage)
 }
