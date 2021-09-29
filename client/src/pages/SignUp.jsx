@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { WorldData, newSeeds } from '../gameObjects'
+import { WorldData, newSeeds, Balloon } from '../gameObjects'
 import { setDate } from '../functions'
 
 
@@ -94,17 +94,10 @@ class SignUp extends Component {
         })
         console.log("ID is")
         console.log(userId)
+
         const balloons = [
-          {
-            type: "generic_plant",
-            quantity: 3,
-            message: "Welcome to Seedbank!"
-          },
-          {
-            type: "tulip",
-            quantity: 3,
-            message: "Welcome to Seedbank!"
-          }
+          new Balloon("generic_plant", 3, "Welcome to SeedBank!"),
+          new Balloon("tulip", 3, "Welcome to SeedBank!"),
         ]
         const balloonPayload = { userId, balloons }
         await api.addBalloons(balloonPayload).then(res => {

@@ -9,6 +9,7 @@ export default class Balloon {
     this.type = type
     this.quantity = quantity
     this.message = message
+    this.claimed = false
   }
 }
 

@@ -27,7 +27,7 @@ function parseBalloons(balloonData) {
   for (let index = 0; index < balloonData.length; index++) {
     const balloon = balloonData[index]
     console.log(balloon)
-    parsedBalloons.push(new Balloon(balloon.type, balloon.quantity, balloon.message))
+    parsedBalloons.push(balloon)
   }
   return parsedBalloons
 }

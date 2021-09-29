@@ -51,7 +51,7 @@ function createBalloons(props, balloons) {
 
   balloonCollection.push(
     <Balloon
-    key={createId()}
+    key={balloon.id}
     seeds={seeds}
     position={balloon.position}
     index={index}
