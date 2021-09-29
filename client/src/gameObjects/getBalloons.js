@@ -1,17 +1,24 @@
 import {sample, randomiser, createId, calculateDays} from '../functions'
 import { Balloon } from './'
+import api from '../api';
 
 
-export default function getBalloons(garden, seeds, login, today) {
+
+export default async function getBalloons(garden, seeds, login, today, id) {
   const dateDifference = calculateDays(login, today)
   let balloons = []
-  // if (garden.length % 6 === 0) {
-  //   console.log("Balloon incoming!")
+  // if (calculateDays(login, today) === 0 ) {
+  //   return balloons
   // }
-  if (calculateDays(login, today) > 0 ) {
-    console.log("BALLOON COMING!")
-    balloons.push(new Balloon())
-}
 
-  return balloons
+  console.log("BALLOON COMING!")
+  balloons.push(new Balloon())
+  await api.getBalloons(id).then(res => {
+      console.log("BALLOONS ARE:")
+      console.log(res)
+      let balloonData = res.data.data.balloons
+      console.log(balloonData)
+
+  })
+
 }

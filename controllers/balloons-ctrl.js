@@ -73,7 +73,7 @@ updateBalloons = async (req, res) => {
 }
 
 getBalloons = async (req, res) => {
-    await Balloons.findOne({ _id: req.params.id }, (err, balloons) => {
+    await Balloons.findOne({ userId: req.params.userId }, (err, balloons) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }

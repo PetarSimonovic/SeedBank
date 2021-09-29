@@ -21,7 +21,7 @@ function SeedBank(props) {
   const [chosenSeed, setChosenseed] = useState("") // contains the type of seed if chosen, or null if no seed is currently selected
   const [seeds, setSeeds] = useState(props.seeds) //  an array of the player's available seeds
   const [seedIndex, setSeedindex] = useState(null) //  the index within seeds of the chosenSeed
-  const [balloons, setBalloons] = useState(getBalloons(plants, seeds, props.lastLogin, props.today))
+  const [balloons, setBalloons] = useState(getBalloons(plants, seeds, props.lastLogin, props.today, props.id))
   const [seedList, setSeedlist] = useState(false)
 
 

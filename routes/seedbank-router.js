@@ -12,7 +12,7 @@ router.get('/user/:name', UserCtrl.getUser)
 router.put('/user/:id', UserCtrl.updateGarden)
 router.post('/balloons', BalloonsCtrl.addBalloons)
 router.put('/balloons/:id', BalloonsCtrl.updateBalloons)
-router.get('/balloon/:user', BalloonsCtrl.getBalloons)
+router.get('/balloons/:userId', BalloonsCtrl.getBalloons)
 
 
 module.exports = router
