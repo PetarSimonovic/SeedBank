@@ -2,11 +2,14 @@ import {sample, randomiser, createId, calculateDays} from '../functions'
 
 
 export default class Balloon {
-  constructor(seeds) {
+  constructor(type, quantity = 0, message) {
     this.id = createId()
     this.colour = generateColour()
     this.position = generatePosition()
     this.claimed = false
+    this.type = type
+    this.quantity = quantity
+    this.message = message 
   }
 }
 

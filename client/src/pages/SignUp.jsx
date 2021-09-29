@@ -65,6 +65,8 @@ class SignUp extends Component {
         this.setState({ password })
     }
 
+    // Chain API/login as follows (??) createUser.Then.addBalloons.Then.setUser
+
     handleAddUser = async () => {
         const { name, email, password } = this.state
         let userId = ""
