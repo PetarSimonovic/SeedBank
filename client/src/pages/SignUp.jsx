@@ -94,15 +94,16 @@ class SignUp extends Component {
         })
         console.log("ID is")
         console.log(userId)
-
-        const balloons = [
-          new Balloon("generic_plant", 3, "Welcome to SeedBank!"),
-          new Balloon("tulip", 3, "Welcome to SeedBank!"),
-        ]
-        const balloonPayload = { userId, balloons }
-        await api.addBalloons(balloonPayload).then(res => {
-          console.log("Welcome balloons added")
+        let balloonOne = new Balloon(userId, "generic_plant", 3, "Welcome to SeedBank!")
+        let balloonTwo = new Balloon(userId, "tulip", 3, "Welcome to SeedBank!")
+        console.log(balloonOne)
+        await api.addBalloons(balloonOne).then(res => {
+          console.log("Welcome balloon one added")
         })
+        await api.addBalloons(balloonTwo).then(res => {
+          console.log("Welcome balloon two added")
+        })
+
 
     }
 

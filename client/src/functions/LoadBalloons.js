@@ -9,7 +9,10 @@ export default async function loadBalloons(seeds, login, id, today) {
 
   const dateDifference = calculateDays(login, today)
   let loadedBalloons = await api.getBalloons(id)
-  let balloonData = loadedBalloons.data.data.balloons
+  let balloonData = loadedBalloons.data.data
+  console.log("LOADED BALLOONS")
+
+  console.log(balloonData)
 
 
   let balloons = parseBalloons(balloonData)
@@ -27,7 +30,7 @@ function parseBalloons(balloonData) {
   for (let index = 0; index < balloonData.length; index++) {
     const balloon = balloonData[index]
     console.log(balloon)
-    parsedBalloons.push(new Balloon(balloon.type, balloon.quantity, balloon.message))
+    parsedBalloons.push(Object.assign(new Balloon(), balloon))
   }
   return parsedBalloons
 }

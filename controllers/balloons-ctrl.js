@@ -8,7 +8,7 @@ addBalloons = (req, res) => {
     if (!body) {
         return res.status(400).json({
             success: false,
-            error: 'You must provide a balloon collection',
+            error: 'You must provide a balloon',
         })
     }
 
@@ -73,7 +73,7 @@ updateBalloons = async (req, res) => {
 }
 
 getBalloons = async (req, res) => {
-    await Balloons.findOne({ userId: req.params.userId }, (err, balloons) => {
+    await Balloons.find({ userId: req.params.userId }, (err, balloons) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
