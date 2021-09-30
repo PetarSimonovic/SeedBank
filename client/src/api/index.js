@@ -9,7 +9,7 @@ export const getUser = name => api.get(`/user/${name}`)
 export const updateGarden = (id, payload) => api.put(`/user/${id}`, payload)
 export const addBalloons = payload => api.post(`/balloons`, payload)
 export const getBalloons = userId => api.get(`/balloons/${userId}`)
-export const updateBalloons = (id, payload) => api.put(`/balloons/${id}`, payload)
+export const updateBalloons = (balloonId, payload) => api.put(`/balloons/${balloonId}`, payload) // only being used to claim balloons at the moment
 
 
 const apis = {

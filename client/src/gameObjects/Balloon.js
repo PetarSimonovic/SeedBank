@@ -3,8 +3,8 @@ import {sample, randomiser, createId, calculateDays} from '../functions'
 
 export default class Balloon {
   constructor(userId, type, quantity = 0, message, sender = "SeedBank") {
-    this.userId = userId
     this.balloonId = createId()
+    this.userId = userId
     this.colour = generateColour()
     this.position = generatePosition()
     this.type = type

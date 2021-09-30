@@ -1,9 +1,20 @@
+import {Balloon} from '../gameObjects'
 import api from '../api';
 
+// adds a balloon to the DB
+//  Balloon constructor(userId, type, quantity = 0, message, sender = "SeedBank") {
 
-export default async function sendBalloon(id, balloonContents) {
-  console.log(balloonContents)
-  await api.updateBalloons(id, balloonContents).then(res => {
-        console.log('Balloons updated successfully')
+
+export default async function sendBalloon(userId, type, quantity, message) {
+
+  //
+  console.log("In sendBalloon")
+
+  const balloon = new Balloon(userId, type, quantity, message)
+  console.log(balloon)
+
+  await api.addBalloons(balloon).then(res => {
+    console.log(`${type} balloon sent!`)
   })
+
 }

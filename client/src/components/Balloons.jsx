@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
-import { createId, loadBalloons } from '../functions'
+import { createId, loadBalloons, updateBalloons } from '../functions'
 import { Balloon } from './'
 
 
@@ -48,15 +48,18 @@ function createBalloons(props, balloons) {
   const handleClick = (props) => {
     updateSeeds(balloon.quantity, balloon.type)
   }
-  
+
+
 
   balloonCollection.push(
     <Balloon
-    key={balloon.id}
+    key={balloon.balloonId}
+    balloonId={balloon.balloonId}
     seeds={seeds}
     position={balloon.position}
     index={index}
     handleClick={handleClick}
+    updateBalloons={updateBalloons}
     colour={balloon.colour}
     type={balloon.type}
     quantity={balloon.quantity}

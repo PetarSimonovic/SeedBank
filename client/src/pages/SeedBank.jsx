@@ -45,12 +45,8 @@ function SeedBank(props) {
   }
 
   const updateSeeds = (increment, type) => {
-    console.log("UPDATED SEEDS " + chosenSeed)
     const updatedSeeds = [...seeds]
-    console.log(updatedSeeds)
     const index = updatedSeeds.findIndex(seed => seed.type === type)
-    console.log(index)
-    console.log(increment)
     if (index === -1) {
       setSeeds( (prev) => {return [{type: type, quantity: increment}, ...prev]})
     } else {
@@ -69,7 +65,7 @@ function SeedBank(props) {
     const startingSeeds = 2 // offset for the starting seeds
     if (fivePlants === 0 && plants.length > 0 && seeds.length < (achievementCount + startingSeeds)) {
       console.log("Achievement!")
-      const newSeeds = calculateAchievement(seeds)
+      const newSeeds = calculateAchievement(seeds, props.id, plants.length)
       console.log("New seeds is")
       console.log(newSeeds)
       setSeeds(newSeeds)

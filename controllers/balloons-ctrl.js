@@ -37,14 +37,16 @@ addBalloons = (req, res) => {
 
 
 updateBalloons = async (req, res) => {
+
+    console.log("In UPDATED BALLOONS")
     const body = req.body
 
-    if (!body) {
-        return res.status(400).json({
-            success: false,
-            error: 'You must provide a body to update',
-        })
-    }
+    // if (!body) {
+    //     return res.status(400).json({
+    //         success: false,
+    //         error: 'You must provide a body to update',
+    //     })
+    // }
 
     Balloons.findOne({ _id: req.params.id }, (err, balloons) => {
         if (err) {
@@ -53,7 +55,9 @@ updateBalloons = async (req, res) => {
                 message: 'Balloons not found!',
             })
         }
-        balloons.balloons = body.balloons
+        console.log("BALLOON is")
+        console.log(balloons)
+        balloons.claimed = true
         balloons
             .save()
             .then(() => {
@@ -86,6 +90,7 @@ getBalloons = async (req, res) => {
         return res.status(200).json({ success: true, data: balloons })
     }).catch(err => console.log(err))
 }
+
 
 
 

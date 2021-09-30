@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Text, Billboard } from '@react-three/drei'
 import { useFrame } from "@react-three/fiber";
-import { createId } from '../functions'
+import { createId, updateBalloons } from '../functions'
 
 
 
@@ -21,6 +21,7 @@ function Balloon(props) {
       console.log("Claimed?!")
       console.log(claimed)
       props.handleClick()
+      updateBalloons(props.balloonId)
     }
   }
 

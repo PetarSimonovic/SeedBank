@@ -28,16 +28,22 @@ export default async function loadBalloons(seeds, login, id, today) {
 function parseBalloons(balloonData) {
   let parsedBalloons = []
   for (let index = 0; index < balloonData.length; index++) {
+    console.log("In parsedballoons")
     const balloon = balloonData[index]
+    balloon.balloonId = balloon._id // Can only get the DB to findOne using its own _id! 
     console.log(balloon)
+    if (balloon.claimed) {
+       continue }
     parsedBalloons.push(Object.assign(new Balloon(), balloon))
   }
   return parsedBalloons
 }
 
-function dailyBalloon(seeds) {
+function dailyBalloon(seeds, id) {
+
+  // This is not being added to the database at the moment
   const sampleSeeds = sample(seeds)
   const newSeeds = {type: sampleSeeds.type, quantity: defaultQuantity}
   const dailyMessage = `${newSeeds.quantity} x ${newSeeds.type}!`
-  return new Balloon(newSeeds.type, newSeeds.quantity, dailyMessage)
+  return new Balloon(id, newSeeds.type, newSeeds.quantity, dailyMessage)
 }
