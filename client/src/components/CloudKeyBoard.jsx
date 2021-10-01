@@ -29,7 +29,6 @@ function CloudKeyBoard(props) {
   const deleteCharacter = () => {
     console.log(sentenceArray)
     let previousLength = sentenceArray.length - 1
-    console.log(previousLength)
     setSentencearray (
       (prev) => {
         return prev.filter((character, index) => index !== previousLength)
@@ -94,7 +93,6 @@ function CloudKey(props) {
 
     const handleClick = (event, character) => {
       event.stopPropagation()
-      console.log(character)
       props.buildSentence(character)
     }
 
@@ -125,7 +123,7 @@ function CloudKey(props) {
 
 function FunctionKey(props) {
 
-// Receives a 'handleclick' prop that can vary according to functions
+// FunctionKey Receives a 'handleclick' prop that can vary according to functions
 // Varies in colour to cloudkey but other than that the two could prob be merged into single component
 
 const mesh = useRef()

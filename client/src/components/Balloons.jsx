@@ -9,8 +9,6 @@ function Balloons(props) {
   // This reference will give us direct access to the mesh
   const mesh = useRef()
   const [balloons, setBalloons] = useState([])
-  console.log("Balloons in balloons")
-  console.log(balloons)
 
   useEffect(() => {
     loadBalloons(props.seeds, props.lastLogin, props.userId, props.today).then(data => setBalloons(data))
@@ -35,8 +33,6 @@ function Balloons(props) {
 }
 
 function createBalloons(props, balloons) {
-  console.log("Balloons in createballoons")
-  console.log(balloons)
   const balloonCollection = []
   const {removeBalloon, updateSeeds, seeds} = props
 
@@ -66,8 +62,6 @@ function createBalloons(props, balloons) {
     message={balloon.message} />
   )
   }
-  console.log("Balloon collection")
-  console.log(balloonCollection)
   return balloonCollection
 }
 

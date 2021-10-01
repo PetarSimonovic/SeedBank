@@ -12,9 +12,6 @@ const fontY = 1.5
 
 function SeedCloud(props) {
 
-  console.log("Props in SeedBox")
-  console.log(props)
-
   const mesh = useRef()
 
 
@@ -47,7 +44,6 @@ function seedSelectors(props) {
   if (seedSelectors.length === 0) {
     seedSelectors.push( <NoSeedText key={createId()} colours={seedTextColours} index={1} />)
   }
-  console.log(seedSelectors)
   return seedSelectors
 }
 
@@ -59,7 +55,6 @@ function SeedText(props) {
 
   const handleClick = (event) => {
     event.stopPropagation()
-    console.log(seed.type)
     props.selectSeed(seed.type, props.index)
     props.toggleSeeds()
   }

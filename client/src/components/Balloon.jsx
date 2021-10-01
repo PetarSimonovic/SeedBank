@@ -10,16 +10,10 @@ function Balloon(props) {
   const mesh = useRef()
   const [claimed, setClaimed] = useState(false)
 
-  const ballonTextColour = {
-    message: "#293241",
-    outline: "#b1b5c8"
-  }
 
   const handleClick = () => {
     if (!claimed) {
       if (props.type !== "introBalloon") { setClaimed(prev => !prev) } // introballoons (save/new world) can't be claimed
-      console.log("Claimed?!")
-      console.log(claimed)
       props.handleClick()
       updateBalloons(props.balloonId)
     }
@@ -30,7 +24,6 @@ function Balloon(props) {
   }, [])
 
 
-  useFrame((state, delta) => ( mesh.current.rotation.y += 0.01))
 
 
   // Set up state for the hovered and active state
@@ -56,7 +49,7 @@ function Balloon(props) {
       lockX={false}
       lockY={false}
       lockZ={false} >
-      <Text position={[0, -0.7, 0]} fontSize={0.09} outlineWidth={0.04} outlineColor={ballonTextColour.outline} color={ballonTextColour.message} claimed={true} > {props.message} </Text>
+      <BalloonText type={props.type} position={[0, -0.9, 0]} claimed={claimed} message={props.message} />
       </Billboard>
     </mesh>
       </group>
@@ -64,10 +57,32 @@ function Balloon(props) {
   )
  }
 
+ function BalloonText(props) {
+
+   const ballonTextColour = {
+     message: "#293241",
+     outline: "#b1b5c8"
+   }
+
+   const mesh = useRef()
+
+   return (
+     <mesh
+       {...props}
+       ref={mesh}
+       scale={0.8}
+       >
+       <Text fontSize={0.2} outlineWidth={0.2} outlineColor={ballonTextColour.outline} color={ballonTextColour.message} > {props.claimed || props.type === "introBalloon" ? props.message : "" } </Text>
+       </mesh>
+   )
+ }
+
 
  function BalloonBody(props) {
 
    const mesh = useRef()
+   useFrame((state, delta) => ( mesh.current.rotation.y += 0.01))
+
 
    return (
      <mesh
@@ -82,7 +97,10 @@ function Balloon(props) {
  }
 
  function BalloonString(props) {
+
    const mesh = useRef()
+   useFrame((state, delta) => ( mesh.current.rotation.y += 0.01))
+
    // Set up state for the hovered and active state
 
 
@@ -100,6 +118,8 @@ function Balloon(props) {
 
   function BalloonCone(props) {
     const mesh = useRef()
+    useFrame((state, delta) => ( mesh.current.rotation.y += 0.01))
+
     // Set up state for the hovered and active state
 
 
@@ -117,6 +137,8 @@ function Balloon(props) {
 
    function BalloonCrate(props) {
      const mesh = useRef()
+     useFrame((state, delta) => ( mesh.current.rotation.y += 0.01))
+
      // Set up state for the hovered and active state
 
 

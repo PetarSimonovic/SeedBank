@@ -8,7 +8,7 @@ import api from '../api';
 export default async function sendBalloon(userId, type, quantity, message) {
 
   //
-  console.log("In sendBalloon")
+  console.log("In sendBalloon " + type)
 
   const balloon = new Balloon(userId, type, quantity, message)
   console.log(balloon)

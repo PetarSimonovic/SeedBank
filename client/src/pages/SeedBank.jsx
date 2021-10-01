@@ -68,7 +68,7 @@ function SeedBank(props) {
       const newSeeds = calculateAchievement(seeds, props.id, plants.length)
       console.log("New seeds is")
       console.log(newSeeds)
-      setSeeds(newSeeds)
+      setSeeds(prev => newSeeds)
 
     }
   }
@@ -115,7 +115,7 @@ function SeedBank(props) {
         seeds={seeds}
         chosenSeed={chosenSeed}
         seedList={seedList}
-        position={[-1, -1, 1.9]}
+        position={[0, -0.8, -4]}
         selectSeed={selectSeed}
         toggleSeeds={toggleSeeds} />
         </> :
