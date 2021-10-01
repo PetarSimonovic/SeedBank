@@ -1,4 +1,4 @@
-import { sendBalloon } from './'
+import { sendBalloon, sample } from './'
 
 // This calculates achievements based on the number of plants in players' garden
 // Every five plants either unlocks a new plant or adds more existing seeds
@@ -7,12 +7,15 @@ import { sendBalloon } from './'
 // This needs refactoring to for separation of concerns/SRP/DRY
 
 export default function calculateAchievement(seeds, id, plantCount) {
+  console.log("In Achievement Calculator seeds are:")
+  console.log(seeds)
   let duplicate = true
   let newSeed = {}
   if (seeds.length === seedBank.length) {
     let bonusSeed = sample(seeds)
+    console.log("bonusSeeds")
     sendBalloon(id, bonusSeed.type, 3, `${plantCount} plants! Bonus ${bonusSeed.type} seeds!`  ) //userId, type, quantity = 0, message, sender = "SeedBank")
-    return seeds
+    return
     // newSeed = sample(seedBank)
     // console.log("FULL BANK")
     // unlock = false
@@ -22,12 +25,8 @@ export default function calculateAchievement(seeds, id, plantCount) {
     duplicate = checkDuplicate(newSeed, seeds, id, plantCount)
   }
 }
-  return updateSeeds(seeds, newSeed, id, plantCount)
-}
-
-
-function sample(array) {
-  return array[Math.floor(Math.random() * array.length)];
+  sendBalloon(id, newSeed.type, 3, `${plantCount} plants! ${'\n'} ${newSeed.type} unlocked!`)
+  return newSeed
 }
 
 function checkDuplicate(newSeed, seeds) {
@@ -40,21 +39,20 @@ function checkDuplicate(newSeed, seeds) {
   return false
 
 }
-
-function updateSeeds(seeds, newSeed, id, plantCount) {
-  const updatedSeeds = []
-  for (let index = 0; index < seeds.length; index++) {
-    const seed = seeds[index]
-    if (seed.type === newSeed.type) {
-      seed.quantity += newSeed.quantity
-    }
-    updatedSeeds.push(seed)
-  }
-  newSeed.quantity = 0
-  updatedSeeds.push(newSeed)
-  sendBalloon(id, newSeed.type, 3, `${plantCount} plants! You've unlocked ${newSeed.type}!`)
-  return updatedSeeds
-}
+//
+// function updateSeeds(seeds, newSeed, id, plantCount) {
+//   const updatedSeeds = []
+//   for (let index = 0; index < seeds.length; index++) {
+//     const seed = seeds[index]
+//     if (seed.type === newSeed.type) {
+//       seed.quantity += newSeed.quantity
+//     }
+//     updatedSeeds.push(seed)
+//   }
+//   newSeed.quantity = 0
+//   updatedSeeds.push(newSeed)
+//   return updatedSeeds
+// }
 
 const seedBank = [
   {type: "generic_plant", quantity: 3},

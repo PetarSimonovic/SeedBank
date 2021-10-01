@@ -53,7 +53,7 @@ function displayText(option) {
   switch(option) {
     case 0:
       const date = setDate()
-      return `${date.day} ${date.month} ${date.year}`
+      return `   | | ${'\n'} \\__/ `
     case 1:
       return 'Choose Seed'
     case 2:

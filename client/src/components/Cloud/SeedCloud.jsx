@@ -79,7 +79,7 @@ function SeedText(props) {
         color={props.colours.type}
         rotation={[0, 0, 0]} >
           {seed.type} {'\n'}
-          quantity: {seed.quantity}
+          x {seed.quantity}
         </ Text>
         </ Billboard>
       </mesh>

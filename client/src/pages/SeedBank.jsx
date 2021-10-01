@@ -22,7 +22,6 @@ function SeedBank(props) {
   const [seeds, setSeeds] = useState(props.seeds) //  an array of the player's available seeds
   const [seedIndex, setSeedindex] = useState(null) //  the index within seeds of the chosenSeed
   const [balloons, setBalloons] = useState([])
-  const [seedList, setSeedlist] = useState(false)
 
 
   const sowPlant = ( event ) => {
@@ -33,6 +32,7 @@ function SeedBank(props) {
         return [newPlant, ...prev]
       })
       updateSeeds(-1, chosenSeed)
+      checkAchievements(plants.length)
     }
   }
 
@@ -53,38 +53,34 @@ function SeedBank(props) {
       updatedSeeds[index].quantity += increment
       setSeeds(updatedSeeds)
     }
+    console.log("Updated seeds")
+    console.log(seeds)
     setSeedindex(null)
+    console.log("Plants in updatedSeeds")
+    console.log(plants.length)
   }
 
 
-  const checkAchievements = () => {
-    console.log("Checking achievements")
-    console.log(plants.length)
-    const fivePlants = plants.length % 5
-    const achievementCount = plants.length / 5 // how many multuples of five?
+  const checkAchievements = (plantCount) => {
+    console.log("CHECKING ACHIEVEMENTS")
+    console.log(plantCount)
+    const fivePlants = plantCount % 5
+    const achievementCount = plantCount / 5 // how many multuples of five?
     const startingSeeds = 2 // offset for the starting seeds
-    if (fivePlants === 0 && plants.length > 0 && seeds.length < (achievementCount + startingSeeds)) {
+    if (fivePlants === 0) {
       console.log("Achievement!")
-      const newSeeds = calculateAchievement(seeds, props.id, plants.length)
-      console.log("New seeds is")
-      console.log(newSeeds)
-      setSeeds(newSeeds)
+      const newSeed = calculateAchievement(seeds, props.id, plantCount)
+      console.log(newSeed)
+      updateSeeds(0, newSeed.type)
 
     }
   }
 
-  const toggleSeeds = () => {
-    setSeedlist((prevState) => !prevState)
-    console.log("TOGGLE " + seedList)
-  }
-
   useEffect(() => {
-    //
-    setSeeds(seeds)
+    console.log("in uSEEFFECT")
+    console.log(seeds)
     console.log("Calling saveGarden")
     saveGarden(props.id, plants, props.world, props.worldChosen, seeds)
-    setSeedlist(seedList)
-    checkAchievements()
     });
 
 
@@ -114,10 +110,8 @@ function SeedBank(props) {
        <Cloud
         seeds={seeds}
         chosenSeed={chosenSeed}
-        seedList={seedList}
-        position={[0, -0.8, -4]}
-        selectSeed={selectSeed}
-        toggleSeeds={toggleSeeds} />
+        position={[0, -0.8, 1]}
+        selectSeed={selectSeed} />
         </> :
         < IntroBalloons
           saveWorld={props.saveWorld}
