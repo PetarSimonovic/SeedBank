@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import { createId } from '../functions'
-import { getSeed } from '../gameObjects'
+import { createId } from '../../functions'
+import { getSeed } from '../../gameObjects'
 
 
 // Creates a Plant based on the props that it receives

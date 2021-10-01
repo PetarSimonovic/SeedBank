@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Text, Billboard } from '@react-three/drei'
 import { useFrame } from "@react-three/fiber";
-import { createId, updateBalloons } from '../functions'
+import { createId, updateBalloons } from '../../functions'
 
 
 
@@ -9,6 +9,7 @@ function Balloon(props) {
 
   const mesh = useRef()
   const [claimed, setClaimed] = useState(false)
+  const [displayMessage, setDisplaymessage] = useState(false)
 
 
   const handleClick = () => {
@@ -17,10 +18,12 @@ function Balloon(props) {
       props.handleClick()
       updateBalloons(props.balloonId)
     }
+    setDisplaymessage(prev => !prev)
   }
 
   useEffect(() => {
     setClaimed(claimed)
+    setDisplaymessage(displayMessage)
   }, [])
 
 
@@ -49,7 +52,7 @@ function Balloon(props) {
       lockX={false}
       lockY={false}
       lockZ={false} >
-      <BalloonText type={props.type} position={[0, -0.9, 0]} claimed={claimed} message={props.message} />
+      <BalloonText type={props.type} displayMessage={displayMessage} position={[0, -0.9, 0]} claimed={claimed} message={props.message} />
       </Billboard>
     </mesh>
       </group>
@@ -72,7 +75,7 @@ function Balloon(props) {
        ref={mesh}
        scale={0.8}
        >
-       <Text fontSize={0.2} outlineWidth={0.2} outlineColor={ballonTextColour.outline} color={ballonTextColour.message} > {props.claimed || props.type === "introBalloon" ? props.message : "" } </Text>
+       <Text fontSize={0.2} outlineWidth={0.2} outlineColor={ballonTextColour.outline} color={ballonTextColour.message} > {props.displayMessage || props.type === "introBalloon" ? props.message : "" } </Text>
        </mesh>
    )
  }

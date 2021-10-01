@@ -1,7 +1,7 @@
 
 import { Text, Billboard } from '@react-three/drei'
 import React, { useRef, useState, useEffect } from "react";
-import { createId } from '../functions'
+import { createId } from '../../functions'
 
 
 
@@ -10,7 +10,7 @@ const alphabet = characters.split('')
 const cloudKeyboardColours = {text: "#293241", outline: "#b1b5c8"}
 const cloudFunctionButtonColours = {text: "#b1b5c8", outline: "#293241"}
 const fontSize = 0.1
-const fontZ = 3
+const fontZ = 1
 
 
 

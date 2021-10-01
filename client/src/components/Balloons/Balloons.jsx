@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
-import { createId, loadBalloons, updateBalloons } from '../functions'
-import { Balloon } from './'
+import { createId, loadBalloons, updateBalloons } from '../../functions'
+import { Balloon } from '../'
 
 
 

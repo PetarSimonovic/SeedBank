@@ -1,14 +1,14 @@
 import { Text, Billboard } from '@react-three/drei'
 import React, { useRef, useState, useEffect } from "react";
-import { createId } from '../functions'
+import { createId } from '../../functions'
 
 // Creates a button that 'clicks'
 
 const seedTextColours = {type: "#293241", outline: "#b1b5c8"}
 const selectedSeedTextColours = {type: "#b1b5c8", outline: "#293241"}
-const fontSize = 0.1
-const fontZ = 2
-const fontY = 1.5
+const fontSize = 0.15
+const fontZ = 1
+const fontY = 2
 
 function SeedCloud(props) {
 

@@ -68,7 +68,7 @@ function SeedBank(props) {
       const newSeeds = calculateAchievement(seeds, props.id, plants.length)
       console.log("New seeds is")
       console.log(newSeeds)
-      setSeeds(prev => newSeeds)
+      setSeeds(newSeeds)
 
     }
   }
@@ -80,11 +80,11 @@ function SeedBank(props) {
 
   useEffect(() => {
     //
+    setSeeds(seeds)
     console.log("Calling saveGarden")
     saveGarden(props.id, plants, props.world, props.worldChosen, seeds)
     setSeedlist(seedList)
     checkAchievements()
-    setSeeds(seeds)
     });
 
 

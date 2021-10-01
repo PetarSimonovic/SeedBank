@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React from 'react';
-import { createId } from '../functions'
+import { createId } from '../../functions'
 
 // Generates a panel that contains buttons of available Seeds
 // PROTOTYPE ONLY: need to design an interface that coould contain an indefinite number of seeds or objects
@@ -23,7 +23,7 @@ function Seeds(props) {
 
   return (
     <Panel>
-     {props.chosenSeed} 
+     {props.chosenSeed}
     </Panel>
   )
 }

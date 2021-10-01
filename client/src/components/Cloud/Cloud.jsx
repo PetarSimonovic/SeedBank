@@ -1,10 +1,10 @@
 import { Billboard, Text } from '@react-three/drei'
-import { setDate, makeFriendRequest } from '../functions'
+import { setDate, makeFriendRequest } from '../../functions'
 import React, { Component, useState, useRef } from 'react';
-import { SeedCloud, CloudKeyBoard } from './'
+import { SeedCloud, CloudKeyBoard } from '../'
 
 
-const position = [0.5, 2.8, 3]
+const position = [0.5, 2.8, 5]
 const size = 0.5
 const options = 2
 
@@ -22,6 +22,7 @@ function Cloud(props) {
     console.log(option)
 
   }
+
 
 return (
   <mesh

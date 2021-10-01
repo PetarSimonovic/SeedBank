@@ -50,6 +50,7 @@ function updateSeeds(seeds, newSeed, id, plantCount) {
     }
     updatedSeeds.push(seed)
   }
+  newSeed.quantity = 0
   updatedSeeds.push(newSeed)
   sendBalloon(id, newSeed.type, 3, `${plantCount} plants! You've unlocked ${newSeed.type}!`)
   return updatedSeeds

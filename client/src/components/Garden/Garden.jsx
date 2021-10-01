@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import { createId } from '../functions'
-import { Grass, SeedBox } from './'
+import { createId } from '../../functions'
+import { Grass, SeedBox } from '../'
 
 
 // The plane on which plants grow

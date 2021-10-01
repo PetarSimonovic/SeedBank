@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { createId } from '../functions'
-import { Balloon } from './'
+import { createId } from '../../functions'
+import { Balloon } from '../'
 
 
 function IntroBalloons(props) {
