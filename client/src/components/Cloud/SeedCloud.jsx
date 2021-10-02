@@ -56,7 +56,6 @@ function SeedText(props) {
   const handleClick = (event) => {
     event.stopPropagation()
     props.selectSeed(seed.type, props.index)
-    props.toggleSeeds()
   }
 
 

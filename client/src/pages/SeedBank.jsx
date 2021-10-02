@@ -32,7 +32,6 @@ function SeedBank(props) {
         return [newPlant, ...prev]
       })
       updateSeeds(-1, chosenSeed)
-      checkAchievements(plants.length)
     }
   }
 
@@ -48,6 +47,7 @@ function SeedBank(props) {
     const updatedSeeds = [...seeds]
     const index = updatedSeeds.findIndex(seed => seed.type === type)
     if (index === -1) {
+      console.log("adding newSeed " + type)
       setSeeds( (prev) => {return [{type: type, quantity: increment}, ...prev]})
     } else {
       updatedSeeds[index].quantity += increment
@@ -61,13 +61,18 @@ function SeedBank(props) {
   }
 
 
-  const checkAchievements = (plantCount) => {
+  const checkAchievements = () => {
     console.log("CHECKING ACHIEVEMENTS")
+    const plantCount = plants.length
+    console.log("Plants " + plantCount)
+    console.log("Seeds " + seeds.length)
     console.log(plantCount)
     const fivePlants = plantCount % 5
     const achievementCount = plantCount / 5 // how many multuples of five?
     const startingSeeds = 2 // offset for the starting seeds
-    if (fivePlants === 0) {
+    const achievementTracker = achievementCount + startingSeeds
+    console.log("AchievementTracker " + achievementTracker)
+    if (fivePlants === 0 && plantCount !== 0 && seeds.length < achievementTracker) { // if statement checks if plantCount is multiple of 5 and whether the seeds for that multiple have been awarded
       console.log("Achievement!")
       const newSeed = calculateAchievement(seeds, props.id, plantCount)
       console.log(newSeed)
@@ -79,9 +84,12 @@ function SeedBank(props) {
   useEffect(() => {
     console.log("in uSEEFFECT")
     console.log(seeds)
+    setSeeds(seeds)
+    console.log(plants.length)
     console.log("Calling saveGarden")
     saveGarden(props.id, plants, props.world, props.worldChosen, seeds)
-    });
+    checkAchievements()
+  }, [plants, seeds]);
 
 
   return (
