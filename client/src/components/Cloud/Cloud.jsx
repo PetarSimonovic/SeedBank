@@ -1,5 +1,5 @@
 import { Billboard, Text } from '@react-three/drei'
-import { setDate, makeFriendRequest } from '../../functions'
+import { setDate } from '../../functions'
 import React, { Component, useState, useRef } from 'react';
 import { SeedCloud, CloudKeyBoard } from '../'
 
@@ -69,7 +69,7 @@ function displayFunctionality(option, props) {
     case 1:
       return <SeedCloud seeds={props.seeds} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} chosenSeed={props.chosenSeed} />
     case 2:
-      return <CloudKeyBoard handleSubmit={makeFriendRequest} />
+      return <CloudKeyBoard handleSubmit={props.sendFriendRequest} />
     default:
      return ""
   }

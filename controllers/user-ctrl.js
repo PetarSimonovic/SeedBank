@@ -81,6 +81,8 @@ updateGarden = async (req, res) => {
         user
             .save()
             .then(() => {
+                console.log("SAVED SEEDS")
+                console.log(user.seeds)
                 return res.status(200).json({
                     success: true,
                     id: user._id,

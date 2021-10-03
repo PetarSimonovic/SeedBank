@@ -63,6 +63,7 @@ function CloudKeyBoard(props) {
 }
 
 function createCloudKeyboard(props, buildSentence, deleteCharacter, sentence, submit) {
+  console.log("User is " + props.userName)
   let cloudKeyboard = []
   let fontX = 0.5
   let fontY = 3

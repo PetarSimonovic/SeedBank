@@ -5,7 +5,7 @@ import api from '../api';
 //  Balloon constructor(userId, type, quantity = 0, message, sender = "SeedBank") {
 
 
-export default async function sendBalloon(userId, type, quantity, message) {
+export default async function sendBalloon(userId, type, quantity, message, sender = "SeedBank") {
 
   //
   console.log("In sendBalloon " + type)

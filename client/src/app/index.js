@@ -80,6 +80,7 @@ class App extends React.Component {
           {this.state.userName ?
             <SeedBank
               id={this.state.id}
+              userName={this.state.userName}
               newWorld={this.newWorld}
               world={this.state.world}
               worldChosen={this.state.worldChosen}

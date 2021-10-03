@@ -14,9 +14,11 @@ function Balloon(props) {
 
   const handleClick = () => {
     if (!claimed) {
-      if (props.type !== "introBalloon") { setClaimed(prev => !prev) } // introballoons (save/new world) can't be claimed
       props.handleClick()
-      updateBalloons(props.balloonId)
+      if (props.type !== "introBalloon") {
+        setClaimed(prev => !prev)
+        updateBalloons(props.balloonId)
+      } // introballoons (save/new world) can't be claimed
     }
     setDisplaymessage(prev => !prev)
   }

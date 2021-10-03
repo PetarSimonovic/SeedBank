@@ -1,6 +1,6 @@
 import '../style/App.css';
 import React, { useState, useEffect, Suspense } from "react";
-import { calculateAchievement, saveGarden, createPlant, loadBalloons } from '../functions'
+import { calculateAchievement, saveGarden, createPlant, loadBalloons, makeFriendRequest } from '../functions'
 import { Balloon } from '../gameObjects'
 import { Canvas } from "@react-three/fiber";
 import { Garden, Camera, Sun, World, Firmament, Cloud, Balloons, SeedBox, IntroBalloons } from '../components';
@@ -48,7 +48,9 @@ function SeedBank(props) {
     const index = updatedSeeds.findIndex(seed => seed.type === type)
     if (index === -1) {
       console.log("adding newSeed " + type)
-      setSeeds( (prev) => {return [{type: type, quantity: increment}, ...prev]})
+      setSeeds( (prev) => {
+        return [...prev, {type: type, quantity: increment}]
+      })
     } else {
       updatedSeeds[index].quantity += increment
       setSeeds(updatedSeeds)
@@ -76,15 +78,20 @@ function SeedBank(props) {
       console.log("Achievement!")
       const newSeed = calculateAchievement(seeds, props.id, plantCount)
       console.log(newSeed)
-      updateSeeds(0, newSeed.type)
-
+      setSeeds( (prev) => {
+        return [...prev, {type: newSeed.type, quantity: 0}]
+      })
     }
+  }
+
+  const sendFriendRequest = (sentence) => {
+    console.log("FRiend request from " + props.userName)
+    makeFriendRequest(props.id, props.userName, sentence)
   }
 
   useEffect(() => {
     console.log("in uSEEFFECT")
     console.log(seeds)
-    setSeeds(seeds)
     console.log(plants.length)
     console.log("Calling saveGarden")
     saveGarden(props.id, plants, props.world, props.worldChosen, seeds)
@@ -119,6 +126,7 @@ function SeedBank(props) {
         seeds={seeds}
         chosenSeed={chosenSeed}
         position={[0, -0.8, 1]}
+        sendFriendRequest={sendFriendRequest}
         selectSeed={selectSeed} />
         </> :
         < IntroBalloons
