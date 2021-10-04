@@ -110,6 +110,7 @@ function SeedBank(props) {
       <Camera />
       <Suspense fallback={console.log("loading")}>
       <Garden
+      friend={false}
       sowPlant={sowPlant}
       position={[0, 0, 0]}
       world={props.world}

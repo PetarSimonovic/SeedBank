@@ -1,6 +1,7 @@
 import { Billboard, Text } from '@react-three/drei'
 import React, { Component, useState, useRef, useEffect } from 'react';
 import { loadFriends } from '../functions'
+import { Garden } from './'
 
 function Friends(props) {
 
@@ -31,9 +32,10 @@ function createFriends(props, friends) {
   for (let index = 0; index < friends.length; index++) {
     const friend = friends[index]
     console.log(friend)
-    friendCollection.push(<Text> Hello </Text>)
+    friendCollection.push(<Garden friend={true} position={friend.position} name={friend.name} friendId={friend.friendId} world={friend.world} />)
   }
-
+  console.log("CREATED FRIENDS")
+  console.log(friendCollection)
   return friendCollection
 }
 
