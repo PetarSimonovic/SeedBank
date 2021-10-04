@@ -43,11 +43,17 @@ function balloonsForSale(props) {
 function BalloonForSale(props) {
 
   const mesh = useRef()
+  const [scale, setScale] = useState(1)
 
   const handleClick = (event) => {
     event.stopPropagation()
     console.log(props)
     props.buyBalloon(props.outline)
+    setScale(0.95)
+    setTimeout(() => {
+      setScale(1)
+    }, 100)
+
     //  constructor(userId, type, colour = sample(balloonColours()), quantity = 0, message, sender = "SeedBank") {
   }
 
@@ -55,7 +61,7 @@ function BalloonForSale(props) {
     <mesh
       {...props}
       ref={mesh}
-      scale={1}
+      scale={scale}
       onClick={(event) => handleClick(event)}
       >
     <Billboard

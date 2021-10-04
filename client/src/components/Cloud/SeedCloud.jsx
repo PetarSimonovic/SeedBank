@@ -36,10 +36,11 @@ function seedSelectors(props) {
   for (let index = 0; index < props.seeds.length; index++) {
     let seed = props.seeds[index]
     if (seed.quantity === 0) { continue }
-    fontX += 1
+    const x = Math.cos(2 * Math.PI * index / props.seeds.length)
+    const y = 3 + Math.sin(2 * (Math.PI * index / props.seeds.length  ))
     let colours = {}
     seed.type === props.chosenSeed ? colours = selectedSeedTextColours : colours = seedTextColours
-    seedSelectors.push( <SeedText key={createId()} position={[0, 0, 0]}selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} seed={seed} colours={colours} index={index} fontX={fontX} />)
+    seedSelectors.push( <SeedText key={createId()} position={[x, y, 0]} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} seed={seed} colours={colours} index={index}  />)
   }
   if (seedSelectors.length === 0) {
     seedSelectors.push( <NoSeedText key={createId()} colours={seedTextColours} index={1} />)
@@ -72,7 +73,6 @@ function SeedText(props) {
         < Text
         fontSize={fontSize}
         onClick={(event) => handleClick(event)}
-        position={[props.fontX, fontY, fontZ]}
         outlineWidth={fontSize}
         outlineColor={props.colours.outline}
         color={props.colours.type}

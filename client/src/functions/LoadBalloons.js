@@ -16,9 +16,11 @@ export default async function loadBalloons(seeds, login, id, today) {
 
 
   let balloons = parseBalloons(balloonData)
-  if (seeds.length > 0) {
-    balloons.push(dailyBalloon(seeds))
-  }
+
+  // NO LONGER SENDING A 'DAILY BALLOON'
+  // if (seeds.length > 0) {
+  //   balloons.push(dailyBalloon(seeds))
+  // }
 
   console.log("LOADED BALLOONS")
   console.log(balloons)
@@ -30,7 +32,7 @@ function parseBalloons(balloonData) {
   for (let index = 0; index < balloonData.length; index++) {
     console.log("In parsedballoons")
     const balloon = balloonData[index]
-    balloon.balloonId = balloon._id // Can only get the DB to findOne using its own _id! 
+    balloon.balloonId = balloon._id // Can only get the DB to findOne using its own _id!
     console.log(balloon)
     if (balloon.claimed) {
        continue }
@@ -39,9 +41,11 @@ function parseBalloons(balloonData) {
   return parsedBalloons
 }
 
+
+//NOT IN USE ANYMORE
 function dailyBalloon(seeds, id) {
 
-  // This is not being added to the database at the moment
+  // This is not being added to the balloon database at the moment
   const sampleSeeds = sample(seeds)
   const newSeeds = {type: sampleSeeds.type, quantity: defaultQuantity}
   const dailyMessage = `${newSeeds.quantity} x ${newSeeds.type}!`
