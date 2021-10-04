@@ -1,6 +1,6 @@
 import '../style/App.css';
 import React, { useState, useEffect, Suspense } from "react";
-import { calculateAchievement, saveGarden, createPlant, loadBalloons, makeFriendRequest, makeFriends } from '../functions'
+import { calculateAchievement, saveGarden, sendBalloon, createPlant, loadBalloons, makeFriendRequest, makeFriends } from '../functions'
 import { Balloon } from '../gameObjects'
 import { Canvas } from "@react-three/fiber";
 import { Garden, Camera, Sun, World, Firmament, Friends, Cloud, Balloons, SeedBox, IntroBalloons } from '../components';
@@ -27,12 +27,17 @@ function SeedBank(props) {
   const sowPlant = ( event ) => {
     if (chosenSeed) {
       const newPlant = createPlant(event, chosenSeed)
-      setChosenseed("")
       setPlants( (prev) => {
         return [newPlant, ...prev]
       })
-      updateSeeds(-1, chosenSeed)
+      removeSeed()
     }
+  }
+
+  const removeSeed = () => {
+    setChosenseed("")
+    updateSeeds(-1, chosenSeed)
+    saveGarden(props.id, plants, props.world, props.worldChosen, seeds)
   }
 
   const selectSeed = (selectedSeed, index) => {
@@ -55,10 +60,8 @@ function SeedBank(props) {
       updatedSeeds[index].quantity += increment
       setSeeds(updatedSeeds)
     }
-    console.log("Updated seeds")
     console.log(seeds)
     setSeedindex(null)
-    console.log("Plants in updatedSeeds")
     console.log(plants.length)
   }
 
@@ -85,13 +88,25 @@ function SeedBank(props) {
   }
 
   const sendFriendRequest = (sentence) => {
-    console.log("FRiend request from " + props.userName)
     makeFriendRequest(props.id, props.userName, sentence, props.world)
   }
 
   const acceptFriend = (friendName) => {
-    console.log(`FRIEND REQUEST from ${friendName} ACCEPTED!`)
     makeFriends(props.id, props.userName, friendName, props.world)
+  }
+
+  const sendPlant = (friendName, friendId) =>{
+    console.log(`Sending ${chosenSeed} to ${friendName} ${friendId}`)
+    if (chosenSeed) {
+      const message = `${props.userName} sent you ${'\n'} a ${chosenSeed} seed!`
+      sendBalloon(friendId, chosenSeed, 1, message, props.userName)
+      console.log(message)
+      console.log(`Sending ${chosenSeed} to ${friendName} ${friendId}`)
+      removeSeed()
+    } else {
+      console.log("No seed selected")
+    }
+
   }
 
   useEffect(() => {
@@ -101,7 +116,7 @@ function SeedBank(props) {
     console.log("Calling saveGarden")
     saveGarden(props.id, plants, props.world, props.worldChosen, seeds)
     checkAchievements()
-  }, [plants, seeds]);
+  });
 
 
   return (
@@ -119,7 +134,7 @@ function SeedBank(props) {
       {plants}
       <Sun />
       <Firmament />
-      <Friends userId={props.id}/>
+      <Friends sendPlant={sendPlant} userId={props.id}/>
      </Suspense>
      {props.worldChosen ?
        <>

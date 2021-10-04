@@ -13,11 +13,19 @@ function Garden(props) {
   // Rotate mesh every frame, this is outside of React without overhead
   // useFrame(() => (mesh.current.rotation.y += 0.002))
 
-  const [hovered, setHover] = useState(false)
+  const [name, setName] = useState(true)
+
+  const handleClick = (event) => {
+    if (props.friend) {
+  //  setName(prev => !prev)
+    event.stopPropagation()
+    props.sendPlant(props.name, props.friendId)
+    }
+  }
 
   useEffect(() => {
-    setHover(hovered)
-    console.log("hover " + hovered)
+    setName(name)
+    console.log("name " + name)
     console.log("friend " +  props.friend)
   })
 
@@ -28,11 +36,10 @@ function Garden(props) {
       {...props}
       ref={mesh}
       scale={1}
-      onPointerOver={(event) => setHover(true)}
-      onPointerOut={(event) => setHover(false)}
+      onClick={(event) => handleClick(event)}
       >
       {createStalactites(props)}
-      {hovered && props.friend ? <GardenText name={props.name} position={[0, 0, +3]} /> : ''}
+      {name && props.friend ? <GardenText name={props.name} position={[0, 2, 0]} /> : ''}
     </mesh>
     </>
   )
@@ -55,7 +62,7 @@ function Stalactite(props) {
   let [top, bottom, depth, sections] = props.args
 
   const handleClick = (event) => {
-    event.stopPropagation()
+    props.friend ? console.log("friend island click") : event.stopPropagation()
   }
 
   return (
@@ -89,7 +96,7 @@ function GardenText(props) {
       ref={mesh}
       scale={0.8}
       >
-      <Text fontSize={1} outlineWidth={1} outlineColor={gardenTextColor.outline} color={gardenTextColor.message} > {props.name } </Text>
+      <Text fontSize={1.2} outlineWidth={1} outlineColor={gardenTextColor.outline} color={gardenTextColor.message} > {props.name } </Text>
       </mesh>
   )
 }
