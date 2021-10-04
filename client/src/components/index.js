@@ -1,5 +1,6 @@
 import Balloons from './Balloons/Balloons'
 import Balloon from './Balloons/Balloon'
+import BalloonShop from './Cloud/BalloonShop'
 import Cloud from './Cloud/Cloud'
 import CloudKeyBoard from './Cloud/CloudKeyBoard'
 import Camera from './Camera'
@@ -22,6 +23,7 @@ import Sun from './Sky/Sun'
 export {
   Balloons,
   Balloon,
+  BalloonShop,
   Cloud,
   Camera,
   CloudKeyBoard,

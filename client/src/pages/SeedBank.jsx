@@ -1,6 +1,6 @@
 import '../style/App.css';
 import React, { useState, useEffect, Suspense } from "react";
-import { calculateAchievement, saveGarden, sendBalloon, createPlant, loadBalloons, makeFriendRequest, makeFriends } from '../functions'
+import { calculateAchievement, saveGarden, sendBalloon, createPlant, loadBalloons, makeFriendRequest, makeFriends, sample } from '../functions'
 import { Balloon } from '../gameObjects'
 import { Canvas } from "@react-three/fiber";
 import { Garden, Camera, Sun, World, Firmament, Friends, Cloud, Balloons, SeedBox, IntroBalloons } from '../components';
@@ -109,6 +109,13 @@ function SeedBank(props) {
 
   }
 
+  const buyBalloon = (colour) => {
+    console.log(`Buying ${colour} balloon`)
+    const seed = sample(seeds)
+    const message = `Bought: ${seed.type} x 3!`
+    sendBalloon(props.id, seed.type, 3, message, "SeedBank", colour)
+  }
+
   useEffect(() => {
     console.log("in uSEEFFECT")
     console.log(seeds)
@@ -148,6 +155,7 @@ function SeedBank(props) {
        <Cloud
         seeds={seeds}
         chosenSeed={chosenSeed}
+        buyBalloon={buyBalloon}
         position={[0, -0.8, 1]}
         sendFriendRequest={sendFriendRequest}
         selectSeed={selectSeed} />

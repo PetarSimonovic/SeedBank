@@ -4,6 +4,7 @@ import createId from './CreateId'
 import createPlant from './CreatePlant'
 import createUser from './CreateUser'
 import Friend from './Friend.js'
+import balloonColours from './BalloonColours'
 import loadBalloons from './LoadBalloons'
 import loadFriends from './LoadFriends'
 import loadGarden from './LoadGarden'
@@ -24,6 +25,7 @@ export {
   createPlant,
   createUser,
   Friend,
+  balloonColours,
   loadBalloons,
   loadFriends,
   loadGarden,

@@ -39,7 +39,7 @@ function seedSelectors(props) {
     fontX += 1
     let colours = {}
     seed.type === props.chosenSeed ? colours = selectedSeedTextColours : colours = seedTextColours
-    seedSelectors.push( <SeedText key={createId()} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} seed={seed} colours={colours} index={index} fontX={fontX} />)
+    seedSelectors.push( <SeedText key={createId()} position={[0, 0, 0]}selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} seed={seed} colours={colours} index={index} fontX={fontX} />)
   }
   if (seedSelectors.length === 0) {
     seedSelectors.push( <NoSeedText key={createId()} colours={seedTextColours} index={1} />)
