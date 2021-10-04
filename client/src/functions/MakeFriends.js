@@ -4,6 +4,7 @@ import { Friend } from './'
 export default async function makeFriends(myId, myName, friendName, myWorld) {
 
 
+
   await api.getUser(friendName).then(res => {
     console.log("IN MAKEFRIENDS")
     const friendId = res.data.data._id

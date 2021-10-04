@@ -16,6 +16,8 @@ export const updateBalloons = (balloonId, payload) => api.put(`/balloons/${ballo
 //FRIENDS
 export const addFriends = payload => api.post(`/friends`, payload)
 export const getFriends = userId => api.get(`/friends/${userId}`)
+export const getFriendByName = (friendName, id) => api.get(`/friend/${friendName}/${id}`)
+
 
 const apis = {
     addUser,
@@ -25,7 +27,8 @@ const apis = {
     getBalloons,
     updateBalloons,
     getFriends,
-    addFriends
+    addFriends,
+    getFriendByName
 }
 
 export default apis

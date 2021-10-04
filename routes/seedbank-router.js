@@ -20,6 +20,8 @@ router.get('/balloons/:userId', BalloonsCtrl.getBalloons)
 //FRIENDS
 router.post('/friends', FriendsCtrl.addFriends)
 router.get('/friends/:userId', FriendsCtrl.getFriends)
+router.get('/friend/:friendName/:userId', FriendsCtrl.getFriendByName)
+
 
 
 

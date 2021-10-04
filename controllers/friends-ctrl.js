@@ -52,9 +52,27 @@ getFriends = async (req, res) => {
 }
 
 
+getFriendByName = async (req, res) => {
+  console.log("in get friendByName")
+  console.log(req.params)
+    await Friends.findOne({ friendName: req.params.friendName, userId: req.params.userId }, (err, friend) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+
+        if (!friend) {
+            return res
+                .status(200)
+                .json({ success: true, data: {friendName: "", userId: ""} })
+        }
+        return res.status(200).json({ success: true, data: friend })
+    }).catch(err => console.log(err))
+}
+
 
 
 module.exports = {
     addFriends,
     getFriends,
+    getFriendByName
 }

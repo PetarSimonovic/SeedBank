@@ -32,7 +32,7 @@ function Garden(props) {
       onPointerOut={(event) => setHover(false)}
       >
       {createStalactites(props)}
-      {hovered && props.friend ? <GardenText name={props.name} position={[0, 0, +5]} /> : ''}
+      {hovered && props.friend ? <GardenText name={props.name} position={[0, 0, +3]} /> : ''}
     </mesh>
     </>
   )
