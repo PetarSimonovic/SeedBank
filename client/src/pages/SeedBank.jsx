@@ -3,7 +3,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import { calculateAchievement, saveGarden, createPlant, loadBalloons, makeFriendRequest, makeFriends } from '../functions'
 import { Balloon } from '../gameObjects'
 import { Canvas } from "@react-three/fiber";
-import { Garden, Camera, Sun, World, Firmament, Cloud, Balloons, SeedBox, IntroBalloons } from '../components';
+import { Garden, Camera, Sun, World, Firmament, Friends, Cloud, Balloons, SeedBox, IntroBalloons } from '../components';
 
 
 
@@ -118,6 +118,7 @@ function SeedBank(props) {
       {plants}
       <Sun />
       <Firmament />
+      <Friends userId={props.id}/>
      </Suspense>
      {props.worldChosen ?
        <>

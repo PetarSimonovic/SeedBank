@@ -4,6 +4,7 @@ import Cloud from './Cloud/Cloud'
 import CloudKeyBoard from './Cloud/CloudKeyBoard'
 import Camera from './Camera'
 import Firmament from './Sky/Firmament'
+import Friends from './Friends'
 import Grass from './Garden/Grass'
 import Garden from './Garden/Garden'
 import IntroBalloons from './Balloons/IntroBalloons'
@@ -24,6 +25,7 @@ export {
   Camera,
   CloudKeyBoard,
   Firmament,
+  Friends,
   Garden,
   Grass,
   IntroBalloons,
