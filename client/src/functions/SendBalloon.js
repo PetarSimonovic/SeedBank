@@ -10,7 +10,7 @@ export default async function sendBalloon(userId, type, quantity, message, sende
   //
   console.log("In sendBalloon " + type)
 
-  const balloon = new Balloon(userId, type, quantity, message)
+  const balloon = new Balloon(userId, type, quantity, message, sender)
   console.log(balloon)
 
   await api.addBalloons(balloon).then(res => {

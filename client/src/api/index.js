@@ -23,7 +23,9 @@ const apis = {
     updateGarden,
     addBalloons,
     getBalloons,
-    updateBalloons
+    updateBalloons,
+    getFriends,
+    addFriends
 }
 
 export default apis

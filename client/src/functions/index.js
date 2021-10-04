@@ -2,9 +2,11 @@ import calculateAchievement from './CalculateAchievement'
 import calculateDays from './CalculateDays'
 import createId from './CreateId'
 import createPlant from './CreatePlant'
+import Friend from './Friend.js'
 import loadBalloons from './LoadBalloons'
 import loadGarden from './LoadGarden'
 import makeFriendRequest from './MakeFriendRequest'
+import makeFriends from './MakeFriends'
 import sample from './Sample'
 import saveGarden from './SaveGarden'
 import setDate from './SetDate'
@@ -18,9 +20,11 @@ export {
   calculateAchievement,
   createId,
   createPlant,
+  Friend,
   loadBalloons,
   loadGarden,
   makeFriendRequest,
+  makeFriends,
   sample,
   saveGarden,
   setDate,

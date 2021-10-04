@@ -1,6 +1,6 @@
 import '../style/App.css';
 import React, { useState, useEffect, Suspense } from "react";
-import { calculateAchievement, saveGarden, createPlant, loadBalloons, makeFriendRequest } from '../functions'
+import { calculateAchievement, saveGarden, createPlant, loadBalloons, makeFriendRequest, makeFriends } from '../functions'
 import { Balloon } from '../gameObjects'
 import { Canvas } from "@react-three/fiber";
 import { Garden, Camera, Sun, World, Firmament, Cloud, Balloons, SeedBox, IntroBalloons } from '../components';
@@ -86,7 +86,12 @@ function SeedBank(props) {
 
   const sendFriendRequest = (sentence) => {
     console.log("FRiend request from " + props.userName)
-    makeFriendRequest(props.id, props.userName, sentence)
+    makeFriendRequest(props.id, props.userName, sentence, props.world)
+  }
+
+  const acceptFriend = (friendName) => {
+    console.log(`FRIEND REQUEST from ${friendName} ACCEPTED!`)
+    makeFriends(props.id, props.userName, friendName, props.world)
   }
 
   useEffect(() => {
@@ -118,6 +123,7 @@ function SeedBank(props) {
        <>
        <Balloons
         updateSeeds={updateSeeds}
+        acceptFriend={acceptFriend}
         userId={props.id}
         today={props.today}
         lastLogin={props.lastLogin}

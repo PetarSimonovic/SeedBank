@@ -34,15 +34,17 @@ function Balloons(props) {
 
 function createBalloons(props, balloons) {
   const balloonCollection = []
-  const {removeBalloon, updateSeeds, seeds} = props
+  const {removeBalloon, updateSeeds, acceptFriend, seeds} = props
 
   for (let index = 0; index < balloons.length; index++) {
   const balloon = balloons[index]
 
-  // handleClick for seed balloons
+  if (balloon.type === "friendRequest") {
 
+  }
   const handleClick = (props) => {
-    updateSeeds(balloon.quantity, balloon.type)
+    // handleClick for seed balloons
+    balloon.type === "friendRequest" ? acceptFriend(balloon.sender) : updateSeeds(balloon.quantity, balloon.type)
   }
 
 
@@ -58,6 +60,7 @@ function createBalloons(props, balloons) {
     updateBalloons={updateBalloons}
     colour={balloon.colour}
     type={balloon.type}
+    sender={balloon.sender}
     quantity={balloon.quantity}
     message={balloon.message} />
   )
