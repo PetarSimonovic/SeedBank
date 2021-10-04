@@ -39,15 +39,14 @@ getUser = async (req, res) => {
   console.log("In getUser")
 
     await User.findOne({ name: req.params.name }, (err, user) => {
-      console.log("Found user")
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
 
         if (!user) {
             return res
-                .status(404)
-                .json({ success: false, error: `User not found!!!` })
+                .status(204)
+                .json({ success: true, data: `User not found!!!` })
         }
         return res.status(200).json({ success: true, data: user })
     }).catch(err => console.log(err))

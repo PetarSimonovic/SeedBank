@@ -79,14 +79,22 @@ class SignUp extends Component {
         const newUser = true
         const payload = { name, email, password, world, worldChosen, seeds, lastLogin, newUser }
         console.log(payload)
+        let validUsername = false
+
+        await api.getUser(name).then(res => {
+          res.status === 204 ? validUsername = true : window.alert(`Username taken`)
+        })
+
+        this.setState({
+            name: '',
+            email: '',
+            password: '',
+        })
+
+        if (validUsername) {
 
         await api.addUser(payload).then(res => {
             window.alert(`User added`)
-            this.setState({
-                name: '',
-                email: '',
-                password: '',
-            })
             console.log("SEEDS on SIGN UP")
             console.log(seeds)
             this.props.setUser(name, res.data.id, [], newWorld, false, seeds, lastLogin)
@@ -104,7 +112,7 @@ class SignUp extends Component {
           console.log("Welcome balloon two added")
         })
 
-
+      }
     }
 
     render() {

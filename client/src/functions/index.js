@@ -2,6 +2,7 @@ import calculateAchievement from './CalculateAchievement'
 import calculateDays from './CalculateDays'
 import createId from './CreateId'
 import createPlant from './CreatePlant'
+import createUser from './CreateUser'
 import Friend from './Friend.js'
 import loadBalloons from './LoadBalloons'
 import loadFriends from './LoadFriends'
@@ -21,6 +22,7 @@ export {
   calculateAchievement,
   createId,
   createPlant,
+  createUser,
   Friend,
   loadBalloons,
   loadFriends,
