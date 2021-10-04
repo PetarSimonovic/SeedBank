@@ -58,8 +58,9 @@ class LogIn extends Component {
 
         await api.getUser(this.state.name).then(res => {
           console.log(res)
-            console.log("Name is " + res.data.data.name)
-            if (this.state.password === res.data.data.password) {
+            if (res.status === 204) {
+              window.alert(`No user found`)
+            } else if (this.state.password === res.data.data.password) {
               const name = res.data.data.name
               const id = res.data.data._id
               const garden = loadGarden(res.data.data.garden)
