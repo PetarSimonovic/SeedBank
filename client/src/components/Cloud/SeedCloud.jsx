@@ -6,7 +6,7 @@ import { createId } from '../../functions'
 
 const seedTextColours = {type: "#293241", outline: "#b1b5c8"}
 const selectedSeedTextColours = {type: "#b1b5c8", outline: "#293241"}
-const fontSize = 0.15
+const fontSize = 0.12
 const fontZ = 1
 const fontY = 2
 
@@ -33,11 +33,15 @@ function SeedCloud(props) {
 function seedSelectors(props) {
   let seedSelectors = []
   let fontX = 0
+  let seedCount = props.seeds.length
   for (let index = 0; index < props.seeds.length; index++) {
     let seed = props.seeds[index]
-    if (seed.quantity === 0) { continue }
-    const x = Math.cos(2 * Math.PI * index / props.seeds.length)
-    const y = 3 + Math.sin(2 * (Math.PI * index / props.seeds.length  ))
+    if (seed.quantity === 0) {
+      seedCount--
+      continue
+    }
+    const x = 1 + Math.sin(Math.PI * index / seedCount)
+    const y = 2.5 + Math.cos((Math.PI * index / seedCount  ))
     let colours = {}
     seed.type === props.chosenSeed ? colours = selectedSeedTextColours : colours = seedTextColours
     seedSelectors.push( <SeedText key={createId()} position={[x, y, 0]} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} seed={seed} colours={colours} index={index}  />)
