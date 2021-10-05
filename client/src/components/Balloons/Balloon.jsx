@@ -24,8 +24,10 @@ function Balloon(props) {
   }
 
   useEffect(() => {
+    if (props.type !== "introBalloon") {
     setClaimed(claimed)
     setDisplaymessage(displayMessage)
+  }
   }, [])
 
 

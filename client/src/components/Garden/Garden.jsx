@@ -25,8 +25,6 @@ function Garden(props) {
 
   useEffect(() => {
     setName(name)
-    console.log("name " + name)
-    console.log("friend " +  props.friend)
   })
 
 

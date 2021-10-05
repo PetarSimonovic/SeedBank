@@ -7,7 +7,7 @@ import { sendBalloon, sample } from './'
 // This needs refactoring to for separation of concerns/SRP/DRY
 
 export default function calculateAchievement(seeds, id, plantCount) {
-  console.log("In Achievement Calculator seeds are:")
+  console.log("ACHIEVEMENT CALCULATOR:")
   console.log(seeds)
   let duplicate = true
   let newSeed = {}

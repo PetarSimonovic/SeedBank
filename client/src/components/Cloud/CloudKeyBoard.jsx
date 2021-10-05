@@ -27,14 +27,12 @@ function CloudKeyBoard(props) {
   }
 
   const deleteCharacter = () => {
-    console.log(sentenceArray)
     let previousLength = sentenceArray.length - 1
     setSentencearray (
       (prev) => {
         return prev.filter((character, index) => index !== previousLength)
       }
     )
-    console.log(sentenceArray)
   }
 
   const submit = () => {
@@ -63,7 +61,6 @@ function CloudKeyBoard(props) {
 }
 
 function createCloudKeyboard(props, buildSentence, deleteCharacter, sentence, submit) {
-  console.log("User is " + props.userName)
   let cloudKeyboard = []
   let fontX = 0.5
   let fontY = 3
