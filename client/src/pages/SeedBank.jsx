@@ -60,9 +60,7 @@ function SeedBank(props) {
       updatedSeeds[index].quantity += increment
       setSeeds(updatedSeeds)
     }
-    console.log(seeds)
     setSeedindex(null)
-    console.log(plants.length)
   }
 
 
@@ -96,11 +94,9 @@ function SeedBank(props) {
   }
 
   const sendPlant = (friendName, friendId) =>{
-    console.log(`Sending ${chosenSeed} to ${friendName} ${friendId}`)
     if (chosenSeed) {
       const message = `${props.userName} sent you ${'\n'} a ${chosenSeed} seed!`
       sendBalloon(friendId, chosenSeed, 1, message, props.userName)
-      console.log(message)
       console.log(`Sending ${chosenSeed} to ${friendName} ${friendId}`)
       removeSeed()
     } else {
@@ -110,7 +106,6 @@ function SeedBank(props) {
   }
 
   const buyBalloon = (colour) => {
-    console.log(`Buying ${colour} balloon`)
     const seed = sample(seeds)
     const message = `Bought: ${seed.type} x 3!`
     sendBalloon(props.id, seed.type, 3, message, "SeedBank", colour)
@@ -123,7 +118,7 @@ function SeedBank(props) {
     console.log("Calling saveGarden")
     saveGarden(props.id, plants, props.world, props.worldChosen, seeds)
     checkAchievements()
-  });
+  }, [seeds, plants]);
 
 
   return (
