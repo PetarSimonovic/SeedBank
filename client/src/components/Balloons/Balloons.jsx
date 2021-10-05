@@ -43,7 +43,7 @@ function createBalloons(props, balloons) {
 
   }
   const handleClick = (props) => {
-    // handleClick for seed balloons
+    // handleClick for friend and seed balloons
     balloon.type === "friendRequest" ? acceptFriend(balloon.sender) : updateSeeds(balloon.quantity, balloon.type)
   }
 

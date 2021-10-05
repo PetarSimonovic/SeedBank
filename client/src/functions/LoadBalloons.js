@@ -7,6 +7,7 @@ const defaultQuantity = 3 // default quantity for a pack of new seeds
 export default async function loadBalloons(seeds, login, id, today) {
 
   const dateDifference = calculateDays(login, today)
+  console.log("DATE DIFFERENCE in loadBalloons: " + dateDifference)
   let loadedBalloons = await api.getBalloons(id)
   let balloonData = loadedBalloons.data.data
 

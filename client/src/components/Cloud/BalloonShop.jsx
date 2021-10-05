@@ -1,6 +1,6 @@
 import { Billboard, Text } from '@react-three/drei'
 import React, { Component, useState, useRef } from 'react';
-import {balloonColours, sendBalloon, sample} from '../../functions'
+import {balloonColours, sendBalloon, sample, createId} from '../../functions'
 const size = 0.1
 
 function BalloonShop(props) {
@@ -23,7 +23,6 @@ function BalloonShop(props) {
 }
 
 function balloonsForSale(props) {
-  console.log("In balloonsForSale" )
   const colours = balloonColours()
   let balloons = []
   for (let balloon = 0; balloon < props.seeds.length; balloon++) {
@@ -31,12 +30,11 @@ function balloonsForSale(props) {
       message: "#293241",
       outline: "#b1b5c8"
     }
-    const x = Math.cos(Math.PI * balloon / colours.length)
+    const x = -0.3 + Math.cos(Math.PI * balloon / colours.length)
     const y = 1 + Math.sin((Math.PI * balloon / colours.length  ))
 
-    balloons.push(<BalloonForSale buyBalloon={props.buyBalloon} textColour="#293241" outline={colours[balloon]} position={[x, y, 0]}/>)
+    balloons.push(<BalloonForSale key={createId()} buyBalloon={props.buyBalloon} textColour="#293241" outline={colours[balloon]} position={[x, y, 0]}/>)
   }
-  console.log(balloons)
   return balloons
 }
 
@@ -47,7 +45,6 @@ function BalloonForSale(props) {
 
   const handleClick = (event) => {
     event.stopPropagation()
-    console.log(props)
     props.buyBalloon(props.outline)
     setScale(0.95)
     setTimeout(() => {

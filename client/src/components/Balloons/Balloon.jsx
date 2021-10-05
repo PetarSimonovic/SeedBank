@@ -14,7 +14,7 @@ function Balloon(props) {
 
   const handleClick = () => {
     if (!claimed) {
-      props.handleClick()
+      props.handleClick() // updateSeeds for seed balloon; acceptFriend for friend balloon
       if (props.type !== "introBalloon") {
         setClaimed(prev => !prev)
         updateBalloons(props.balloonId)

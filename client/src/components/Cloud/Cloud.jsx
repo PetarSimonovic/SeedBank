@@ -18,9 +18,7 @@ function Cloud(props) {
   }
 
   const handleClick = () => {
-    console.log("In handleClick!")
     option >= options ? setOption(0) : setOption(prev => prev + 1)
-    console.log(option)
 
   }
 
@@ -50,7 +48,6 @@ return (
 }
 
 function displayText(option) {
-  console.log("OPTION " + option )
 
   switch(option) {
     case 0:

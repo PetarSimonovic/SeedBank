@@ -32,10 +32,8 @@ function createFriends(props, friends) {
   const friendCollection = []
   for (let index = 0; index < friends.length; index++) {
     const friend = friends[index]
-    console.log(friend)
     friendCollection.push(<Garden sendPlant={props.sendPlant} friend={true} position={friend.position} name={friend.name} friendId={friend.friendId} world={friend.world} />)
   }
-  console.log(friendCollection)
   return friendCollection
 }
 

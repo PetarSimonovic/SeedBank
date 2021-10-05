@@ -33,15 +33,11 @@ function SeedCloud(props) {
 function seedSelectors(props) {
   let seedSelectors = []
   let fontX = 0
-  let seedCount = props.seeds.length
-  for (let index = 0; index < props.seeds.length; index++) {
-    let seed = props.seeds[index]
-    if (seed.quantity === 0) {
-      seedCount--
-      continue
-    }
-    const x = 1 + Math.sin(Math.PI * index / seedCount)
-    const y = 2.5 + Math.cos((Math.PI * index / seedCount  ))
+  let availableSeeds = seedCounter(props.seeds)
+  for (let index = 0; index < availableSeeds.length; index++) {
+    let seed = availableSeeds[index]
+    const x = 0.5 + Math.sin(Math.PI * index / availableSeeds.length )
+    const y = 2 + Math.cos((Math.PI * index / (availableSeeds.length * 1.5)  ))
     let colours = {}
     seed.type === props.chosenSeed ? colours = selectedSeedTextColours : colours = seedTextColours
     seedSelectors.push( <SeedText key={createId()} position={[x, y, 0]} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} seed={seed} colours={colours} index={index}  />)
@@ -50,6 +46,19 @@ function seedSelectors(props) {
     seedSelectors.push( <NoSeedText key={createId()} colours={seedTextColours} index={1} />)
   }
   return seedSelectors
+}
+
+function seedCounter(seeds) {
+  let availableSeeds = []
+  for (let index = 0; index < seeds.length; index++) {
+    let seed = seeds[index]
+    if (seed.quantity === 0) {
+      continue
+    } else {
+      availableSeeds.push(seed)
+    }
+  }
+  return availableSeeds
 }
 
 
