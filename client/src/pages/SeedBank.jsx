@@ -22,24 +22,29 @@ function SeedBank(props) {
   const [seedIndex, setSeedindex] = useState(null) //  the index within seeds of the chosenSeed
   const [balloons, setBalloons] = useState([])
 
-  // This loads the plants from the DB - it does it only once
-  useEffect(() => {
-    loadPlants(props.id).then(data => setPlants(createPlants(data)))
-  }, [])
+  // useEffect Hooks run after all the other code, and are then called in order
 
   // This loads the seeds from the DB - it does it only once
   useEffect(() => {
     loadSeeds(props.id).then(data => setSeeds(data))
   }, [])
 
-
-  // useEffect Hooks run after all the other code, and are then called in order
   // This useEffect runs when seeds change
   useEffect(() => {
     console.log("USE EFFECT SEEDS!")
     console.log("UPDATED SEEDS ARE:")
     console.log(seeds)
   }, [seeds])
+
+
+  // This loads the plants from the DB - it does it only once
+  useEffect(() => {
+    loadPlants(props.id).then(data => setPlants(createPlants(data)))
+  }, [])
+
+
+
+
 
   // This useEffect runs when plant is changed
 
@@ -48,7 +53,7 @@ function SeedBank(props) {
     console.log("NOW CHECKING ACHIEVEMENTS")
     console.log(plants.length)
   //  saveGarden(props.id, plants, props.world, props.worldChosen)
-    plants.length % 5 === 0 && plants.length !== 0 ? console.log(true) : console.log(false)
+    plants.length % 5 === 0 && plants.length !== 0 ? checkAchievements() : console.log(false)
   }, [plants])
 
 
@@ -70,7 +75,6 @@ function SeedBank(props) {
     console.log("REMOVE SEED")
     setChosenseed("")
     updateSeeds(-1, chosenSeed)
-    console.log("Seed removed")
     console.log(seeds)
   }
 
@@ -109,8 +113,12 @@ function SeedBank(props) {
 
   const checkAchievements = () => {
     console.log("CHECK ACHIEVEMENTS")
+    let achievementCount = plants.length / 5
+    let startingSeeds = 2
+    if (seeds.length < achievementCount + startingSeeds) {
     const newSeed = calculateAchievement(seeds, props.id, plants.length)
     updateSeeds(0, newSeed.type)
+      }
     }
 
   const sendFriendRequest = (sentence) => {

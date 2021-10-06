@@ -46,8 +46,8 @@ updatePlant = async (req, res) => {
     const body = req.body
     console.log(req.params.id)
 
-    console.log("Body is")
-    console.log(body)
+    // console.log("Body is")
+    // console.log(body)
 
     if (!body) {
         return res.status(400).json({
@@ -63,7 +63,7 @@ updatePlant = async (req, res) => {
                 message: 'Plant not found!',
             })
         }
-        console.log("Plant is")
+      //  console.log("Plant is")
         console.log(plant)
         plant.growth = body.growth
         plant
