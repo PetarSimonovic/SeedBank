@@ -23,6 +23,7 @@ function SeedCloud(props) {
     ref={mesh}
     scale={1}
     >
+
    {seedSelectors(props)}
   </mesh>
   </>

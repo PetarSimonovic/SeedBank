@@ -1,7 +1,7 @@
 import { Billboard, Text } from '@react-three/drei'
 import React, { Component, useState, useRef } from 'react';
 import {balloonColours, sendBalloon, sample, createId} from '../../functions'
-const size = 0.1
+const size = 0.07
 
 function BalloonShop(props) {
   const mesh = useRef()
@@ -68,7 +68,7 @@ function BalloonForSale(props) {
       lockY={false}
       lockZ={false} // Lock the rotation on the z axis (default=false)
       >
-      <Text fontSize={size} outlineWidth={size} outlineColor={props.outline} color={props.textColour}>
+      <Text fontSize={size} outlineWidth={size + 0.05} outlineColor={props.outline} color={props.textColour}>
       £1
        </Text>
       </Billboard>
