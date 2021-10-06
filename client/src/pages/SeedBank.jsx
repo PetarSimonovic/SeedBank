@@ -42,6 +42,7 @@ function SeedBank(props) {
     console.log("USE EFFECT PLANTS!")
     console.log("NOW CHECKING ACHIEVEMENTS")
     console.log(plants.length)
+    saveGarden(props.id, plants, props.world, props.worldChosen)
     plants.length % 5 === 0 && plants.length !== 0 ? console.log(true) : console.log(false)
   }, [plants])
 

@@ -76,15 +76,10 @@ updateGarden = async (req, res) => {
         user.garden = body.garden.garden
         user.world = body.world.world
         user.worldChosen = body.worldChosen.worldChosen
-        user.seeds = body.seeds.seeds
-        console.log("PAYLOAD SEEDS")
-        console.log(body.seeds.seeds)
         user.lastLogin = body.lastLogin.lastLogin
         user
             .save()
             .then(() => {
-                console.log("SAVED SEEDS")
-                console.log(user.seeds)
                 return res.status(200).json({
                     success: true,
                     id: user._id,

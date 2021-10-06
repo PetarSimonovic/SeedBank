@@ -9,7 +9,6 @@ const User = new Schema(
         garden: { type: Array, required: true },
         world: { type: String, required: true},
         worldChosen: {type: Boolean, required: true},
-        seeds: {type: Array, required: true},
         lastLogin: {type: String, required: true},
         balloons: {type: Array, required: true}
 
