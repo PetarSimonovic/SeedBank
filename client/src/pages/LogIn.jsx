@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { loadGarden } from '../functions'
 import api from '../api';
 
 
@@ -63,15 +62,13 @@ class LogIn extends Component {
             } else if (this.state.password === res.data.data.password) {
               const name = res.data.data.name
               const id = res.data.data._id
-              const garden = loadGarden(res.data.data.garden)
               const world = JSON.parse(res.data.data.world)
-              const seeds =  res.data.data.seeds
               const worldChosen = res.data.data.worldChosen
               const lastLogin = res.data.data.lastLogin
               const newUser = false
 
               window.alert(`Welcome back ${name}`)
-              this.props.setUser(name, id, garden, world, worldChosen, seeds, lastLogin, newUser)
+              this.props.setUser(name, id, world, worldChosen, lastLogin, newUser)
             } else {
               window.alert(`Incorrect password`)
             }

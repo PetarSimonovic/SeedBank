@@ -19,10 +19,8 @@ class App extends React.Component {
       this.state = {
         userName: "",
         id: 0,
-        garden: [],
         world: {},
         chosenWorld: false,
-        seeds: [],
         lastLogin: "",
         newUser: true
       }
@@ -41,14 +39,12 @@ class App extends React.Component {
      }
 
 
-    setUser(userName, id, garden, world, worldChosen, seeds, lastLogin, newUser) {
+    setUser(userName, id, world, worldChosen, lastLogin, newUser) {
       this.setState({
         userName: userName,
         id: id,
-        garden: garden,
         world: world,
         worldChosen: worldChosen,
-        seeds: seeds,
         lastLogin: lastLogin,
         today: setDate().stamp,
         newUser: newUser
@@ -85,8 +81,6 @@ class App extends React.Component {
               world={this.state.world}
               worldChosen={this.state.worldChosen}
               saveWorld={this.saveWorld}
-              seeds={this.state.seeds}
-              garden={this.state.garden}
               lastLogin={this.state.lastLogin}
               today={this.state.today}
             /> :

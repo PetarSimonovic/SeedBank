@@ -1,6 +1,6 @@
 import '../style/App.css';
 import React, { useState, useEffect, Suspense } from "react";
-import { addSeeds, addPlant, loadSeeds, updateSeed, calculateAchievement, saveGarden, sendBalloon, createPlant, loadBalloons, makeFriendRequest, makeFriends, sample } from '../functions'
+import { addSeeds, addPlant, loadPlants, loadSeeds, updateSeed, calculateAchievement, saveGarden, sendBalloon, createPlant, loadBalloons, makeFriendRequest, makeFriends, sample } from '../functions'
 import { Balloon, Plant } from '../gameObjects'
 import { Canvas } from "@react-three/fiber";
 import { Plants, Garden, Camera, Sun, World, Firmament, Friends, Cloud, Balloons, SeedBox, IntroBalloons } from '../components';
@@ -21,6 +21,11 @@ function SeedBank(props) {
   const [chosenSeed, setChosenseed] = useState("") // contains the type of seed if chosen, or null if no seed is currently selected
   const [seedIndex, setSeedindex] = useState(null) //  the index within seeds of the chosenSeed
   const [balloons, setBalloons] = useState([])
+
+  // This loads the plants from the DB - it does it only once
+  useEffect(() => {
+    loadPlants(props.id).then(data => setPlants(data))
+  }, [])
 
   // This loads the seeds from the DB - it does it only once
   useEffect(() => {
@@ -50,7 +55,8 @@ function SeedBank(props) {
   const sowPlant = ( event ) => {
     if (chosenSeed) {
       console.log("SOW PLANT")
-      const newPlant = new Plant(props.id, event, chosenSeed)
+      const position = [event.point.x, event.point.y, event.point.z]
+      const newPlant = new Plant(props.id, position, chosenSeed)
       setPlants( (prev) => {
         return [newPlant, ...prev]
       })

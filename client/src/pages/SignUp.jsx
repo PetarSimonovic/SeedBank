@@ -72,12 +72,11 @@ class SignUp extends Component {
         let userId = ""
         const newWorld = new WorldData()
         const world = JSON.stringify(newWorld)
-        const seeds = []
         const worldChosen = false
         const date = setDate()
         const lastLogin = date.stamp
         const newUser = true
-        const payload = { name, email, password, world, worldChosen, seeds, lastLogin, newUser }
+        const payload = { name, email, password, world, worldChosen, lastLogin, newUser }
         console.log(payload)
         let validUsername = false
 
@@ -95,9 +94,7 @@ class SignUp extends Component {
 
         await api.addUser(payload).then(res => {
             window.alert(`User added`)
-            console.log("SEEDS on SIGN UP")
-            console.log(seeds)
-            this.props.setUser(name, res.data.id, [], newWorld, false, seeds, lastLogin)
+            this.props.setUser(name, res.data.id, newWorld, false, lastLogin)
             userId = res.data.id
         })
         console.log("ID is")

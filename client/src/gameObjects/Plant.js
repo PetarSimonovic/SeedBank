@@ -5,12 +5,12 @@ import { setDate, createId } from '../functions'
 
 export default class Plant {
 
-  constructor(userId, event, type) {
+  constructor(userId, position, type) {
     this.userId = userId
     this.type = type
     //this.variant = variant
     this.growth = 0
-    this.position = [event.point.x, event.point.y, event.point.z]
+    this.position = position
     this.date = setDate()
     this.plantId = createId()
 

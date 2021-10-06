@@ -6,7 +6,6 @@ const User = new Schema(
         name: { type: String, required: true },
         email: { type: String, required: true },
         password: { type: String, required: true },
-        garden: { type: Array, required: true },
         world: { type: String, required: true},
         worldChosen: {type: Boolean, required: true},
         lastLogin: {type: String, required: true},
