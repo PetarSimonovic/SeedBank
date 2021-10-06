@@ -12,7 +12,6 @@ import Garden from './Garden/Garden'
 import IntroBalloons from './Balloons/IntroBalloons'
 import NavBar from './NavBar'
 import Plant from './Garden/Plant'
-import Plants from './Garden/Plants'
 import SeedCloud from './Cloud/SeedCloud'
 import Seeds from './Garden/Seeds'
 import Sun from './Sky/Sun'
@@ -36,7 +35,6 @@ export {
   IntroBalloons,
   NavBar,
   Plant,
-  Plants,
   SeedCloud,
   Seeds,
   Sun,

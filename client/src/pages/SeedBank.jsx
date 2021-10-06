@@ -1,9 +1,9 @@
 import '../style/App.css';
 import React, { useState, useEffect, Suspense } from "react";
-import { addSeeds, addPlant, loadPlants, loadSeeds, updateSeed, calculateAchievement, saveGarden, sendBalloon, createPlant, loadBalloons, makeFriendRequest, makeFriends, sample } from '../functions'
+import { addSeeds, createPlants, createPlantComponent, createId, addPlant, loadPlants, loadSeeds, updateSeed, calculateAchievement, saveGarden, sendBalloon, createPlant, loadBalloons, makeFriendRequest, makeFriends, sample } from '../functions'
 import { Balloon, Plant } from '../gameObjects'
 import { Canvas } from "@react-three/fiber";
-import { Plants, Garden, Camera, Sun, World, Firmament, Friends, Cloud, Balloons, SeedBox, IntroBalloons } from '../components';
+import { Garden, Camera, Sun, World, Firmament, Friends, Cloud, Balloons, SeedBox, IntroBalloons } from '../components';
 
 
 
@@ -24,7 +24,7 @@ function SeedBank(props) {
 
   // This loads the plants from the DB - it does it only once
   useEffect(() => {
-    loadPlants(props.id).then(data => setPlants(data))
+    loadPlants(props.id).then(data => setPlants(createPlants(data)))
   }, [])
 
   // This loads the seeds from the DB - it does it only once
@@ -56,12 +56,13 @@ function SeedBank(props) {
     if (chosenSeed) {
       console.log("SOW PLANT")
       const position = [event.point.x, event.point.y, event.point.z]
-      const newPlant = new Plant(props.id, position, chosenSeed)
+      const plant = new Plant(props.id, position, chosenSeed)
+      const plantComponent = createPlantComponent(plant)
       setPlants( (prev) => {
-        return [newPlant, ...prev]
+        return [plantComponent, ...prev]
       })
       removeSeed()
-      addPlant(newPlant)
+      addPlant(plant)
     }
   }
 
@@ -152,7 +153,7 @@ function SeedBank(props) {
       world={props.world}
       seeds={seeds}
        />
-      <Plants plants={plants} />
+      {plants}
       <Sun />
       <Firmament />
       <Friends sendPlant={sendPlant} userId={props.id}/>

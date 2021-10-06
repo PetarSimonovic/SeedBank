@@ -3,6 +3,8 @@ import addSeeds from './AddSeeds'
 import calculateAchievement from './CalculateAchievement'
 import calculateDays from './CalculateDays'
 import createId from './CreateId'
+import createPlants from './CreatePlants'
+import createPlantComponent from './CreatePlantComponent'
 import Friend from './Friend.js'
 import balloonColours from './BalloonColours'
 import loadBalloons from './LoadBalloons'
@@ -26,6 +28,8 @@ export {
   calculateDays,
   calculateAchievement,
   createId,
+  createPlants,
+  createPlantComponent,
   Friend,
   balloonColours,
   loadBalloons,
