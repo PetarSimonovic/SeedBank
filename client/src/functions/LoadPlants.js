@@ -25,6 +25,8 @@ export default async function loadPlants(userId) {
 }
 
 function calculateGrowth(plantDate, today) {
+  console.log(plantDate.stamp)
+  console.log(today)
   const days = calculateDays(plantDate.stamp, today)
   return days
 }

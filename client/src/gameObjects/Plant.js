@@ -9,7 +9,7 @@ export default class Plant {
     this.userId = userId
     this.type = type
     //this.variant = variant
-    this.growth = 0
+    this.growth = 0 // not being saved - can be calculated from date?
     this.position = position
     this.date = setDate()
     this.plantId = createId()
