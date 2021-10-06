@@ -38,8 +38,13 @@ addSeeds = (req, res) => {
 
 updateSeeds = async (req, res) => {
 
-    console.log("In UPDATED SEEDS")
+    console.log("In UPDATED SEEDS Controller!")
     const body = req.body
+    console.log(req.params.userId)
+    console.log(req.params.type)
+
+    console.log("Body is")
+    console.log(body)
 
     if (!body) {
         return res.status(400).json({
@@ -48,7 +53,7 @@ updateSeeds = async (req, res) => {
         })
     }
 
-    Seeds.findOne({ type: req.params.type }, (err, seeds) => {
+    Seeds.findOne({ userId: req.params.userId, type: req.params.type }, (err, seeds) => {
         if (err) {
             return res.status(404).json({
                 err,
@@ -57,7 +62,7 @@ updateSeeds = async (req, res) => {
         }
         console.log("Seed is")
         console.log(seeds)
-        seeds.variants = body.variants
+      //  seeds.variants = body.variants
         seeds.quantity = body.quantity
         seeds
             .save()

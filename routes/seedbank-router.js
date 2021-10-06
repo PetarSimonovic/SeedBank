@@ -26,7 +26,7 @@ router.get('/friend/:friendName/:userId', FriendsCtrl.getFriendByName)
 //SEEDS
 router.post('/seeds', SeedsCtrl.addSeeds)
 router.get('/seeds/:userId', SeedsCtrl.getSeeds)
-router.put('/seeds/:type', SeedsCtrl.updateSeeds)
+router.put('/seeds/:userId/:type', SeedsCtrl.updateSeeds)
 
 
 module.exports = router

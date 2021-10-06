@@ -1,6 +1,6 @@
 import '../style/App.css';
 import React, { useState, useEffect, Suspense } from "react";
-import { addSeeds, calculateAchievement, saveGarden, sendBalloon, createPlant, loadBalloons, makeFriendRequest, makeFriends, sample } from '../functions'
+import { addSeeds, updateSeed, calculateAchievement, saveGarden, sendBalloon, createPlant, loadBalloons, makeFriendRequest, makeFriends, sample } from '../functions'
 import { Balloon } from '../gameObjects'
 import { Canvas } from "@react-three/fiber";
 import { Garden, Camera, Sun, World, Firmament, Friends, Cloud, Balloons, SeedBox, IntroBalloons } from '../components';
@@ -84,7 +84,9 @@ function SeedBank(props) {
       amendedSeed.quantity += increment
       setSeeds( (prev) => {
         return [...prev.filter(seed => seed.type !== type), amendedSeed]
-      })}
+      })
+      updateSeed(props.id, amendedSeed)
+    }
     setSeedindex(null)
   }
 

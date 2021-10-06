@@ -16,6 +16,7 @@ import setDate from './SetDate'
 import sendBalloon from './SendBalloon'
 import randomiser from './Randomiser'
 import updateBalloons from './UpdateBalloons'
+import updateSeed from './UpdateSeed'
 
 
 export {
@@ -36,5 +37,6 @@ export {
   setDate,
   sendBalloon,
   randomiser,
-  updateBalloons
+  updateBalloons,
+  updateSeed
  }
