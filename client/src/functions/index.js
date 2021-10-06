@@ -8,6 +8,7 @@ import balloonColours from './BalloonColours'
 import loadBalloons from './LoadBalloons'
 import loadFriends from './LoadFriends'
 import loadGarden from './LoadGarden'
+import loadSeeds from './LoadSeeds'
 import makeFriendRequest from './MakeFriendRequest'
 import makeFriends from './MakeFriends'
 import sample from './Sample'
@@ -30,6 +31,7 @@ export {
   loadBalloons,
   loadFriends,
   loadGarden,
+  loadSeeds,
   makeFriendRequest,
   makeFriends,
   sample,

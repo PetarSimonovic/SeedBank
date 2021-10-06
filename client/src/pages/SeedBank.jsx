@@ -1,6 +1,6 @@
 import '../style/App.css';
 import React, { useState, useEffect, Suspense } from "react";
-import { addSeeds, updateSeed, calculateAchievement, saveGarden, sendBalloon, createPlant, loadBalloons, makeFriendRequest, makeFriends, sample } from '../functions'
+import { addSeeds, loadSeeds, updateSeed, calculateAchievement, saveGarden, sendBalloon, createPlant, loadBalloons, makeFriendRequest, makeFriends, sample } from '../functions'
 import { Balloon } from '../gameObjects'
 import { Canvas } from "@react-three/fiber";
 import { Garden, Camera, Sun, World, Firmament, Friends, Cloud, Balloons, SeedBox, IntroBalloons } from '../components';
@@ -17,10 +17,16 @@ import { Garden, Camera, Sun, World, Firmament, Friends, Cloud, Balloons, SeedBo
 function SeedBank(props) {
 
   const [plants, setPlants] = useState(props.garden) //  an array of plant components
-  const [seeds, setSeeds] = useState(props.seeds) //  an array of the player's available seeds
+  const [seeds, setSeeds] = useState([]) //  an array of the player's available seeds
   const [chosenSeed, setChosenseed] = useState("") // contains the type of seed if chosen, or null if no seed is currently selected
   const [seedIndex, setSeedindex] = useState(null) //  the index within seeds of the chosenSeed
   const [balloons, setBalloons] = useState([])
+
+  // This loads the seeds from the DB - it does it only once
+  useEffect(() => {
+    loadSeeds(props.id).then(data => setSeeds(data))
+  }, [])
+
 
   // useEffect Hooks run after all the other code, and are then called in order
   // This useEffect runs when seeds change
