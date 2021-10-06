@@ -1,32 +1,17 @@
 import api from '../api';
 import { setDate } from './'
 
-// strips out react components from the state garden array and saves plant props as an object that's easy to parse
-// Needs error handling!
+// saves the world to the user account
 
-
-export default async function saveGarden(id, plants, newWorld, chosen) {
-  let savedGarden = extractPlants(plants)
-  const garden = {"garden" : savedGarden}
+export default async function saveGarden(id, newWorld, chosen) {
   const world = {"world" : JSON.stringify(newWorld)}
   const worldChosen = {"worldChosen" : chosen}
   const date = setDate()
   const lastLogin  = { "lastLogin" : date.stamp }
-  const payload = {garden, world, worldChosen, lastLogin}
+  const payload = {world, worldChosen, lastLogin}
   console.log(payload)
   await api.updateGarden(id, payload).then(res => {
         console.log(res)
         console.log('Garden updated successfully')
     })
-}
-
-function extractPlants(plants) {
-  let extractedPlants = []
-  for (let plant = 0; plant < plants.length; plant ++) {
-    const key = plants[plant].key
-    const parsedPlant = plants[plant].props
-    const savedPlant = {key: key, growth: parsedPlant.growth, date: parsedPlant.date, position: parsedPlant.position, type: parsedPlant.type}
-    extractedPlants.push(savedPlant)
-  }
-  return extractedPlants
 }

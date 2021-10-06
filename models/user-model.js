@@ -9,8 +9,6 @@ const User = new Schema(
         world: { type: String, required: true},
         worldChosen: {type: Boolean, required: true},
         lastLogin: {type: String, required: true},
-        balloons: {type: Array, required: true}
-
     },
     { timestamps: true },
 )

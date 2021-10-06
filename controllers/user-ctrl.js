@@ -73,7 +73,6 @@ updateGarden = async (req, res) => {
                 message: 'User not found!',
             })
         }
-        user.garden = body.garden.garden
         user.world = body.world.world
         user.worldChosen = body.worldChosen.worldChosen
         user.lastLogin = body.lastLogin.lastLogin

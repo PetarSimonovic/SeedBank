@@ -62,7 +62,7 @@ class App extends React.Component {
       this.setState({
         worldChosen: true
       })
-      saveGarden(this.state.id, [], this.state.world, true, this.state.seeds)
+      saveGarden(this.state.id, this.state.world, true)
     }
 
 
