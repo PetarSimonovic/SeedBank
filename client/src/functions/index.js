@@ -1,3 +1,4 @@
+import addSeeds from './AddSeeds'
 import calculateAchievement from './CalculateAchievement'
 import calculateDays from './CalculateDays'
 import createId from './CreateId'
@@ -18,6 +19,7 @@ import updateBalloons from './UpdateBalloons'
 
 
 export {
+  addSeeds,
   calculateDays,
   calculateAchievement,
   createId,

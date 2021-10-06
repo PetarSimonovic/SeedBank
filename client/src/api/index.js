@@ -18,6 +18,13 @@ export const addFriends = payload => api.post(`/friends`, payload)
 export const getFriends = userId => api.get(`/friends/${userId}`)
 export const getFriendByName = (friendName, id) => api.get(`/friend/${friendName}/${id}`)
 
+//SEEDS
+export const addSeeds = payload => api.post(`/seeds`, payload)
+export const getSeeds = userId => api.get(`/seeds/${userId}`)
+export const updateSeeds = (type, payload) => api.put(`/seeds/${type}`, payload) // only updates variants and quantity
+
+
+
 
 const apis = {
     addUser,
@@ -28,7 +35,10 @@ const apis = {
     updateBalloons,
     getFriends,
     addFriends,
-    getFriendByName
+    getFriendByName,
+    addSeeds,
+    getSeeds,
+    updateSeeds
 }
 
 export default apis

@@ -67,6 +67,7 @@ updateGarden = async (req, res) => {
 
     User.findOne({ _id: req.params.id }, (err, user) => {
         if (err) {
+            console.log("404 ERROR! USER NOT FOUND")
             return res.status(404).json({
                 err,
                 message: 'User not found!',
@@ -76,6 +77,8 @@ updateGarden = async (req, res) => {
         user.world = body.world.world
         user.worldChosen = body.worldChosen.worldChosen
         user.seeds = body.seeds.seeds
+        console.log("PAYLOAD SEEDS")
+        console.log(body.seeds.seeds)
         user.lastLogin = body.lastLogin.lastLogin
         user
             .save()

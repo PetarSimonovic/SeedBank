@@ -1,6 +1,6 @@
 import '../style/App.css';
 import React, { useState, useEffect, Suspense } from "react";
-import { calculateAchievement, saveGarden, sendBalloon, createPlant, loadBalloons, makeFriendRequest, makeFriends, sample } from '../functions'
+import { addSeeds, calculateAchievement, saveGarden, sendBalloon, createPlant, loadBalloons, makeFriendRequest, makeFriends, sample } from '../functions'
 import { Balloon } from '../gameObjects'
 import { Canvas } from "@react-three/fiber";
 import { Garden, Camera, Sun, World, Firmament, Friends, Cloud, Balloons, SeedBox, IntroBalloons } from '../components';
@@ -16,23 +16,28 @@ import { Garden, Camera, Sun, World, Firmament, Friends, Cloud, Balloons, SeedBo
 
 function SeedBank(props) {
 
-  const [seeds, setSeeds] = useState(props.seeds) //  an array of the player's available seeds
   const [plants, setPlants] = useState(props.garden) //  an array of plant components
+  const [seeds, setSeeds] = useState(props.seeds) //  an array of the player's available seeds
   const [chosenSeed, setChosenseed] = useState("") // contains the type of seed if chosen, or null if no seed is currently selected
   const [seedIndex, setSeedindex] = useState(null) //  the index within seeds of the chosenSeed
   const [balloons, setBalloons] = useState([])
 
-  useEffect(() => {
-    console.log("USE EFFECT PLANTS!")
-    checkAchievements()
-    saveGarden(props.id, plants, props.world, props.worldChosen, seeds)
-  }, [plants])
-
+  // useEffect Hooks run after all the other code, and are then called in order
+  // This useEffect runs when seeds change
   useEffect(() => {
     console.log("USE EFFECT SEEDS!")
-    setSeeds(seeds)
-    saveGarden(props.id, plants, props.world, props.worldChosen, seeds)
+    console.log("UPDATED SEEDS ARE:")
+    console.log(seeds)
   }, [seeds])
+
+  // This useEffect runs when plant is changed
+
+  useEffect(() => {
+    console.log("USE EFFECT PLANTS!")
+    console.log("NOW CHECKING ACHIEVEMENTS")
+    console.log(plants.length)
+    plants.length % 5 === 0 && plants.length !== 0 ? console.log(true) : console.log(false)
+  }, [plants])
 
 
   const sowPlant = ( event ) => {
@@ -50,7 +55,7 @@ function SeedBank(props) {
     console.log("REMOVE SEED")
     setChosenseed("")
     updateSeeds(-1, chosenSeed)
-    console.log("In removeSeed")
+    console.log("Seed removed")
     console.log(seeds)
   }
 
@@ -64,40 +69,32 @@ function SeedBank(props) {
 
   const updateSeeds = (increment, type) => {
     console.log("UPDATE SEEDS...")
-    const updatedSeeds = [...seeds]
-    const index = updatedSeeds.findIndex(seed => seed.type === type)
+    const index = seeds.findIndex(seed => seed.type === type)
     if (index === -1) {
       console.log("NEW SEED in UPDATE SEEDS")
       console.log("adding newSeed " + type)
       setSeeds( (prev) => {
         return [...prev, {type: type, quantity: increment}]
       })
+      addSeeds(props.id, type, increment)
     } else {
       console.log("INCREMENT SEEDS")
-      updatedSeeds[index].quantity += increment
-      setSeeds(updatedSeeds)
-    }
+      let amendedSeed = seeds[index]
+      console.log(amendedSeed)
+      amendedSeed.quantity += increment
+      setSeeds( (prev) => {
+        return [...prev.filter(seed => seed.type !== type), amendedSeed]
+      })}
     setSeedindex(null)
   }
 
 
+
   const checkAchievements = () => {
     console.log("CHECK ACHIEVEMENTS")
-    const plantCount = plants.length
-    console.log("Plants " + plantCount)
-    console.log("Seeds " + seeds.length)
-    console.log(plantCount)
-    const fivePlants = plantCount % 5
-    const achievementCount = plantCount / 5 // how many multuples of five?
-    const startingSeeds = 2 // offset for the starting seeds
-    const achievementTracker = achievementCount + startingSeeds
-    console.log("AchievementTracker " + achievementTracker)
-    if (fivePlants === 0 && plantCount !== 0 && seeds.length < achievementTracker) { // if statement checks if plantCount is multiple of 5 and whether the seeds for that multiple have been awarded
-      console.log("Achievement!")
-      const newSeed = calculateAchievement(seeds, props.id, plantCount)
-      updateSeeds(0, newSeed.type)
+    const newSeed = calculateAchievement(seeds, props.id, plants.length)
+    updateSeeds(0, newSeed.type)
     }
-  }
 
   const sendFriendRequest = (sentence) => {
     makeFriendRequest(props.id, props.userName, sentence, props.world)

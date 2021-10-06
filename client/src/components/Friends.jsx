@@ -1,6 +1,6 @@
 import { Billboard, Text } from '@react-three/drei'
 import React, { Component, useState, useRef, useEffect } from 'react';
-import { loadFriends } from '../functions'
+import { loadFriends, createId } from '../functions'
 import { Garden } from './'
 
 // generates a floating garden for each friend and places it in the background
@@ -32,7 +32,7 @@ function createFriends(props, friends) {
   const friendCollection = []
   for (let index = 0; index < friends.length; index++) {
     const friend = friends[index]
-    friendCollection.push(<Garden sendPlant={props.sendPlant} friend={true} position={friend.position} name={friend.name} friendId={friend.friendId} world={friend.world} />)
+    friendCollection.push(<Garden key={createId()} sendPlant={props.sendPlant} friend={true} position={friend.position} name={friend.name} friendId={friend.friendId} world={friend.world} />)
   }
   return friendCollection
 }

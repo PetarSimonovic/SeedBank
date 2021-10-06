@@ -3,6 +3,7 @@ const express = require('express')
 const UserCtrl = require('../controllers/user-ctrl')
 const BalloonsCtrl = require('../controllers/balloons-ctrl')
 const FriendsCtrl = require('../controllers/friends-ctrl')
+const SeedsCtrl = require('../controllers/seeds-ctrl')
 
 
 
@@ -22,7 +23,10 @@ router.post('/friends', FriendsCtrl.addFriends)
 router.get('/friends/:userId', FriendsCtrl.getFriends)
 router.get('/friend/:friendName/:userId', FriendsCtrl.getFriendByName)
 
-
+//SEEDS
+router.post('/seeds', SeedsCtrl.addSeeds)
+router.get('/seeds/:userId', SeedsCtrl.getSeeds)
+router.put('/seeds/:type', SeedsCtrl.updateSeeds)
 
 
 module.exports = router

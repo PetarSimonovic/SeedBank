@@ -23,14 +23,14 @@ addSeeds = (req, res) => {
         .then(() => {
             return res.status(201).json({
                 success: true,
-                id: balloons._id,
-                message: 'Balloons created!',
+                id: seeds._id,
+                message: 'Seeds created!',
             })
         })
         .catch(error => {
             return res.status(400).json({
                 error,
-                message: 'Balloons not created!',
+                message: 'Seeds not created!',
             })
         })
 }
@@ -38,56 +38,57 @@ addSeeds = (req, res) => {
 
 updateSeeds = async (req, res) => {
 
-    console.log("In UPDATED BALLOONS")
+    console.log("In UPDATED SEEDS")
     const body = req.body
 
-    // if (!body) {
-    //     return res.status(400).json({
-    //         success: false,
-    //         error: 'You must provide a body to update',
-    //     })
-    // }
+    if (!body) {
+        return res.status(400).json({
+            success: false,
+            error: 'You must provide a body to update',
+        })
+    }
 
-    Balloons.findOne({ _id: req.params.id }, (err, balloons) => {
+    Seeds.findOne({ type: req.params.type }, (err, seeds) => {
         if (err) {
             return res.status(404).json({
                 err,
-                message: 'Balloons not found!',
+                message: 'Seed not found!',
             })
         }
-        console.log("BALLOON is")
-        console.log(balloons)
-        balloons.claimed = true
-        balloons
+        console.log("Seed is")
+        console.log(seeds)
+        seeds.variants = body.variants
+        seeds.quantity = body.quantity
+        seeds
             .save()
             .then(() => {
                 return res.status(200).json({
                     success: true,
-                    id: balloons._id,
-                    message: 'Balloons updated!',
+                    id: seeds._id,
+                    message: 'Seeds updated!',
                 })
             })
             .catch(error => {
                 return res.status(404).json({
                     error,
-                    message: 'Balloons not updated!',
+                    message: 'Seeds not updated!',
                 })
             })
     })
 }
 
-getBalloons = async (req, res) => {
-    await Balloons.find({ userId: req.params.userId }, (err, balloons) => {
+getSeeds = async (req, res) => {
+    await Seeds.find({ userId: req.params.userId }, (err, seeds) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
 
-        if (!balloons) {
+        if (!seeds) {
             return res
                 .status(404)
-                .json({ success: false, error: `Balloons not found` })
+                .json({ success: false, error: `Seeds not found` })
         }
-        return res.status(200).json({ success: true, data: balloons })
+        return res.status(200).json({ success: true, data: seeds })
     }).catch(err => console.log(err))
 }
 
@@ -95,7 +96,7 @@ getBalloons = async (req, res) => {
 
 
 module.exports = {
-    addBalloons,
-    updateBalloons,
-    getBalloons,
+    addSeeds,
+    updateSeeds,
+    getSeeds,
 }
