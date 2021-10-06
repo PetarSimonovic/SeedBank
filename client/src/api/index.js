@@ -23,6 +23,10 @@ export const addSeeds = payload => api.post(`/seeds`, payload)
 export const getSeeds = userId => api.get(`/seeds/${userId}`)
 export const updateSeeds = (userId, type, payload) => api.put(`/seeds/${userId}/${type}`, payload) // only updates variants and quantity
 
+// PLANTS
+export const addPlant = payload => api.post(`/plants`, payload)
+export const getPlants = userId => api.get(`/plants/${userId}`)
+export const updatePlant = (id, payload) => api.put(`/plants/${id}`, payload)
 
 
 
@@ -38,7 +42,10 @@ const apis = {
     getFriendByName,
     addSeeds,
     getSeeds,
-    updateSeeds
+    updateSeeds,
+    addPlant,
+    getPlants,
+    updatePlant,
 }
 
 export default apis

@@ -1,9 +1,9 @@
 import '../style/App.css';
 import React, { useState, useEffect, Suspense } from "react";
-import { addSeeds, loadSeeds, updateSeed, calculateAchievement, saveGarden, sendBalloon, createPlant, loadBalloons, makeFriendRequest, makeFriends, sample } from '../functions'
-import { Balloon } from '../gameObjects'
+import { addSeeds, addPlant, loadSeeds, updateSeed, calculateAchievement, saveGarden, sendBalloon, createPlant, loadBalloons, makeFriendRequest, makeFriends, sample } from '../functions'
+import { Balloon, Plant } from '../gameObjects'
 import { Canvas } from "@react-three/fiber";
-import { Garden, Camera, Sun, World, Firmament, Friends, Cloud, Balloons, SeedBox, IntroBalloons } from '../components';
+import { Plants, Garden, Camera, Sun, World, Firmament, Friends, Cloud, Balloons, SeedBox, IntroBalloons } from '../components';
 
 
 
@@ -16,7 +16,7 @@ import { Garden, Camera, Sun, World, Firmament, Friends, Cloud, Balloons, SeedBo
 
 function SeedBank(props) {
 
-  const [plants, setPlants] = useState(props.garden) //  an array of plant components
+  const [plants, setPlants] = useState([]) //  an array of plant components
   const [seeds, setSeeds] = useState([]) //  an array of the player's available seeds
   const [chosenSeed, setChosenseed] = useState("") // contains the type of seed if chosen, or null if no seed is currently selected
   const [seedIndex, setSeedindex] = useState(null) //  the index within seeds of the chosenSeed
@@ -42,7 +42,7 @@ function SeedBank(props) {
     console.log("USE EFFECT PLANTS!")
     console.log("NOW CHECKING ACHIEVEMENTS")
     console.log(plants.length)
-    saveGarden(props.id, plants, props.world, props.worldChosen)
+  //  saveGarden(props.id, plants, props.world, props.worldChosen)
     plants.length % 5 === 0 && plants.length !== 0 ? console.log(true) : console.log(false)
   }, [plants])
 
@@ -50,11 +50,12 @@ function SeedBank(props) {
   const sowPlant = ( event ) => {
     if (chosenSeed) {
       console.log("SOW PLANT")
-      const newPlant = createPlant(event, chosenSeed)
+      const newPlant = new Plant(props.id, event, chosenSeed)
       setPlants( (prev) => {
         return [newPlant, ...prev]
       })
       removeSeed()
+      addPlant(newPlant)
     }
   }
 
@@ -145,7 +146,7 @@ function SeedBank(props) {
       world={props.world}
       seeds={seeds}
        />
-      {plants}
+      <Plants plants={plants} />
       <Sun />
       <Firmament />
       <Friends sendPlant={sendPlant} userId={props.id}/>

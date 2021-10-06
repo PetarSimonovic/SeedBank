@@ -4,6 +4,7 @@ const UserCtrl = require('../controllers/user-ctrl')
 const BalloonsCtrl = require('../controllers/balloons-ctrl')
 const FriendsCtrl = require('../controllers/friends-ctrl')
 const SeedsCtrl = require('../controllers/seeds-ctrl')
+const PlantsCtrl = require('../controllers/plants-ctrl')
 
 
 
@@ -27,6 +28,12 @@ router.get('/friend/:friendName/:userId', FriendsCtrl.getFriendByName)
 router.post('/seeds', SeedsCtrl.addSeeds)
 router.get('/seeds/:userId', SeedsCtrl.getSeeds)
 router.put('/seeds/:userId/:type', SeedsCtrl.updateSeeds)
+
+//PLANTS
+
+router.post('/plants', PlantsCtrl.addPlant)
+router.get('/plants/:userId', PlantsCtrl.getPlants)
+//router.put('/plants/:id', PlantsCtrl.updatePlants)
 
 
 module.exports = router
