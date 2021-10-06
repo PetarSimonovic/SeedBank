@@ -116,8 +116,8 @@ function SeedBank(props) {
     let achievementCount = plants.length / 5
     let startingSeeds = 2
     if (seeds.length < achievementCount + startingSeeds) {
-    const newSeed = calculateAchievement(seeds, props.id, plants.length)
-    updateSeeds(0, newSeed.type)
+      const newSeed = calculateAchievement(seeds, props.id, plants.length)
+      if (newSeed !== null ) { updateSeeds(0, newSeed.type) }
       }
     }
 

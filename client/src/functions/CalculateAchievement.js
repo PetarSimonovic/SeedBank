@@ -15,7 +15,7 @@ export default function calculateAchievement(seeds, id, plantCount) {
     let bonusSeed = sample(seeds)
     console.log("bonusSeeds")
     sendBalloon(id, bonusSeed.type, 3, `${plantCount} plants! Bonus ${bonusSeed.type} seeds!`  ) //userId, type, quantity = 0, message, sender = "SeedBank")
-    return
+    return null
     // newSeed = sample(seedBank)
     // console.log("FULL BANK")
     // unlock = false

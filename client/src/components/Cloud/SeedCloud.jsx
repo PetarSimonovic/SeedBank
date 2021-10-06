@@ -33,10 +33,12 @@ function SeedCloud(props) {
 function seedSelectors(props) {
   let seedSelectors = []
   let fontX = 0
-  for (let index = 0; index < props.seeds.length; index++) {
-    let seed = props.seeds[index]
-    const x = 0.5 + Math.sin(Math.PI * index / props.seeds.length )
-    const y = 2 + Math.cos((Math.PI * index / (props.seeds.length * 1.9)  ))
+  let sortedSeeds = props.seeds.sort()
+  for (let index = 0; index < sortedSeeds.length; index++) {
+    let seed = sortedSeeds[index]
+    if (seed.quantity === 0) { continue }
+    const x = 0.5 + Math.sin(Math.PI * index / sortedSeeds.length )
+    const y = 2 + Math.cos((Math.PI * index / (sortedSeeds.length * 1.9)  ))
     let colours = {}
     seed.type === props.chosenSeed ? colours = selectedSeedTextColours : colours = seedTextColours
     seedSelectors.push( <SeedText key={createId()} position={[x, y, 0]} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} seed={seed} colours={colours} index={index}  />)
