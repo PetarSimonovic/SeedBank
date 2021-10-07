@@ -19,7 +19,6 @@ function SeedBank(props) {
   const [plants, setPlants] = useState([]) //  an array of plant components
   const [seeds, setSeeds] = useState([]) //  an array of the player's available seeds
   const [chosenSeed, setChosenseed] = useState("") // contains the type of seed if chosen, or null if no seed is currently selected
-  const [seedIndex, setSeedindex] = useState(null) //  the index within seeds of the chosenSeed
   const [balloons, setBalloons] = useState([])
 
   // useEffect Hooks run after all the other code, and are then called in order
@@ -78,11 +77,10 @@ function SeedBank(props) {
     console.log(seeds)
   }
 
-  const selectSeed = (selectedSeed, index) => {
-    const seed = seeds[index]
-    if (seeds[index].quantity > 0) {
+  const selectSeed = (selectedSeed) => {
+    const seed = seeds.find(selected => selected.type === selectedSeed)
+    if (seed.quantity > 0) {
       setChosenseed(selectedSeed)
-      setSeedindex(index)
     }
   }
 
@@ -106,7 +104,6 @@ function SeedBank(props) {
       })
       updateSeed(props.id, amendedSeed)
     }
-    setSeedindex(null)
   }
 
 

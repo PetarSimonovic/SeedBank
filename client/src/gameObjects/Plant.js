@@ -13,6 +13,7 @@ export default class Plant {
     this.position = position
     this.date = setDate()
     this.plantId = createId()
+    this.bloom = 1 // default days it takes to bloom
 
   }
 }
