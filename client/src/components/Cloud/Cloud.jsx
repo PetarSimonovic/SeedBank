@@ -8,7 +8,6 @@ const options = 3
 
 function Cloud(props) {
   const mesh = useRef()
-  const [option, setOption] = useState(0)
 
   const noticeTextColour = {
     message: "#293241",
@@ -16,9 +15,9 @@ function Cloud(props) {
   }
 
   const handleClick = () => {
-    console.log("clicked")
-
+    props.handleClick()
   }
+
 
 
 return (
@@ -35,8 +34,8 @@ return (
     lockY={false}
     lockZ={false} // Lock the rotation on the z axis (default=false)
     >
-    <Text option="Choose Seed" fontSize={size} outlineWidth={size} outlineColor={noticeTextColour.outline} color={noticeTextColour.message}>
-    {props.option}
+    <Text fontSize={size} outlineWidth={size} outlineColor={noticeTextColour.outline} color={noticeTextColour.message}>
+    {props.text}
      </Text>
     </Billboard>
 

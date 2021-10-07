@@ -8,9 +8,7 @@ const position = [0.5, 2.8, 5]
 const size = 0.5
 const options = 3 // 1 = Choose Seed, 2 = send Friend Request, 3 = buy balloon
 
-
-
-function Cloud(props) {
+function Clouds(props) {
   const mesh = useRef()
   const [option, setOption] = useState(0)
 
@@ -26,26 +24,7 @@ function Cloud(props) {
 
 
 return (
-  <mesh
-    {...props}
-    ref={mesh}
-    scale={1}
-    onClick={handleClick}
-    >
-  <Billboard
-    position={position}
-    follow={true}
-    lockX={false}
-    lockY={false}
-    lockZ={false} // Lock the rotation on the z axis (default=false)
-    >
-    <Text fontSize={size} outlineWidth={size} outlineColor={noticeTextColour.outline} color={noticeTextColour.message}>
-    {displayText(option)}
-     </Text>
-    </Billboard>
-    {displayFunctionality(option, props)}
-
-    </mesh>
+  <SeedCloud seeds={props.seeds} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} chosenSeed={props.chosenSeed} />
 )
 }
 
@@ -71,7 +50,7 @@ function displayFunctionality(option, props) {
 
   switch(option) {
     case 1:
-      return <SeedCloud seeds={props.seeds} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} chosenSeed={props.chosenSeed} />
+      return
     case 2:
       return <CloudKeyBoard handleSubmit={props.sendFriendRequest} />
     case 3:
@@ -83,4 +62,4 @@ function displayFunctionality(option, props) {
   }
 }
 
-export default Cloud
+export default Clouds

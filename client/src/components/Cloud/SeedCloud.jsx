@@ -1,6 +1,7 @@
 import { Text, Billboard } from '@react-three/drei'
 import React, { useRef, useState, useEffect } from "react";
 import { createId } from '../../functions'
+import { Cloud } from '../'
 
 // Creates a button that 'clicks'
 
@@ -12,8 +13,33 @@ const fontY = 2
 
 function SeedCloud(props) {
 
+  //const seedTypes = getSeedTypes(props.seeds)
+  const [option, setOption] = useState(0)
+  const [text, setText] = useState('seeds')
+  const [on, setOn] = useState(false)
   const mesh = useRef()
 
+  // eventhandler for Cloud
+
+  const handleClick = () => {
+    console.log(option, props.seeds.length)
+    console.log(props.seeds)
+    setOn(true)
+    option > props.seeds.length - 1 ? closeDown() : updateOption()
+    console.log(option, props.seeds.length)
+
+  }
+
+  const updateOption = () => {
+    setOption(prev => prev + 1)
+    setText(props.seeds[option].type)
+  }
+
+  const closeDown = () => {
+    setOn(false)
+    setOption(0)
+    setText('seeds')
+  }
 
 
   return (
@@ -23,8 +49,8 @@ function SeedCloud(props) {
     ref={mesh}
     scale={1}
     >
-
-   {seedSelectors(props)}
+    <Cloud handleClick={handleClick} text={text} />
+    {on ? seedSelectors(props) : '' }
   </mesh>
   </>
 
@@ -116,5 +142,15 @@ function NoSeedText(props) {
         )
   }
 
+function getSeedTypes(seeds) {
+  console.log("getting seeds")
+  let seedTypes = ["seeds"]
+  for (let index = 0; index < seeds.length; index++) {
+    const seed = seeds[index]
+    seedTypes.push(seed.type)
+  }
+  console.log(seedTypes)
+  return seedTypes
+}
 
 export default SeedCloud

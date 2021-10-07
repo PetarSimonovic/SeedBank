@@ -1,8 +1,8 @@
 import Balloons from './Balloons/Balloons'
 import Balloon from './Balloons/Balloon'
 import BalloonShop from './Cloud/BalloonShop'
-import Cloud from './Cloud/Cloud'
 import Clouds from './Cloud/Clouds'
+import Cloud from './Cloud/Cloud'
 import CloudKeyBoard from './Cloud/CloudKeyBoard'
 import Camera from './Camera'
 import FakeGrass from './Garden/FakeGrass'
@@ -25,8 +25,8 @@ export {
   Balloons,
   Balloon,
   BalloonShop,
-  Cloud,
   Clouds,
+  Cloud,
   Camera,
   CloudKeyBoard,
   FakeGrass,
