@@ -1,9 +1,9 @@
 import api from '../api';
 import { randomiser } from './'
 
-const gardenX = {max: 40, min: -20}
-const gardenY = {max: 20, min: -30}
-const gardenZ = {max: -30, min: -50}
+const gardenX = {max: 20, min: -20}
+const gardenY = {max: 20, min: -20}
+const gardenZ = {max: 40, min: 10}
 
 
 export default async function loadFriends(id) {
