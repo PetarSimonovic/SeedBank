@@ -17,11 +17,13 @@ const Camera = () => {
   useFrame((state) => controls.current.update());
   return <orbitControls
           ref={controls}
-          position={[0, -10, 0]}
+          //position={[0, -2, 0]}
           args={[camera, domElement]}
           autoRotate={false}
           autoRotateSpeed={0.2}
-          enabled={true}
+          minDistance={0.5}
+          enableZoom={true}
+          minDistance={1.8} // limits Zoom in
           />;
 };
 

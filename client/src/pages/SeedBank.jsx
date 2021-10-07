@@ -151,7 +151,7 @@ function SeedBank(props) {
 
   return (
   <div className="App">
-    <Canvas id="canvas" camera={{ position: [0, 2, 3.5] }}>
+    <Canvas id="canvas" >
       <Camera />
       <Suspense fallback={console.log("loading")}>
       <Garden
