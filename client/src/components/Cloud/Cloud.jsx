@@ -14,7 +14,8 @@ function Cloud(props) {
     outline: "#b1b5c8"
   }
 
-  const handleClick = () => {
+  const handleClick = (event) => {
+    event.stopPropagation()
     props.handleClick()
   }
 
@@ -25,7 +26,7 @@ return (
     {...props}
     ref={mesh}
     scale={1}
-    onClick={handleClick}
+    onClick={(event) => handleClick(event)}
     >
   <Billboard
     position={position}

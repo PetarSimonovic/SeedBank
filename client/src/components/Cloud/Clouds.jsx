@@ -22,42 +22,9 @@ return (
   <>
     <SeedCloud seeds={props.seeds} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} chosenSeed={props.chosenSeed} />
     <FriendCloud sendFriendRequest={props.sendFriendRequest} />
+    <BalloonShop seeds={props.seeds} buyBalloon={props.buyBalloon} />
   </>
 )
-}
-
-function displayText(option) {
-
-  switch(option) {
-    case 0:
-      const date = setDate()
-      return `   | | ${'\n'} \\__/ `
-    case 1:
-      return 'Choose Seed'
-    case 2:
-      return 'Send friend request'
-    case 3:
-      return 'Buy balloon'
-    default:
-     return "hello"
-  }
-
-}
-
-function displayFunctionality(option, props) {
-
-  switch(option) {
-    case 1:
-      return
-    case 2:
-      return
-    case 3:
-      if (props.seeds.length > 0) {
-        return <BalloonShop seeds={props.seeds} buyBalloon={props.buyBalloon} />
-      }
-    default:
-     return ""
-  }
 }
 
 export default Clouds

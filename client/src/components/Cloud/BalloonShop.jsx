@@ -1,23 +1,36 @@
 import { Billboard, Text } from '@react-three/drei'
-import React, { Component, useState, useRef } from 'react';
+import React, { Component, useState, useRef, useEffect } from 'react';
 import {balloonColours, sendBalloon, sample, createId} from '../../functions'
+import { Cloud } from '../'
 const size = 0.07
 
 function BalloonShop(props) {
   const mesh = useRef()
 
-  const handleClick = () => {
+  const [on, setOn] = useState(false)
+  const [text, setText] = useState('balloon shop')
 
+  // eventhandler for Cloud
+
+  const handleClick = () => {
+    setOn(prev => !prev)
   }
+
+  useEffect(() => {
+    on ? setText("choose balloon") : setText("balloon shop")
+  }, [on])
+
 
   return (
     <mesh
       {...props}
       ref={mesh}
       scale={1}
+      position={[-5, 0.5, 0]}
       onClick={handleClick}
       >
-    {balloonsForSale(props)}
+    <Cloud handleClick={handleClick} text={text} />
+    {on ? balloonsForSale(props) : '' }
     </mesh>
   )
 }
@@ -30,7 +43,7 @@ function balloonsForSale(props) {
       message: "#293241",
       outline: "#b1b5c8"
     }
-    const x = -0.3 + Math.cos(Math.PI * balloon / colours.length)
+    const x = Math.cos(Math.PI * balloon / colours.length)
     const y = 1 + Math.sin((Math.PI * balloon / colours.length  ))
 
     balloons.push(<BalloonForSale key={createId()} buyBalloon={props.buyBalloon} textColour="#293241" outline={colours[balloon]} position={[x, y, 0]}/>)
