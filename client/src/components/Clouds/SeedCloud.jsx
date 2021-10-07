@@ -14,15 +14,18 @@ const fontY = 2
 function SeedCloud(props) {
 
   const mesh = useRef()
+  const seeds = getAvailableSeeds(props.seeds)
   const [option, setOption] = useState(0)
   const [on, setOn] = useState(false)
   const [seed, setSeed] = useState({})
+  const [text, setText] = useState("seeds")
 
   // eventhandler for Cloud
 
   useEffect(() => {
     setOption(option)
     console.log(option)
+    if (seeds.length === 0 || seed.quantity === 0) { closeDown() }
   })
 
 
@@ -33,9 +36,9 @@ function SeedCloud(props) {
 
   const handleClick = () => {
     setOn(true)
-    console.log(option )
+    console.log(option)
     setOption(prev => prev+1)
-    option < props.seeds.length ? setSeed(props.seeds[option]) : closeDown()
+    option < seeds.length ? setSeed(seeds[option]) : closeDown()
   }
 
 
@@ -49,7 +52,7 @@ function SeedCloud(props) {
     ref={mesh}
     scale={1}
     >
-    <Cloud handleClick={handleClick} text={on ? seed.type : 'seeds'} />
+    {seeds.length != 0 ? <Cloud handleClick={handleClick} text={on ? seed.type : 'seeds'} /> : '' }
     {on ? seedSelectors(props, seed, option) : ''}
   </mesh>
 
@@ -60,7 +63,10 @@ function SeedCloud(props) {
 
 function seedSelectors(props, seed) {
   console.log(seed)
-  if (seed.quantity === 0) { return }
+  if (seed.quantity === 0) {
+    console.log("It's 0")
+    return
+  }
   let colours = {}
   seed.type === props.chosenSeed ? colours = selectedSeedTextColours : colours = seedTextColours
   return <SeedText key={createId()} position={[0, 2, 0]} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} seed={seed} colours={colours}   />
@@ -130,5 +136,17 @@ function NoSeedText(props) {
         )
   }
 
+ function getAvailableSeeds(seeds) {
+   let availableSeeds = []
+   for (let index = 0; index < seeds.length; index++) {
+     const seed = seeds[index]
+     if (seed.quantity === 0) {
+       continue
+     } else {
+       availableSeeds.push(seed)
+     }
+   }
+   return availableSeeds
+ }
 
 export default SeedCloud
