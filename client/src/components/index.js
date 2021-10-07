@@ -8,6 +8,7 @@ import Camera from './Camera'
 import FakeGrass from './Garden/FakeGrass'
 import Firmament from './Sky/Firmament'
 import Friends from './Friends'
+import FriendCloud from './Cloud/FriendCloud'
 import Grass from './Garden/Grass'
 import Garden from './Garden/Garden'
 import IntroBalloons from './Balloons/IntroBalloons'
@@ -32,6 +33,7 @@ export {
   FakeGrass,
   Firmament,
   Friends,
+  FriendCloud,
   Garden,
   Grass,
   IntroBalloons,

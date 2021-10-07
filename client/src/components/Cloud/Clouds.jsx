@@ -1,7 +1,7 @@
 import { Billboard, Text } from '@react-three/drei'
 import { setDate } from '../../functions'
 import React, { Component, useState, useRef } from 'react';
-import { SeedCloud, CloudKeyBoard, BalloonShop } from '../'
+import { SeedCloud, CloudKeyBoard, BalloonShop, FriendCloud } from '../'
 
 
 const position = [0.5, 2.8, 5]
@@ -17,14 +17,12 @@ function Clouds(props) {
     outline: "#b1b5c8"
   }
 
-  const handleClick = () => {
-    option >= options ? setOption(0) : setOption(prev => prev + 1)
-
-  }
-
 
 return (
-  <SeedCloud seeds={props.seeds} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} chosenSeed={props.chosenSeed} />
+  <>
+    <SeedCloud seeds={props.seeds} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} chosenSeed={props.chosenSeed} />
+    <FriendCloud sendFriendRequest={props.sendFriendRequest} />
+  </>
 )
 }
 
@@ -52,7 +50,7 @@ function displayFunctionality(option, props) {
     case 1:
       return
     case 2:
-      return <CloudKeyBoard handleSubmit={props.sendFriendRequest} />
+      return
     case 3:
       if (props.seeds.length > 0) {
         return <BalloonShop seeds={props.seeds} buyBalloon={props.buyBalloon} />

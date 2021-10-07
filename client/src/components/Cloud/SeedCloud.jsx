@@ -46,6 +46,7 @@ function SeedCloud(props) {
   <>
   <mesh
     {...props}
+    position={[0, 0.5, 0]}
     ref={mesh}
     scale={1}
     >
