@@ -7,7 +7,7 @@ import { Cloud } from '../'
 
 const seedTextColours = {type: "#293241", outline: "#b1b5c8"}
 const selectedSeedTextColours = {type: "#b1b5c8", outline: "#293241"}
-const fontSize = 0.12
+const fontSize = 0.15
 const fontZ = 1
 const fontY = 2
 

@@ -62,7 +62,7 @@ function CloudKeyBoard(props) {
 
 function createCloudKeyboard(props, buildSentence, deleteCharacter, sentence, submit) {
   let cloudKeyboard = []
-  let fontX = 0.5
+  let fontX = 0
   let fontY = 3
   let column = 1
   for (let char = 0; char < alphabet.length; char++) {
@@ -71,7 +71,7 @@ function createCloudKeyboard(props, buildSentence, deleteCharacter, sentence, su
     cloudKeyboard.push( < CloudKey key={createId()} buildSentence={buildSentence} character={character} fontX={fontX} fontY={fontY} /> )
     if (column % 8 === 0) {
       fontY -= 0.3
-      fontX = 0.5
+      fontX = 0
     }
     column++
 

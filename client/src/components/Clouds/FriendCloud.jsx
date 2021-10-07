@@ -26,7 +26,7 @@ function FriendCloud(props) {
   <>
   <mesh
     {...props}
-    position={[5, 0.5, 0]}
+    position={[-5, 0.5, 0]}
     ref={mesh}
     scale={1}
     >

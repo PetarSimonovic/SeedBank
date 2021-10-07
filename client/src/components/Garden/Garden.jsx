@@ -81,6 +81,7 @@ function Stalactite(props) {
 
 function GardenText(props) {
 
+
   const gardenTextColor = {
     message: "#293241",
     outline: "#b1b5c8"
@@ -94,7 +95,13 @@ function GardenText(props) {
       ref={mesh}
       scale={0.8}
       >
-      <Text fontSize={1.2} outlineWidth={1} outlineColor={gardenTextColor.outline} color={gardenTextColor.message} > {props.name } </Text>
+      <Billboard
+      follow={true}
+      lockX={false}
+      lockY={false}
+      lockZ={false} >
+      <Text fontSize={1.4} outlineWidth={0.6} outlineColor={gardenTextColor.outline} color={gardenTextColor.message} > {props.name } </Text>
+      </Billboard>
       </mesh>
   )
 }

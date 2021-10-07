@@ -26,7 +26,7 @@ function BalloonShop(props) {
       {...props}
       ref={mesh}
       scale={1}
-      position={[-5, 0.5, 0]}
+      position={[5, 0.5, 0]}
       onClick={handleClick}
       >
     <Cloud handleClick={handleClick} text={text} />
@@ -43,7 +43,7 @@ function balloonsForSale(props) {
       message: "#293241",
       outline: "#b1b5c8"
     }
-    const x = Math.cos(Math.PI * balloon / colours.length)
+    const x = -1.5  + Math.cos(Math.PI * balloon / colours.length)
     const y = 1 + Math.sin((Math.PI * balloon / colours.length  ))
 
     balloons.push(<BalloonForSale key={createId()} buyBalloon={props.buyBalloon} textColour="#293241" outline={colours[balloon]} position={[x, y, 0]}/>)
