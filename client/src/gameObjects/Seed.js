@@ -7,7 +7,6 @@ export default class Seed {
     this.userId = userId
     this.type = type
     this.quantity = quantity
-//    this.variants = []
-
+    this.variants = []
   }
 }

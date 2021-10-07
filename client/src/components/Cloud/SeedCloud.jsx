@@ -50,30 +50,21 @@ function SeedCloud(props) {
     scale={1}
     >
     <Cloud handleClick={handleClick} text={text} />
-    {on ? seedSelectors(props) : '' }
+    {on ? seedSelectors(props, option - 1) : '' } //-1 offsets for "seeds" text - this could prob be neater
   </mesh>
   </>
 
 )
 }
 
-function seedSelectors(props) {
-  let seedSelectors = []
-  let fontX = 0
-  let sortedSeeds = props.seeds.sort()
-  for (let index = 0; index < sortedSeeds.length; index++) {
-    let seed = sortedSeeds[index]
-    if (seed.quantity === 0) { continue }
-    const x = 0.5 + Math.sin(Math.PI * index / sortedSeeds.length )
-    const y = 2 + Math.cos((Math.PI * index / (sortedSeeds.length * 1.9)  ))
-    let colours = {}
-    seed.type === props.chosenSeed ? colours = selectedSeedTextColours : colours = seedTextColours
-    seedSelectors.push( <SeedText key={createId()} position={[x, y, 0]} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} seed={seed} colours={colours} index={index}  />)
-  }
-  if (seedSelectors.length === 0) {
-    seedSelectors.push( <NoSeedText key={createId()} colours={seedTextColours} index={1} />)
-  }
-  return seedSelectors
+function seedSelectors(props, index) {
+  console.log("In seed selectors")
+  let seed = props.seeds[index]
+  console.log(seed)
+  if (seed.quantity === 0) { return }
+  let colours = {}
+  seed.type === props.chosenSeed ? colours = selectedSeedTextColours : colours = seedTextColours
+  return <SeedText key={createId()} position={[0, 2, 0]} selectSeed={props.selectSeed} toggleSeeds={props.toggleSeeds} seed={seed} colours={colours} index={index}  />
 }
 
 function SeedText(props) {
@@ -107,8 +98,7 @@ function SeedText(props) {
         outlineColor={props.colours.outline}
         color={props.colours.type}
         rotation={[0, 0, 0]} >
-          {seed.type} {'\n'}
-          x {seed.quantity}
+          {seed.quantity}
         </ Text>
         </ Billboard>
       </mesh>
