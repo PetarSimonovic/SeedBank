@@ -15,8 +15,8 @@ The game will also allow players to send seeds to each other and see their frien
 This version is a basic proof-of-concept that includes a limited number of features. 
 
 - Players can generate a garden and plant seeds in it
-- The seeds grow into plants over a numnber of days
-- The game unlocks new items to reward the player for planting seeds
+- The seeds grow into plants over a number of days
+- Planting seeds unlocks new seed variants
 - Players can make friends and send seeds to each other.
 
 The app is currently hosted on Heroku at:
