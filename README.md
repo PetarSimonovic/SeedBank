@@ -42,6 +42,8 @@ New users must first create a garden.
 
 SeedBank will randomly generate a garden whenever the "New garden" balloon is clicked.
 
+Click and drag to move the camera around the 3D space.
+
 "Save garden" will save the garden and move the player into the game. 
 
 The player cannot regenerate the garden once it is saved.
