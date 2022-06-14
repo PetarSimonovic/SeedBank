@@ -62,46 +62,31 @@ The "Balloon shop" allows players to buy more seeds: these will be delivered in 
 
 The "Seeds" cloud appears if the player has seeds to plant. Click on the cloud to cycle through the types of seeds available. 
 
-Click on "Friend request" 
+Click on "Friend request" to bring up a cloud keyboard. Type in a friend's username, then click on the "+" sign at the bottom of the keyboard.
+
+This will send a friend request to the username. If it is accepted, that user's garden will appear in the game.
 
 
+### Planting seeds
 
-### `yarn eject`
+1. Click on the "Seed" cloud to start cycling through available seeds.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2. A smaller cloud will also appear, displaying the number of seeds of that type that are available.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Click on the number to select a seed 
+ 
+4. Click on any grass part of the garden to plant it.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Seeds grow over a number of days.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Plant more seeds to unlock new varieties.
 
-## Learn More
+### Sending seeds to friends
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Click on the "Seed" cloud to start cycling through available seeds.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. A smaller cloud will also appear, displaying the number of seeds of that type that are available.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. Click on the number to select a seed 
+ 
+4. Click on your friends island to send the seed to them.
