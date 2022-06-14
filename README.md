@@ -1,33 +1,70 @@
-# Getting Started with Create React App
+# SeedBank Prototype v2
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SeedBank is a gardening game that helps players to save money.
 
-## Available Scripts
+Players buy seeds through in-game microtransactions and plant them in their garden. 
 
-In the project directory, you can run:
+Growing plants unlocks new seeds and features within the game.
 
-### `yarn start`
+The game will use techniques such as loot boxes and scarce/rare/legendary items to encourage the player to spend money.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+It will, however, invest that money into a bank account or ISA on behalf of the player.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The game will also allow players to send seeds to each other and see their friends' gardens in the background of their own game.
 
-### `yarn test`
+This version is a basic proof-of-concept that includes a limited number of features. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Players can generate a garden and plant seeds in it
+- The seeds grow into plants over a numnber of days
+- The game unlocks new items to reward the player for planting seeds
+- Players can make friends and send seeds to each other.
 
-### `yarn build`
+The app is currently hosted on Heroku at:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+https://rocky-ravine-64335.herokuapp.com
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Financial features are not available in this version.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## Sign up or log in
+  
+Create an account at
+
+https://rocky-ravine-64335.herokuapp.com
+
+Note: this is a very very basic account creation page that performs some very limited validation logic.
+
+Email is not currently used for anything at all.
+
+### Create a garden
+
+New users must first create a garden. 
+
+SeedBank will randomly generate a garden whenever the "New garden" balloon is clicked.
+
+"Save garden" will save the garden and move the player into the game. 
+
+The player cannot regenerate the garden once it is saved.
+
+### Getting started.
+
+SeedBank delivers seeds and messages via balloons. 
+
+Click on a balloon to receive its contents. Click on the balloon again to remove the text.
+
+New players receive two introductory balloons that contain packets of seeds.
+
+### The Cloud interface
+
+The clouds above the garden are a basic UI.
+
+The "Balloon shop" allows players to buy more seeds: these will be delivered in a balloon the next time that the player logs in. In this version, the player is simply presented with smaller, pastel-coloured clouds that function as loot boxes.
+
+The "Seeds" cloud appears if the player has seeds to plant. Click on the cloud to cycle through the types of seeds available. 
+
+Click on "Friend request" 
+
+
 
 ### `yarn eject`
 
