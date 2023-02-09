@@ -1,4 +1,4 @@
-# SeedBank Prototype v2
+# SeedBank
 
 ![65D88DEA-18D7-4BB0-8FDD-FF0CEB28BA8B_1_102_o](https://user-images.githubusercontent.com/69108995/217797189-d2b9e74b-cf61-4f93-b49b-f354fc683f7d.jpeg)
 
