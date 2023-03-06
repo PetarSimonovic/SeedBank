@@ -28,6 +28,8 @@ https://rocky-ravine-64335.herokuapp.com
 
 Financial features are not available in this version.
 
+![image](https://user-images.githubusercontent.com/69108995/223224047-3e821e4c-5b58-4806-8600-5e386874c317.png)
+
 
 ## Sign up or log in
   
@@ -94,4 +96,4 @@ Plant more seeds to unlock new varieties.
 
 3. Click on the number to select a seed 
  
-4. Click on your friends island to send the seed to them.
+4. Click on your friend's island to send the seed to them.
