@@ -22,10 +22,6 @@ This version is a basic proof-of-concept that includes a limited number of featu
 - Planting seeds unlocks new seed variants
 - Players can make friends and send seeds to each other.
 
-The app is currently hosted on Heroku at:
-
-https://rocky-ravine-64335.herokuapp.com
-
 Financial features are not available in this version.
 
 ![image](https://user-images.githubusercontent.com/69108995/223224047-3e821e4c-5b58-4806-8600-5e386874c317.png)
